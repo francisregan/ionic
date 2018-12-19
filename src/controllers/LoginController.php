@@ -17,7 +17,7 @@ class LoginController
    }
 
   public function login($request, $response, $args) {
-    $this->container->logger->info("successfully reached here");
+    //$this->container->logger->info("successfully reached here");
     $data = $request->getParsedBody();
     $name = filter_var($data['login'], FILTER_SANITIZE_STRING);
     $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
@@ -31,6 +31,12 @@ class LoginController
     }
     return $this->container->renderer->render($response, 'login.php', $args);
   }
+
+  public function list($request, $response, $args) {
+
+    
+    return $this->container->renderer->render($response, 'login.php', $args);
+   }
 }
 
 ?>

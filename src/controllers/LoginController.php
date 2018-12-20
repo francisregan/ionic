@@ -29,6 +29,7 @@ class LoginController
       $_SESSION['user'] = $name;
       return $this->container->renderer->render($response, 'index.php', $args);
     }
+    echo("<script>window.alert('USERNAME OR PASSWORD IS INCORRECT');</script>");
     return $this->container->renderer->render($response, 'login.php', $args);
   }
 

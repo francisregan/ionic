@@ -17,7 +17,7 @@ class LoginController
    }
 
   public function login($request, $response, $args) {
-    $this->container->logger->info("successfully reached here");
+    //$this->container->logger->info("successfully reached here");
     $data = $request->getParsedBody();
     $name = filter_var($data['login'], FILTER_SANITIZE_STRING);
     $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
@@ -29,8 +29,15 @@ class LoginController
       $_SESSION['user'] = $name;
       return $this->container->renderer->render($response, 'index.php', $args);
     }
+    echo("<script>window.alert('USERNAME OR PASSWORD IS INCORRECT');</script>");
     return $this->container->renderer->render($response, 'login.php', $args);
   }
+
+  public function list($request, $response, $args) {
+
+    
+    return $this->container->renderer->render($response, 'login.php', $args);
+   }
 }
 
 ?>

@@ -2,17 +2,54 @@
 <head>
 <title> Manage schools </title>
 
-<style>
+<script>
+$(document).ready(function(){
+$.ajax({ 
+  type: 'GET',
+  url: "http://localhost:8081/ionic/public/manageschool",
+  success: function(data){
+    var schools = JSON.parse(data);
+    
+    for (var i =0; i< schools.length; i++){
+      var obj = schools[i];
+      console.log(obj);
+      var table = document.getElementById("mytable");
+        var row = table.insertRow(1);
+        var cellcheckbox = row.insertCell(0);
+        var cellserial = row.insertCell(1);
+        var cellschool = row.insertCell(2);
+        var cellcontact = row.insertCell(3);
+        var cellcontactno = row.insertCell(4);
+        var cellmail = row.insertCell(5);
+        var celladdress = row.insertCell(6);
+        var celledit = row.insertCell(7);
+        var cellremarks = row.insertCell(8);
 
-</style>
+        cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
+        cellserial.innerHTML = obj.SNo;
+        cellschool.innerHTML = obj.School_Name;
+        cellcontact.innerHTML = obj.Contact_Person;
+        cellcontactno.innerHTML = obj.Contact_No;
+        cellmail.innerHTML = obj.Mail_id;
+        celladdress.innerHTML = obj.Address;
+        celledit.innerHTML = document.getElementById("edit").innerHTML
+        cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
+    }
+  },
+  error:function(error){
+    console.log(error);
+  }});
+});
+
+</script>
 
 </head>
-
 <body>
+
 <h3 class="ui header" style="text-align: left;">Manage School</h3>
 
 <br />
-<table class="ui compact celled definition table">
+<table id="mytable" class="ui compact celled definition table">
   <thead>
     <tr>
       <th></th>
@@ -27,72 +64,32 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td class="collapsing">
+
+  <script id="check" type="text/template">
+      <div class="collapsing">
         <div class="ui fitted slider checkbox">
-          <input type="checkbox"> <label></label>
+          <input type="checkbox"><label></label>
         </div>
-      </td>
-      <td>1</td>
-      <td>VIT Chennai</td>
-      <td>Asha</td>
-      <td>1234567890</td>
-      <td>vitchennai@vit.ac.in</td>
-      <td>Chennai, India</td>
-      <td>
-	  <button class="ui primary basic button">Edits</button>
-	  </td>
-	  <td>
+      </div>
+  </script>
+
+  <script id="edit" type="text/template">
+		<div class="ui form" id="edit">
+      <button class="ui primary basic button">Edits</button>
+		</div>
+  </script>
+ 
+  
+  
+
+  <script id="tarea" type="text/template"> 
 		<div class="ui form">
 			<div class="field">
-			<textarea rows="1"></textarea>
+			  <textarea rows="1"></textarea>
+      </div>
 		</div>
-	  </td>
-    </tr>
-    <tr>
-      <td class="collapsing">
-        <div class="ui fitted slider checkbox">
-          <input type="checkbox"> <label></label>
-        </div>
-      </td>
-      <td>2</td>
-      <td>VIT Vellore</td>
-      <td>Jamie Harington</td>
-      <td>8965782345</td>
-      <td>jamieharingonton@yahoo.com</td>
-      <td>Vellore India</td>
-      <td>
-	  <button class="ui primary basic button">Edits</button>
-	  </td>
-	  <td>
-		<div class="ui form">
-			<div class="field">
-			<textarea rows="1"></textarea>
-		</div>
-	  </td>
-    </tr>
-    <tr>
-      <td class="collapsing">
-        <div class="ui fitted slider checkbox">
-          <input type="checkbox"> <label></label>
-        </div>
-      </td>
-      <td>3</td>
-      <td>GLA University</td>
-      <td>Jill Lewis</td>
-      <td>3456112014</td>
-      <td>jilsewris22@yahoo.com</td>
-      <td>Mathura, UP</td>
-      <td>
-	  <button class="ui primary basic button">Edits</button>
-	  </td>
-	  <td>
-		<div class="ui form">
-			<div class="field">
-			<textarea rows="1"></textarea>
-		</div>
-	  </td>
-    </tr>
+  </script> 
+
   </tbody>
   <tfoot class="full-width">
     <tr>
@@ -117,10 +114,11 @@
           Approve All
         </div>
       </th>
-    </tr>
+    </tr> 
   </tfoot>
   
   
 </table>
+
 </body>
 </html>

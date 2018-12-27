@@ -1,23 +1,23 @@
 <html>
 <head>
-<title> Add School </title>
+<title> Add Trainer </title>
 <script>
   $(document)
     .ready(function() {
       $('.ui.form')
         .form({
           fields: {
-            sname: {
-              identifier  : 'sname',
+            tname: {
+              identifier  : 'tname',
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter the school name'
+                  prompt : 'Please enter the trainer name'
                 },
               ]
             },
-            sphoneno: {
-              identifier  : 'sphoneno',
+            tphoneno: {
+              identifier  : 'tphoneno',
               rules: [
                 {
                   type   : 'empty',
@@ -29,34 +29,34 @@
                 }
               ]
             },
-            scontactperson: {
-              identifier  : 'scontactperson',
+            tmailid: {
+              identifier  : 'tmailid',
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter the contact person'
-                },
-              ]
-            },
-            smailid: {
-              identifier  : 'smailid',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your e-mail'
+                  prompt : 'Please enter your mail id'
                 },
                 {
                   type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
+                  prompt : 'Enter valid mail'
                 }
               ]
             },
-            saddress: {
-              identifier  : 'saddress',
+            tspec: {
+              identifier  : 'tspec',
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your address'
+                  prompt : 'Please enter your specialization'
+                }
+              ]
+            },
+            tschool: {
+              identifier  : 'tschool',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your school name'
                 }
               ]
             },
@@ -66,15 +66,14 @@
       ;
     });
   </script>
+
 </head>
 
 <body>
 
-
-
-<form class="ui form" action="school" method="post" >
+<form class="ui form" action="trainer" method="post" >
 <br />
-<h3 class="ui dividing header" style="text-align: left;">Add School</h3>
+<h3 class="ui dividing header" style="text-align: left;">Add Trainer</h3>
 <br />
 <div class="ui error message"></div>
 <div style="align:center">
@@ -82,10 +81,10 @@
   <div class="field">
      <div class="two fields">
       <div class="eight wide field">
-      <label>School Name</label>
+      <label>Trainer Name</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="sname" placeholder="Name of School">
+        <input type="text" name="tname" placeholder="Name of Trainer">
       </div>
     </div>
   </div>
@@ -95,27 +94,27 @@
       <label>Contact No</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="sphoneno" placeholder="Contact Number">
+        <input type="text" name="tphoneno" placeholder="Contact Number">
       </div>
     </div>
   </div>
   <div class="field">
     <div class="two fields">
       <div class="eight wide field">
-      <label>Contact Person</label>
+      <label>Mail Id</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="scontactperson" placeholder="Name of person">
+        <input type="text" name="tmailid" placeholder="abc@gmail.com">
       </div>
     </div>
   </div>
   <div class="field">
     <div class="two fields">
       <div class="eight wide field">
-      <label>Mail id</label>
+      <label>Specialization</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="smailid" placeholder="abc@gmail.com">
+        <input type="text" name="tspec" placeholder="Enter the specialization">
       </div>
     </div>
   </div>
@@ -123,10 +122,10 @@
   <div class="field">
     <div class="two fields">
       <div class="eight wide field">
-      <label>School Address</label>
+      <label>School</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="saddress" placeholder="Enter the address">
+        <input type="text" name="tschool" placeholder="Name of School">
       </div>
     </div>
   </div>
@@ -134,9 +133,11 @@
   </div>
   <h4 class="ui dividing header"></h4>
  
-<form class="ui form" action="school" method="post" >
-<input id="submitBtn" type="submit" class="ui button" style="background-color:#2185d0" name="Add School" value="Record Saved" ></input>
+<form class="ui form" action="trainer" method="post" >
+<input id="submitBtn" type="submit" class="ui button" style="background-color:#2185d0" name="Add Trainer" value="Record Saved" ></input>
 </div>
 </div>
+
 </form>
 </body>
+</html>

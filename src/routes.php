@@ -18,3 +18,10 @@ $app->get('/logout', function (Request $request, Response $response, array $args
     $this->renderer->render($response, 'index.php', $args);
 });
 
+$app->group('/manageschool', function(){
+    $this->get('', 'SchoolController:manageSchool');
+});
+
+$app->group('/profile', function(){
+    $this->get('', 'HomeController:profile');
+});

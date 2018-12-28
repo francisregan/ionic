@@ -32,7 +32,20 @@
 <div class="ui horizontal menu">
 
 <div class="ui vertical menu left" style="width:15em; font-size: 1.5rem; text-align: left;">
-  <div class="item txtsizegrid">
+
+<div class="item txtsizegrid">
+  <div class="ui left icon input">
+    <i class="fas fa-home"></i>
+    &nbsp;&nbsp; 
+    Home
+  </div> 
+  <div class="menu" id="menu">
+    <a href="profile.php" class="item">Profile</a>
+    <a class="item">Edit Profile</a>
+  </div>
+  </div>
+
+<div class="item txtsizegrid">
   <div class="ui left icon input">
     <i class="fas fa-university"></i>
     &nbsp;&nbsp; School Management
@@ -48,9 +61,9 @@
     <i class="fas fa-chalkboard-teacher"></i>
     &nbsp;&nbsp;Trainer Management
   </div> 
-    <div class="menu">
-      <a class="item">Manage Trainers </a>
-      <a class="item">Add a Trainer </a>
+    <div class="menu" id="menu">
+      <a href="manage-teacher.php" class="item">Manage Trainers </a>
+      <a href="add-trainer.php" class="item">Add a Trainer </a>
       <a class="item">Allocate trainer to schools </a>
       <a class="item">Manage content for trainer </a>
     </div>
@@ -61,9 +74,9 @@
     <i class="fas fa-child"></i>
     &nbsp;&nbsp;Student Management
   </div> 
-    <div class="menu">
-      <a class="item">Manage Students</a>
-      <a class="item">Add a student</a>
+    <div class="menu" id="menu">
+      <a href="manage-student.php" class="item">Manage Students</a>
+      <a href="add-student.php" class="item">Add a student</a>
       <a class="item">Bulk upload student data</a>
     </div>
   </div>
@@ -80,8 +93,7 @@
     </div>
 </div>
 </div>
-
-<div class="pusher" id="content" > </div>
+<div class="pusher" id="content"  style="width:50em; font-size: 1rem; text-align:  center ;"> </div>
   
 </div>
 </body>

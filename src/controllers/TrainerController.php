@@ -12,11 +12,6 @@ class TrainerController
      $this->container = $container;
    }
 
-   public function load($request, $response, $args) 
-   {
-    return $this->container->renderer->render($response, 'add-trainer.php', $args);
-   }
-
   public function trainer($request, $response, $args) 
   {
     $this->container->logger->info("successfully reached here");

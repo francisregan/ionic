@@ -12,11 +12,6 @@ class StudentController
      $this->container = $container;
    }
 
-   public function load($request, $response, $args) 
-   {
-    return $this->container->renderer->render($response, 'add-student.php', $args);
-   }
-
   public function student($request, $response, $args) 
   {
     $this->container->logger->info("successfully reached here");

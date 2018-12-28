@@ -1,27 +1,12 @@
-# Slim Framework 3 Skeleton Application
+# Ionic Cloud Application
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
-
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+Ionic cloud application is meant for students, trainers, schools and Ionic team to collaborate and work together.
+Ionic3DP educational contents will be published in this portal.
 
 ## Install the Application
 
-Run this command from the directory in which you want to install your new Slim Framework application.
-
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
-
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
-
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
-
-To run the application in development, you can run these commands 
-
-	cd [my-app-name]
-	php composer.phar start
-
-Run this command in the application directory to run the test suite
-
-	php composer.phar test
-
-That's it! Now go build something cool.
+1. Git clone the application to the www directory of the computer
+2. Install composer 
+3. Go to the folder where the application has been cloned
+4. Type 'composer require slim/slim "^3.0"'
+5. Once complete, type 'composer update'

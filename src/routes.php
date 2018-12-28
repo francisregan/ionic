@@ -11,26 +11,18 @@ $app->group('/login', function(){
     $this->get('', 'LoginController:load');
     $this->post('', 'LoginController:login');
 });
-    
 
-    $app->group('/trainer', function(){
-        $this->get('', 'TrainerController:load');
-        $this->post('', 'TrainerController:trainer');
+$app->group('/trainer', function(){
+    $this->post('', 'TrainerController:trainer');
 });       
- 
 
-     $app->group('/student', function(){            // executed
-        $this->get('','StudentController:load');
-        $this->post('','StudentController:student');
-        
-     });
-
-    $app->group('/school',function(){               // executed
-        $this->get('','SchoolController: load');
-        $this->post('','SchoolController:school');
+$app->group('/student',function(){
+    $this->post('','StudentController:student');
 });
 
-
+$app->group('/school',function(){
+    $this->post('','SchoolController:school');
+});
 
 $app->get('/logout', function (Request $request, Response $response, array $args) {
     session_destroy();

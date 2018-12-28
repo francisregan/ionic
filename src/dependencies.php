@@ -36,7 +36,6 @@ $container['LoginController'] = function ($c)
 $container['TrainerController']=function($c)
 {
     return new App\Controllers\TrainerController($c);
-
 };
 
 $container['StudentController']=function($c)
@@ -48,3 +47,4 @@ $container['SchoolController']=function($c)
 {
     return new App\Controllers\SchoolController($c);
 };
+

@@ -88,27 +88,27 @@ $.ajax({
    
    <tbody>
   
-   <tr class="center aligned">
+   <tr class="left aligned">
       <td>Name</td>
       <td id="name"></td>
     </tr>
-    <tr class="center aligned">
+    <tr class="left aligned">
       <td>Gender</td>
       <td id="gender"></td>
     </tr>
-    <tr class="center aligned">
+    <tr class="left aligned">
       <td>Contact No</td>
       <td id="phone"></td>
     </tr>
-    <tr class="center aligned">
+    <tr class="left aligned">
       <td>Course</td>
       <td id="course"></td>
     </tr>
-    <tr class="center aligned">
+    <tr class="left aligned">
       <td>Schoolname</td>
       <td id="schoolname"></td>
     </tr>
-    <tr class="center aligned">
+    <tr class="left aligned">
       <td>Branch</td>
       <td id="branch"></td>
     </tr>
@@ -124,8 +124,8 @@ $.ajax({
 <body>
 <div class="ui medium header" align ="left">Status</div>
 <pre 
-<div class="ui tiny header" align ="left">Course 1 </div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="button" value="Generate certificate"  width="48" height="48" />
-</p></pre>
+<div class="ui tiny header" align ="left">Course 1 </div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button class="ui twitter button"><i class="download icon"></i> Download Certificate</button>
+</pre>
 </div>
 </body>
 </html>

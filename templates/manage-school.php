@@ -1,5 +1,6 @@
 <html>
 <head>
+
 <title> Manage schools </title>
 
 <script>
@@ -40,9 +41,7 @@ $.ajax({
     console.log(error);
   }});
 });
-
 </script>
-
 </head>
 <body>
 
@@ -74,13 +73,13 @@ $.ajax({
   </script>
 
   <script id="edit" type="text/template">
-		<div class="ui form" id="edit">
-      <button class="ui primary basic button">Edits</button>
+		<div class="ui form">
+    
+     <button class="ui primary basic button" value="edit">Edits</button>
+    
 		</div>
+
   </script>
- 
-  
-  
 
   <script id="tarea" type="text/template"> 
 		<div class="ui form">

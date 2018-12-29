@@ -17,3 +17,15 @@ $app->get('/logout', function (Request $request, Response $response, array $args
     $_SESSION = array();
     $this->renderer->render($response, 'index.php', $args);
 });
+
+$app->group('/manageschool', function(){
+    $this->get('', 'SchoolController:manageSchool');
+});
+
+$app->group('/managetrainer', function(){
+    $this->get('', 'TrainerController:manageTrainer');
+});
+
+$app->group('/managestudent', function(){
+    $this->get('', 'StudentController:manageStudent');
+});

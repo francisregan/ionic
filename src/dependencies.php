@@ -32,3 +32,8 @@ $container['LoginController'] = function ($c)
 {
     return new App\Controllers\LoginController($c); 
 };
+
+$container['SchoolController'] = function ($c)
+{
+    return new App\Controllers\SchoolController($c); 
+};

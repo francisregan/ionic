@@ -33,7 +33,17 @@ $container['LoginController'] = function ($c)
     return new App\Controllers\LoginController($c); 
 };
 
-$container['SchoolController'] = function ($c)
+$container['TrainerController']=function($c)
 {
-    return new App\Controllers\SchoolController($c); 
+    return new App\Controllers\TrainerController($c);
+};
+
+$container['StudentController']=function($c)
+{
+    return new App\Controllers\StudentController($c);
+};
+
+$container['SchoolController']=function($c)
+{
+    return new App\Controllers\SchoolController($c);
 };

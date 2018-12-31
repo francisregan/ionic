@@ -46,6 +46,7 @@
   </div>
 
 <div class="item txtsizegrid">
+
   <div class="ui left icon input">
     <i class="fas fa-university"></i>
     &nbsp;&nbsp; School Management
@@ -62,8 +63,9 @@
     &nbsp;&nbsp;Trainer Management
   </div> 
     <div class="menu" id="menu">
-      <a class="item">Manage Trainers </a>
-      <a class="item">Add a Trainer </a>
+      <a href="manage-trainer.php" class="item">Manage Trainers </a>
+      <a href="add-trainer.php" class="item">Add a Trainer </a>
+
       <a class="item">Allocate trainer to schools </a>
       <a class="item">Manage content for trainer </a>
     </div>
@@ -75,8 +77,8 @@
     &nbsp;&nbsp;Student Management
   </div> 
     <div class="menu" id="menu">
-      <a class="item">Manage Students</a>
-      <a class="item">Add a student</a>
+      <a href="manage-student.php" class="item" >Manage Students</a>
+      <a href="add-student.php" class="item">Add a student</a>
       <a class="item">Bulk upload student data</a>
     </div>
   </div>

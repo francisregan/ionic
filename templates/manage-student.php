@@ -1,12 +1,12 @@
 <html>
 <head>
-<title> Manage schools </title>
+<title> Manage Student </title>
 
 <script>
 $(document).ready(function(){
 $.ajax({ 
   type: 'GET',
-  url: "http://localhost:8081/ionic/public/manageschool",
+  url: "http://localhost:8081/ionic/public/managestudent",
   success: function(data){
     var schools = JSON.parse(data);
     
@@ -17,21 +17,21 @@ $.ajax({
         var row = table.insertRow(1);
         var cellcheckbox = row.insertCell(0);
         var cellserial = row.insertCell(1);
-        var cellschool = row.insertCell(2);
-        var cellcontact = row.insertCell(3);
-        var cellcontactno = row.insertCell(4);
-        var cellmail = row.insertCell(5);
-        var celladdress = row.insertCell(6);
+        var cellstudent = row.insertCell(2);
+        var cellcontactno = row.insertCell(3);
+        var cellmail = row.insertCell(4);
+        var cellschool = row.insertCell(5);
+        var cellbatch = row.insertCell(5);
         var celledit = row.insertCell(7);
         var cellremarks = row.insertCell(8);
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        cellserial.innerHTML = obj.sno;
-        cellschool.innerHTML = obj.school_name;
-        cellcontact.innerHTML = obj.contact_person;
-        cellcontactno.innerHTML = obj.contact_no;
-        cellmail.innerHTML = obj.mail_id;
-        celladdress.innerHTML = obj.address;
+        cellserial.innerHTML = obj.Student_id;
+        cellstudent.innerHTML = obj.Student_Name;
+        cellcontactno.innerHTML = obj.Contact_Number;
+        cellmail.innerHTML = obj.email;
+        cellschool.innerHTML = obj.School;
+        cellbatch.innerHTML = obj.Batch;
         celledit.innerHTML = document.getElementById("edit").innerHTML
         cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
     }
@@ -40,23 +40,25 @@ $.ajax({
     console.log(error);
   }});
 });
-</script>
-</head>
-<body>
 
-<h3 class="ui header" style="text-align: left;">Manage School</h3>
+</script>
+
+</head>
+
+<body>
+<h3 class="ui header" style="text-align: left;">Manage Student</h3>
 
 <br />
 <table id="mytable" class="ui compact celled definition table">
   <thead>
     <tr>
       <th></th>
-      <th>Sr N.</th>
-      <th>School Name</th>
-      <th>Contact Person</th>
+      <th>S. ID</th>
+      <th>Student Name</th>
       <th>Contact No</th>
       <th>Mail Id</th>
-      <th>Address</th>
+      <th>School</th>
+      <th>Batch</th>
       <th>Edit Details</th>
 	  <th>Remark</th>
     </tr>
@@ -72,21 +74,18 @@ $.ajax({
   </script>
 
   <script id="edit" type="text/template">
-		<div class="ui form">
-    
-     <button class="ui primary basic button" value="edit">Edits</button>
-    
+		<div class="ui form" id="edit">
+      <button class="ui primary basic button">Edits</button>
 		</div>
-
   </script>
 
   <script id="tarea" type="text/template"> 
 		<div class="ui form">
 			<div class="field">
-			  <textarea rows="1"></textarea>
-      </div>
+			<textarea rows="1"></textarea>
 		</div>
   </script> 
+  
 
   </tbody>
   <tfoot class="full-width">
@@ -112,11 +111,10 @@ $.ajax({
           Approve All
         </div>
       </th>
-    </tr> 
+    </tr>
   </tfoot>
   
   
 </table>
-
 </body>
 </html>

@@ -27,12 +27,12 @@ $.ajax({
         var cellremarks = row.insertCell(8);
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        cellserial.innerHTML = obj.SNo;
-        cellschool.innerHTML = obj.School_Name;
-        cellcontact.innerHTML = obj.Contact_Person;
-        cellcontactno.innerHTML = obj.Contact_No;
-        cellmail.innerHTML = obj.Mail_id;
-        celladdress.innerHTML = obj.Address;
+        cellserial.innerHTML = obj.sno;
+        cellschool.innerHTML = obj.school_name;
+        cellcontact.innerHTML = obj.contact_person;
+        cellcontactno.innerHTML = obj.contact_no;
+        cellmail.innerHTML = obj.mail_id;
+        celladdress.innerHTML = obj.address;
         celledit.innerHTML = document.getElementById("edit").innerHTML
         cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
     }

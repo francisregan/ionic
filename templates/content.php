@@ -49,7 +49,7 @@
     &nbsp;&nbsp;Trainer Management
   </div> 
     <div class="menu" id="menu">
-      <a class="item">Manage Trainers </a>
+      <a href="manage-trainer.php" class="item">Manage Trainers </a>
       <a href="add-trainer.php" class="item">Add a Trainer </a>
       <a href="edit-trainer.php" class="item"> Edit Trainer</a>
       <a class="item">Allocate trainer to schools </a>

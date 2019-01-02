@@ -10,11 +10,7 @@ class TrainerController
      $this->container = $container;
    }
 
-   public function load($request, $response, $args) {
-    return $this->container->renderer->render($response, 'manage-trainer.php' ,$args);
-   }
-
-  public function manageTrainer($request, $response, $args) {
+  public function listTrainer($request, $response, $args) {
     $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer;");
     $results = [];
     while($row = mysqli_fetch_array($result)) {
@@ -22,14 +18,12 @@ class TrainerController
     }
     return json_encode($results);
   }
-  public function trainer($request, $response, $args) 
+  public function addTrainer($request, $response, $args) 
   {
-    $this->container->logger->info("successfully reached here");
     $data = $request->getParsedBody();
     $name = filter_var($data['tname'], FILTER_SANITIZE_STRING);
     $contact = filter_var($data['tphoneno'], FILTER_SANITIZE_STRING);
     $mail = filter_var($data['tmailid'], FILTER_SANITIZE_STRING);
-    /* $specialization = filter_var($data['tspec'], FILTER_SANTIZE_STRING); */
     $specialization = $data['tspec'];
     $school = $data['tschool'];
   $sqli = $this->container->db;

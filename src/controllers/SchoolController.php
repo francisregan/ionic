@@ -10,23 +10,17 @@ class SchoolController
      $this->container = $container;
    }
 
-   public function load($request, $response, $args) {
-    return $this->container->renderer->render($response, 'manage-school.php' ,$args);
-   }
-
-  public function manageSchool($request, $response, $args) {
+  public function listSchool($request, $response, $args) {
     $result = $this->container->db->query("SELECT * FROM ioniccloud.school;");
     $results = [];
     while($row = mysqli_fetch_array($result)) {
-      
       array_push($results, $row);
     }
     return json_encode($results);
   }
 
-  public function school($request, $response, $args) 
+  public function addSchool($request, $response, $args) 
   {
-    $this->container->logger->info("successfully reached here");
     $data = $request->getParsedBody();
     $name = filter_var($data['sname'], FILTER_SANITIZE_STRING);
     $contact = filter_var($data['sphoneno'], FILTER_SANITIZE_STRING);

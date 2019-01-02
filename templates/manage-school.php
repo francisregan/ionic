@@ -6,7 +6,7 @@
 $(document).ready(function(){
 $.ajax({ 
   type: 'GET',
-  url: "http://localhost:8081/ionic/public/manageschool",
+  url: "school",
   success: function(data){
     var schools = JSON.parse(data);
     
@@ -16,17 +16,15 @@ $.ajax({
       var table = document.getElementById("mytable");
         var row = table.insertRow(1);
         var cellcheckbox = row.insertCell(0);
-        var cellserial = row.insertCell(1);
-        var cellschool = row.insertCell(2);
-        var cellcontact = row.insertCell(3);
-        var cellcontactno = row.insertCell(4);
-        var cellmail = row.insertCell(5);
-        var celladdress = row.insertCell(6);
-        var celledit = row.insertCell(7);
-        var cellremarks = row.insertCell(8);
+        var cellschool = row.insertCell(1);
+        var cellcontact = row.insertCell(2);
+        var cellcontactno = row.insertCell(3);
+        var cellmail = row.insertCell(4);
+        var celladdress = row.insertCell(5);
+        var celledit = row.insertCell(6);
+        var cellremarks = row.insertCell(7);
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        cellserial.innerHTML = obj.sno;
         cellschool.innerHTML = obj.school_name;
         cellcontact.innerHTML = obj.contact_person;
         cellcontactno.innerHTML = obj.contact_no;
@@ -51,7 +49,6 @@ $.ajax({
   <thead>
     <tr>
       <th></th>
-      <th>Sr N.</th>
       <th>School Name</th>
       <th>Contact Person</th>
       <th>Contact No</th>

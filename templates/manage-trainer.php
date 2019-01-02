@@ -6,7 +6,7 @@
 $(document).ready(function(){
 $.ajax({ 
   type: 'GET',
-  url: "http://localhost:8081/ionic/public/managetrainer",
+  url: "trainer",
   success: function(data){
     var schools = JSON.parse(data);
     

@@ -10,10 +10,6 @@ class StudentController
      $this->container = $container;
    }
 
-   public function load($request, $response, $args) {
-    return $this->container->renderer->render($response, 'manage-student.php' ,$args);
-   }
-
   public function manageStudent($request, $response, $args) {
     $result = $this->container->db->query("SELECT * FROM ioniccloud.student;");
     $results = [];
@@ -24,12 +20,10 @@ class StudentController
   }
   public function student($request, $response, $args) 
   {
-    $this->container->logger->info("successfully reached here");
     $data = $request->getParsedBody();
     $name = filter_var($data['sname'], FILTER_SANITIZE_STRING);
     $contact = filter_var($data['sphoneno'], FILTER_SANITIZE_STRING);
     $mail = filter_var($data['smailid'], FILTER_SANITIZE_STRING);
-    /* $specialization = filter_var($data['tspec'], FILTER_SANTIZE_STRING); */
     $school = $data['sschool'];
     $batch = $data['sbatch'];
   $sqli = $this->container->db;

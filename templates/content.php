@@ -62,7 +62,7 @@
     &nbsp;&nbsp;Trainer Management
   </div> 
     <div class="menu" id="menu">
-      <a href="manage-teacher.php" class="item">Manage Trainers </a>
+      <a href="manage-trainer.php" class="item">Manage Trainers </a>
       <a href="add-trainer.php" class="item">Add a Trainer </a>
       <a class="item">Allocate trainer to schools </a>
       <a class="item">Manage content for trainer </a>
@@ -75,7 +75,7 @@
     &nbsp;&nbsp;Student Management
   </div> 
     <div class="menu" id="menu">
-      <a href="manage-student.php" class="item">Manage Students</a>
+      <a href="manage-student.php" class="item" >Manage Students</a>
       <a href="add-student.php" class="item">Add a student</a>
       <a class="item">Bulk upload student data</a>
     </div>

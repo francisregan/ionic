@@ -1,4 +1,3 @@
- 
 <html>
 <head>
     <title> My Profile </title>
@@ -12,47 +11,8 @@ $.ajax({
   success: function(data){
     var schools = JSON.parse(data);
     
-    for (var i =0; i< schools.length; i++){
-      var obj = schools[i];
-      console.log(obj);
-      
-      document.getElementById("name").innerHTML = obj.name;
-      document.getElementById("gender").innerHTML = obj.gender;
-      document.getElementById("phone").innerHTML = obj.phone;
-      document.getElementById("course").innerHTML = obj.course;
-      document.getElementById("schoolname").innerHTML = obj.school_name;
-      document.getElementById("branch").innerHTML = obj.branch;
-
-    }
-  },
-  error:function(error){
-    console.log(error);
-  }});
-});
-
-</script>
-</head>
-<body>
-</body>
-</html>
-
-
-
-<html>
-<head>
-    <title> My Profile </title>
-
-
-<script>
-$(document).ready(function(){
-$.ajax({ 
-  type: 'GET',
-  url: "profile",
-  success: function(data){
-    var schools = JSON.parse(data);
     
-    for (var i =0; i< schools.length; i++){
-      var obj = schools[i];
+      var obj = schools[0];
       console.log(obj);
       
       document.getElementById("name").innerHTML = obj.name;
@@ -62,7 +22,7 @@ $.ajax({
       document.getElementById("schoolname").innerHTML = obj.school_name;
       document.getElementById("branch").innerHTML = obj.branch;
 
-    }
+    
   },
   error:function(error){
     console.log(error);

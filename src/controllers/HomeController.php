@@ -10,8 +10,8 @@ class HomeController
    }
 
   public function profile($request, $response, $args) {
-    $cmail=$_SESSION['user'];
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.login where emailid='$cmail';");
+    $email=$_SESSION['email'];
+    $result = $this->container->db->query("SELECT * FROM ioniccloud.login where email='$email';");
     $results = [];
     while($row = mysqli_fetch_array($result)) {
       array_push($results, $row);

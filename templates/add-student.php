@@ -134,7 +134,7 @@
   <h4 class="ui dividing header"></h4>
  
 <form class="ui form" action="student" method="post" >
-<input id="submitBtn" type="submit" class="ui button" style="background-color:#2185d0" name="Add Student" value="Record Saved" ></input>
+<input id="submitBtn" type="submit" class="ui button" style="background-color:#2185d0" name="Add Student" value="Save Record" ></input>
 </div>
 </div>
 </form>

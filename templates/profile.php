@@ -10,19 +10,13 @@ $.ajax({
   url: "profile",
   success: function(data){
     var schools = JSON.parse(data);
-    
-    
       var obj = schools[0];
-      console.log(obj);
-      
       document.getElementById("name").innerHTML = obj.name;
       document.getElementById("gender").innerHTML = obj.gender;
       document.getElementById("phone").innerHTML = obj.phone;
       document.getElementById("course").innerHTML = obj.course;
       document.getElementById("schoolname").innerHTML = obj.school_name;
       document.getElementById("branch").innerHTML = obj.branch;
-
-    
   },
   error:function(error){
     console.log(error);
@@ -44,10 +38,7 @@ $.ajax({
 </div>
   <div class="ten wide column">
 	<table class="ui very basic table">
-   
-   
    <tbody>
-  
    <tr class="left aligned">
       <td>Name</td>
       <td id="name"></td>
@@ -65,14 +56,13 @@ $.ajax({
       <td id="course"></td>
     </tr>
     <tr class="left aligned">
-      <td>Schoolname</td>
+      <td>School Name</td>
       <td id="schoolname"></td>
     </tr>
     <tr class="left aligned">
       <td>Branch</td>
       <td id="branch"></td>
     </tr>
-    
   </tbody>
 </table>
   </div>

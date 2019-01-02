@@ -27,6 +27,13 @@
             $('#content').load("../templates/"+page);
         });
     });
+
+    $(function () {
+        var redirect = <?php echo (!empty($redirect) ? json_encode($redirect) : '"e"'); ?>;
+        if (redirect !== "e" && redirect.length > 2) {
+          $('#content').load("../templates/"+redirect+".php");
+        }
+    });
 </script>
 
 <div class="ui horizontal menu">

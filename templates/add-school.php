@@ -66,11 +66,12 @@
       ;
     });
   </script>
+
+<style>
+    
+</style>
 </head>
-
 <body>
-
-
 
 <form class="ui form" action="school" method="post" >
 <br />
@@ -80,41 +81,41 @@
 <div style="align:center">
 <div>
   <div class="field">
-     <div class="two fields">
-      <div class="eight wide field">
+     <div class="six fields">
+      <div class="three wide field">
       <label>School Name</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="sname" placeholder="Name of School">
       </div>
     </div>
   </div>
   <div class="field">
-    <div class="two fields">
-      <div class="eight wide field">
+    <div class="four fields">
+      <div class="three wide field">
       <label>Contact No</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="sphoneno" placeholder="Contact Number">
       </div>
     </div>
   </div>
   <div class="field">
     <div class="two fields">
-      <div class="eight wide field">
+      <div class="three wide field">
       <label>Contact Person</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="scontactperson" placeholder="Name of person">
       </div>
     </div>
   </div>
   <div class="field">
     <div class="two fields">
-      <div class="eight wide field">
+      <div class="three wide field">
       <label>Mail id</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="smailid" placeholder="abc@gmail.com">
       </div>
     </div>
@@ -122,19 +123,19 @@
  
   <div class="field">
     <div class="two fields">
-      <div class="eight wide field">
+      <div class="three wide field">
       <label>School Address</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="saddress" placeholder="Enter the address">
       </div>
     </div>
   </div>
-
   </div>
-  <h4 class="ui dividing header"></h4>
 <form class="ui form" action="school" method="post" >
-<input id="submitBtn" type="submit" class="ui button" style="background-color:#2185d0" name="Add School" value="Save Record" ></input>
+  <div class="seven wide field">
+  <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"></i></input>
+</div>
 </div>
 </div>
 </form>

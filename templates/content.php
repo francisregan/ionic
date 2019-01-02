@@ -7,7 +7,7 @@
 <link href="css/style.css" rel="stylesheet">
 
 <style>
-  .pusher {
+  .content {
     display: block;
     margin-left: 10px;
     margin-right: 10px;
@@ -100,8 +100,7 @@
     </div>
 </div>
 </div>
-<div class="pusher" id="content"  style="width:50em; font-size: 1rem; text-align:  center ;"> </div>
-  
+<div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center;"> </div>
 </div>
 </body>
 

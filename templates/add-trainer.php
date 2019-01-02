@@ -80,40 +80,40 @@
 <div>
   <div class="field">
      <div class="two fields">
-      <div class="eight wide field">
+      <div class="three wide field">
       <label>Trainer Name</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="tname" placeholder="Name of Trainer">
       </div>
     </div>
   </div>
   <div class="field">
     <div class="two fields">
-      <div class="eight wide field">
+      <div class="three wide field">
       <label>Contact No</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="tphoneno" placeholder="Contact Number">
       </div>
     </div>
   </div>
   <div class="field">
     <div class="two fields">
-      <div class="eight wide field">
+      <div class="three wide field">
       <label>Mail Id</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="tmailid" placeholder="abc@gmail.com">
       </div>
     </div>
   </div>
   <div class="field">
     <div class="two fields">
-      <div class="eight wide field">
+      <div class="three wide field">
       <label>Specialization</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="tspec" placeholder="Enter the specialization">
       </div>
     </div>
@@ -121,20 +121,19 @@
  
   <div class="field">
     <div class="two fields">
-      <div class="eight wide field">
+      <div class="three wide field">
       <label>School</label>
       </div>
-      <div class="eight wide field">
+      <div class="four wide field">
         <input type="text" name="tschool" placeholder="Name of School">
       </div>
     </div>
   </div>
-
   </div>
-  <h4 class="ui dividing header"></h4>
- 
 <form class="ui form" action="trainer" method="post" >
-<input id="submitBtn" type="submit" class="ui button" style="background-color:#2185d0" name="Add Trainer" value="Save Record" ></input>
+<div class="seven wide field">
+<input id="submitBtn" type="submit" class="ui primary button" name="Add a new trainer" value="Add this trainer record" ></input>
+</div>
 </div>
 </div>
 

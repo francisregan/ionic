@@ -32,7 +32,20 @@
 <div class="ui horizontal menu">
 
 <div class="ui vertical menu left" style="width:15em; font-size: 1.5rem; text-align: left;">
-  <div class="item txtsizegrid">
+
+<div class="item txtsizegrid">
+  <div class="ui left icon input">
+    <i class="fas fa-home"></i>
+    &nbsp;&nbsp; 
+    Home
+  </div> 
+  <div class="menu" id="menu">
+    <a href="profile.php" class="item">Profile</a>
+    <a class="item">Edit Profile</a>
+  </div>
+  </div>
+
+<div class="item txtsizegrid">
   <div class="ui left icon input">
     <i class="fas fa-university"></i>
     &nbsp;&nbsp; School Management
@@ -80,8 +93,7 @@
     </div>
 </div>
 </div>
-
-<div class="pusher" id="content" > </div>
+<div class="pusher" id="content"  style="width:50em; font-size: 1rem; text-align:  center ;"> </div>
   
 </div>
 </body>

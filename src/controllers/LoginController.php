@@ -23,7 +23,7 @@ class LoginController
     $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
     $type = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
     $charactertype = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.login where name='$name' AND password='$password'");
+    $result = $this->container->db->query("SELECT * FROM ioniccloud.login where emailid='$name' AND password='$password'");
     
     if ($result->num_rows > 0) {
       $_SESSION['user'] = $name;

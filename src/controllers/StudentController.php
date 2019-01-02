@@ -10,7 +10,7 @@ class StudentController
      $this->container = $container;
    }
 
-  public function manageStudent($request, $response, $args) {
+  public function listStudent($request, $response, $args) {
     $result = $this->container->db->query("SELECT * FROM ioniccloud.student;");
     $results = [];
     while($row = mysqli_fetch_array($result)) {
@@ -18,7 +18,7 @@ class StudentController
     }
     return json_encode($results);
   }
-  public function student($request, $response, $args) 
+  public function addStudent($request, $response, $args) 
   {
     $data = $request->getParsedBody();
     $name = filter_var($data['sname'], FILTER_SANITIZE_STRING);

@@ -41,4 +41,5 @@ $container['SchoolController'] = function ($c)
 $container['HomeController'] = function ($c)
 {
     return new App\Controllers\HomeController($c); 
+    
 };

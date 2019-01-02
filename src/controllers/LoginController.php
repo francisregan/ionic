@@ -33,11 +33,6 @@ class LoginController
     return $this->container->renderer->render($response, 'login.php', $args);
   }
 
-  public function list($request, $response, $args) {
-
-    
-    return $this->container->renderer->render($response, 'login.php', $args);
-   }
 }
 
 ?>

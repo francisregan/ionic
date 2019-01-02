@@ -1,12 +1,12 @@
 <html>
 <head>
-<title> Manage schools </title>
+<title> Manage Trainer </title>
 
 <script>
 $(document).ready(function(){
 $.ajax({ 
   type: 'GET',
-  url: "school",
+  url: "trainer",
   success: function(data){
     var schools = JSON.parse(data);
     
@@ -16,20 +16,22 @@ $.ajax({
       var table = document.getElementById("mytable");
         var row = table.insertRow(1);
         var cellcheckbox = row.insertCell(0);
-        var cellschool = row.insertCell(1);
-        var cellcontact = row.insertCell(2);
+        var cellserial = row.insertCell(1);
+        var celltrainer = row.insertCell(2);
         var cellcontactno = row.insertCell(3);
         var cellmail = row.insertCell(4);
-        var celladdress = row.insertCell(5);
-        var celledit = row.insertCell(6);
-        var cellremarks = row.insertCell(7);
+        var cellspecialization = row.insertCell(5);
+        var cellschool = row.insertCell(6);
+        var celledit = row.insertCell(7);
+        var cellremarks = row.insertCell(8);
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        cellschool.innerHTML = obj.school_name;
-        cellcontact.innerHTML = obj.contact_person;
+        cellserial.innerHTML = obj.trainer_id;
+        celltrainer.innerHTML = obj.trainer_name;
         cellcontactno.innerHTML = obj.contact_no;
         cellmail.innerHTML = obj.mail_id;
-        celladdress.innerHTML = obj.address;
+        cellspecialization.innerHTML = obj.specialization;
+        cellschool.innerHTML = obj.school;
         celledit.innerHTML = document.getElementById("edit").innerHTML
         cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
     }
@@ -38,28 +40,32 @@ $.ajax({
     console.log(error);
   }});
 });
-</script>
-</head>
-<body>
 
-<h3 class="ui header" style="text-align: left;">Manage School</h3>
+</script>
+
+
+</head>
+
+<body>
+<h3 class="ui header" style="text-align: left;">Manage Trainer</h3>
 
 <br />
 <table id="mytable" class="ui compact celled definition table">
   <thead>
     <tr>
       <th></th>
-      <th>School Name</th>
-      <th>Contact Person</th>
+      <th>T. Id</th>
+      <th>Trainer Name</th>
       <th>Contact No</th>
       <th>Mail Id</th>
-      <th>Address</th>
+      <th>Specialization</th>
+      <th>School</th>
       <th>Edit Details</th>
-	  <th>Remark</th>
+	  <th>Remarks</th>
     </tr>
   </thead>
   <tbody>
-
+  
   <script id="check" type="text/template">
       <div class="collapsing">
         <div class="ui fitted slider checkbox">
@@ -69,22 +75,17 @@ $.ajax({
   </script>
 
   <script id="edit" type="text/template">
-		<div class="ui form">
-    
-     <button class="ui primary basic button" value="edit">Edits</button>
-    
+		<div class="ui form" id="edit">
+      <button class="ui primary basic button">Edits</button>
 		</div>
-
   </script>
 
   <script id="tarea" type="text/template"> 
 		<div class="ui form">
 			<div class="field">
-			  <textarea rows="1"></textarea>
-      </div>
+			<textarea rows="1"></textarea>
 		</div>
   </script> 
-
   </tbody>
   <tfoot class="full-width">
     <tr>
@@ -109,11 +110,10 @@ $.ajax({
           Approve All
         </div>
       </th>
-    </tr> 
+    </tr>
   </tfoot>
   
   
 </table>
-
 </body>
 </html>

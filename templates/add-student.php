@@ -1,6 +1,6 @@
 <html>
 <head>
-<title> Add School </title>
+<title> Add Student </title>
 <script>
   $(document)
     .ready(function() {
@@ -12,7 +12,7 @@
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter the school name'
+                  prompt : 'Please enter the student name'
                 },
               ]
             },
@@ -29,34 +29,34 @@
                 }
               ]
             },
-            scontactperson: {
-              identifier  : 'scontactperson',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter the contact person'
-                },
-              ]
-            },
             smailid: {
               identifier  : 'smailid',
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your e-mail'
+                  prompt : 'Please enter your mail id'
                 },
                 {
                   type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
+                  prompt : 'Enter valid mail'
                 }
               ]
             },
-            saddress: {
-              identifier  : 'saddress',
+            sschool: {
+              identifier  : 'sschool',
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your address'
+                  prompt : 'Please enter your school name'
+                }
+              ]
+            },
+            sbatch: {
+              identifier  : 'sbatch',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your batch name'
                 }
               ]
             },
@@ -70,11 +70,9 @@
 
 <body>
 
-
-
-<form class="ui form" action="school" method="post" >
+<form class="ui form" action="student" method="post" >
 <br />
-<h3 class="ui dividing header" style="text-align: left;">Add School</h3>
+<h3 class="ui dividing header" style="text-align: left;">Add Student</h3>
 <br />
 <div class="ui error message"></div>
 <div style="align:center">
@@ -82,10 +80,10 @@
   <div class="field">
      <div class="two fields">
       <div class="eight wide field">
-      <label>School Name</label>
+      <label>Student Name</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="sname" placeholder="Name of School">
+        <input type="text" name="sname" placeholder="Name of Student">
       </div>
     </div>
   </div>
@@ -102,20 +100,21 @@
   <div class="field">
     <div class="two fields">
       <div class="eight wide field">
-      <label>Contact Person</label>
+      <label>Mail Id</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="scontactperson" placeholder="Name of person">
+        <input type="text" name="smailid" placeholder="abc@gmail.com">
       </div>
     </div>
+    
   </div>
   <div class="field">
     <div class="two fields">
       <div class="eight wide field">
-      <label>Mail id</label>
+      <label>School</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="smailid" placeholder="abc@gmail.com">
+        <input type="text" name="sschool" placeholder="xxxschool">
       </div>
     </div>
   </div>
@@ -123,10 +122,10 @@
   <div class="field">
     <div class="two fields">
       <div class="eight wide field">
-      <label>School Address</label>
+      <label>Batch</label>
       </div>
       <div class="eight wide field">
-        <input type="text" name="saddress" placeholder="Enter the address">
+        <input type="text" name="sbatch" placeholder="Specify the Batch">
       </div>
     </div>
   </div>
@@ -134,9 +133,10 @@
   </div>
   <h4 class="ui dividing header"></h4>
  
-<form class="ui form" action="school" method="post" >
-<input id="submitBtn" type="submit" class="ui button" style="background-color:#2185d0" name="Add School" value="Record Saved" ></input>
+<form class="ui form" action="student" method="post" >
+<input id="submitBtn" type="submit" class="ui button" style="background-color:#2185d0" name="Add Student" value="Record Saved" ></input>
 </div>
 </div>
 </form>
 </body>
+</html>

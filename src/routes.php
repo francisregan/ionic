@@ -12,6 +12,22 @@ $app->group('/login', function(){
     $this->post('', 'LoginController:login');
 });
 
+$app->group('/trainer', function(){
+    $this->post('', 'TrainerController:addTrainer');
+    $this->get('', 'TrainerController:listTrainer');
+});       
+
+$app->group('/student',function(){
+    $this->post('','StudentController:addStudent');
+    $this->get('', 'StudentController:listStudent');
+});
+
+$app->group('/school',function(){
+    $this->post('','SchoolController:addSchool');
+    $this->get('', 'SchoolController:listSchool');
+});
+
+
 $app->get('/logout', function (Request $request, Response $response, array $args) {
     session_destroy();
     $_SESSION = array();
@@ -22,3 +38,4 @@ $app->get('/logout', function (Request $request, Response $response, array $args
 $app->group('/profile', function(){
     $this->get('', 'HomeController:profile');
 });
+

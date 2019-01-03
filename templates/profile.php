@@ -38,7 +38,7 @@ $.ajax({
   <div class="four wide column">
 <div class="ui small image">
   <svg  width="10" height="10">
- <img src="images/profile icon.jpg"  x="0" y="0" width="1000" height="1550"</img>
+ <img src="images/propic.jpg"  x="0" y="0" width="1000" height="1550"</img>
   </svg>
 </div>
 </div>

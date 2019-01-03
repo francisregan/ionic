@@ -98,7 +98,7 @@ include 'navigation.php';
         </div>
         
         <div>
-        <input id="submitBtn" type="submit" class="ui fluid large teal submit button" style="background-color:#2185d0" name="submit" value="Login" ></input>
+        <input id="submitBtn" type="submit" class="ui fluid large teal submit button" style="background-color:#2185d0" name="submit" value="login" ></input>
         </div>
       </div>
 

@@ -50,11 +50,11 @@ $.ajax({
 <h3 class="ui header" style="text-align: left;">Manage Trainer</h3>
 
 <br />
-<table id="mytable" class="ui compact celled definition table">
+<table id="mytable" class="ui celled table">
   <thead>
     <tr>
       <th></th>
-      <th>T. Id</th>
+      <th>Trainer ID</th>
       <th>Trainer Name</th>
       <th>Contact No</th>
       <th>Mail Id</th>

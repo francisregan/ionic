@@ -7,7 +7,7 @@
 <link href="css/style.css" rel="stylesheet">
 
 <style>
-  .pusher {
+  .content {
     display: block;
     margin-left: 10px;
     margin-right: 10px;
@@ -27,12 +27,32 @@
             $('#content').load("../templates/"+page);
         });
     });
+
+    $(function () {
+        var redirect = <?php echo (!empty($redirect) ? json_encode($redirect) : '"e"'); ?>;
+        if (redirect !== "e" && redirect.length > 2) {
+          $('#content').load("../templates/"+redirect+".php");
+        }
+    });
 </script>
 
 <div class="ui horizontal menu">
 
 <div class="ui vertical menu left" style="width:15em; font-size: 1.5rem; text-align: left;">
-  <div class="item txtsizegrid">
+
+<div class="item txtsizegrid">
+  <div class="ui left icon input">
+    <i class="fas fa-home"></i>
+    &nbsp;&nbsp; 
+    Home
+  </div> 
+  <div class="menu" id="menu">
+    <a href="profile.php" class="item">Profile</a>
+    <a class="item">Edit Profile</a>
+  </div>
+  </div>
+
+<div class="item txtsizegrid">
   <div class="ui left icon input">
     <i class="fas fa-university"></i>
     &nbsp;&nbsp; School Management
@@ -83,9 +103,7 @@
     </div>
 </div>
 </div>
-
-<div class="pusher" id="content" > </div>
-  
+<div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center;"> </div>
 </div>
 </body>
 

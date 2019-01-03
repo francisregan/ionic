@@ -30,8 +30,13 @@
         </style>
     </head>
     <body>
-        <?php if(isset($user)){
+    <?php 
+        if(isset($user)){
+            if($redirect){
+                $var = $redirect;
+            }
             include 'content.php'; 
-        }?>
+        }
+    ?>
     </body>
 </html>

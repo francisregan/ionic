@@ -17,22 +17,24 @@ class LoginController
    }
 
   public function login($request, $response, $args) {
-    //$this->container->logger->info("successfully reached here");
+    //echo "in here";
     $data = $request->getParsedBody();
-    $name = filter_var($data['login'], FILTER_SANITIZE_STRING);
+    $email = filter_var($data['login'], FILTER_SANITIZE_STRING);
     $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
     $type = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
     $charactertype = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.login where name='$name' AND password='$password'");
+    $querystr = "SELECT * FROM ioniccloud.login where email='$email' AND password='$password'";
+    $result = $this->container->db->query($querystr);
     
     if ($result->num_rows > 0) {
-      $_SESSION['user'] = $name;
+      while($row = mysqli_fetch_array($result)) {
+        $_SESSION['user'] = $row['name'];
+        $_SESSION['email'] = $row['email'];
+      }
       return $this->container->renderer->render($response, 'index.php', $args);
     }
     echo("<script>window.alert('USERNAME OR PASSWORD IS INCORRECT');</script>");
     return $this->container->renderer->render($response, 'login.php', $args);
   }
-
 }
-
 ?>

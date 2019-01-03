@@ -31,11 +31,9 @@ class TrainerController
   $result = $sqli->query("INSERT INTO ioniccloud.trainer (trainer_Name, Contact_no, mail_id, specialization, school) 
   VALUES ('$name','$contact','$mail','$specialization','$school')");
   if (mysqli_affected_rows($sqli)==1) {
-
-    return $this->container->renderer->render($response, 'index.php',  $args);
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-trainer'));
   }
-    echo("<script>window.alert('not done');</script>");
-    return $this->container->renderer->render($response, 'index.php', $args);
+  return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-trainer'));
   }
 }
 ?>

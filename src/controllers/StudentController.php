@@ -31,11 +31,10 @@ class StudentController
   $result = $sqli->query("INSERT INTO ioniccloud.student (Student_Name, Contact_Number, email, School, Batch) 
   VALUES ('$name','$contact','$mail','$school','$batch')");
   if (mysqli_affected_rows($sqli)==1) {
-    echo("<script>window.alert('Record Successfully Added');</script>");
-    return $this->container->renderer->render($response, 'index.php', $args);
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-student'));
   }
     echo("<script>window.alert('Record Not Added');</script>");
-    return $this->container->renderer->render($response, 'index.php', $args);
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-student'));
   }
 }
 ?>

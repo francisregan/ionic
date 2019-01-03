@@ -45,7 +45,7 @@ $.ajax({
 <h3 class="ui header" style="text-align: left;">Manage School</h3>
 
 <br />
-<table id="mytable" class="ui compact celled definition table">
+<table id="mytable" class="ui celled table">
   <thead>
     <tr>
       <th></th>

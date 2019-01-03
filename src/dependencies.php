@@ -31,6 +31,11 @@ $container['flash'] = function () {
 $container['LoginController'] = function ($c)
 {
     return new App\Controllers\LoginController($c); 
+};  
+$container['HomeController'] = function ($c)
+{
+    return new App\Controllers\HomeController($c); 
+    
 };
 
 $container['TrainerController']=function($c)

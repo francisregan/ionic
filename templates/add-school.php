@@ -24,8 +24,11 @@
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
-                  prompt : 'Your contact no shouldbe exactly 10 characters'
+                  type : 'integer'
+                },
+                {
+                  type   : 'exactLength[10]',
+                  prompt : 'Contact no must be 10 digit'
                 }
               ]
             },

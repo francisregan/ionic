@@ -31,8 +31,8 @@ $.ajax({
 <div class="ui grid">
   <div class="four wide column">
 <div class="ui small image">
-  <svg width="150" height="150">
-    <image xlink:href="/images/wireframe/image.png" x="0" y="0" width="100%" height="100%"></image>
+  <svg  width="10" height="10">
+ <img src="images/propic.jpg"  x="0" y="0" width="1000" height="1550"</img>
   </svg>
 </div>
 </div>

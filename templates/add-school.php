@@ -148,12 +148,21 @@
       </div>
     </div>
   </div>
-  </div>
-    </div>
-  </div>
 
   <div class="field">
-    <div class="six fields">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>State</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="sstate" placeholder="abc@gmail.com">
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="field">
+    <div class="two fields">
       <div class="three wide field">
       <label>School City</label>
       </div>
@@ -163,6 +172,7 @@
     </div>
   </div>
 
+  </div>
   
 <form class="ui form" action="school" method="post" >
   <div class="seven wide field">

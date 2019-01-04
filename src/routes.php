@@ -19,7 +19,7 @@ $app->group('/trainer', function(){
 
 $app->group('/student',function(){
     $this->post('','StudentController:addStudent');
-    $this->get('', 'StudentController:listStudent');
+    $this->get('', 'StudentController:listStudent');  
 });
 
 $app->group('/school',function(){

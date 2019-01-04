@@ -150,6 +150,7 @@
       </div>
     </div>
   </div>
+  </div>
 <form class="ui form" action="trainer" method="post" >
 <div class="seven wide field">
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new trainer" value="Add this trainer record" ></input>

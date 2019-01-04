@@ -31,9 +31,7 @@ class StudentController
     $parentname = $data['sparentname'];
     
 
-    /*if(empty($contactno)){
-      return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-student'));
-    }*/
+    
 
   $sqli = $this->container->db;
 

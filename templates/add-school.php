@@ -108,7 +108,7 @@
     </div>
   </div>
   <div class="field">
-    <div class="six fields">
+    <div class="four fields">
       <div class="three wide field">
       <label>Contact No</label>
       </div>
@@ -118,7 +118,7 @@
     </div>
   </div>
   <div class="field">
-    <div class="six fields">
+    <div class="two fields">
       <div class="three wide field">
       <label>Contact Person</label>
       </div>
@@ -128,7 +128,7 @@
     </div>
   </div>
   <div class="field">
-    <div class="six fields">
+    <div class="two fields">
       <div class="three wide field">
       <label>Mail id</label>
       </div>
@@ -139,7 +139,7 @@
   </div>
  
   <div class="field">
-    <div class="six fields">
+    <div class="two fields">
       <div class="three wide field">
       <label>School Address</label>
       </div>
@@ -163,9 +163,7 @@
     </div>
   </div>
 
-  </div>
-  <h4 class="ui dividing header"></h4>
- 
+  
 <form class="ui form" action="school" method="post" >
   <div class="seven wide field">
   <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"></i></input>

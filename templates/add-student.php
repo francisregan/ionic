@@ -16,8 +16,8 @@
                 },
               ]
             },
-            sphoneno: {
-              identifier  : 'sphoneno',
+            stphoneno: {
+              identifier  : 'stphoneno',
               rules: [
                 {
                   type   : 'empty',
@@ -25,7 +25,7 @@
                 },
                 {
                   type   : 'length[10]',
-                  prompt : 'Your contact no shouldbe exactly 10 characters'
+                  prompt : 'Your contact no should be exactly 10 numbers'
                 }
               ]
             },
@@ -51,12 +51,42 @@
                 }
               ]
             },
+            sage: {
+              identifier  : 'sage',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your age'
+                }
+              ]
+            },
+           
             sbatch: {
               identifier  : 'sbatch',
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your batch name'
+                  prompt : 'Please enter your branch'
+                }
+              ]
+            },
+
+            sclass: {
+              identifier  : 'sclass',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your class'
+                }
+              ]
+            },
+
+            sparentname: {
+              identifier  : 'sparentname',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your parents name'
                 }
               ]
             },
@@ -93,7 +123,7 @@
       <label>Contact No</label>
       </div>
       <div class="four wide field">
-        <input type="text" name="sphoneno" placeholder="Contact Number">
+        <input type="text" name="stphoneno" placeholder="Contact Number">
       </div>
     </div>
   </div>
@@ -119,6 +149,18 @@
     </div>
   </div>
  
+  </div>
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Age</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="sage" placeholder="12">
+      </div>
+    </div>
+  </div>
+ 
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -129,6 +171,31 @@
       </div>
     </div>
   </div>
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Class</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="sclass" placeholder="Specify the Class">
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Parents Name</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="sparentname" placeholder="Enter your parent name">
+      </div>
+    </div>
+  </div>
+
+  
+
   </div>
 <form class="ui form" action="student" method="post" >
 <div class="seven wide field">

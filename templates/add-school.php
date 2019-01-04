@@ -25,7 +25,7 @@
                 },
                 {
                   type   : 'length[10]',
-                  prompt : 'Your contact no shouldbe exactly 10 characters'
+                  prompt : 'Your contact no should be exactly 10 digits'
                 }
               ]
             },
@@ -60,7 +60,24 @@
                 }
               ]
             },
-            
+            sstate: {
+              identifier  : 'sstate',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your state'
+                }
+              ]
+            },
+            scity: {
+              identifier  : 'scity',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please Enter Your City'
+                }
+              ]
+            },
           }
         })
       ;
@@ -91,7 +108,7 @@
     </div>
   </div>
   <div class="field">
-    <div class="four fields">
+    <div class="six fields">
       <div class="three wide field">
       <label>Contact No</label>
       </div>
@@ -101,7 +118,7 @@
     </div>
   </div>
   <div class="field">
-    <div class="two fields">
+    <div class="six fields">
       <div class="three wide field">
       <label>Contact Person</label>
       </div>
@@ -111,7 +128,7 @@
     </div>
   </div>
   <div class="field">
-    <div class="two fields">
+    <div class="six fields">
       <div class="three wide field">
       <label>Mail id</label>
       </div>
@@ -122,7 +139,7 @@
   </div>
  
   <div class="field">
-    <div class="two fields">
+    <div class="six fields">
       <div class="three wide field">
       <label>School Address</label>
       </div>
@@ -132,6 +149,23 @@
     </div>
   </div>
   </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="six fields">
+      <div class="three wide field">
+      <label>School City</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="scity" placeholder="Enter the city">
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <h4 class="ui dividing header"></h4>
+ 
 <form class="ui form" action="school" method="post" >
   <div class="seven wide field">
   <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"></i></input>

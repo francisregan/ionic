@@ -23,13 +23,13 @@ class LoginController
     $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
     $type = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
     $charactertype = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
-    $querystr = "SELECT * FROM ioniccloud.login where email='$email' AND password='$password'";
+    $querystr = "SELECT * FROM ioniccloud.login where emailid='$email' AND password='$password'";
     $result = $this->container->db->query($querystr);
     
     if ($result->num_rows > 0) {
       while($row = mysqli_fetch_array($result)) {
         $_SESSION['user'] = $row['name'];
-        $_SESSION['email'] = $row['email'];
+        $_SESSION['emailid'] = $row['emailid'];
       }
       return $this->container->renderer->render($response, 'index.php', $args);
     }

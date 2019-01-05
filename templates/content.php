@@ -90,6 +90,20 @@
 
   <div class="item txtsizegrid">
   <div class="ui left icon input">
+    <i class="fas fa-child"></i>
+    &nbsp;&nbsp;Course Management
+  </div> 
+    <div class="menu" id="menu">
+      <a href="manage-category.php" class="item">Manage Categories</a>
+      <a href="Add Course" class="item" >Add a new course</a>
+      <a href="Manage Courses" class="item">Manage Courses</a>
+      <a href="Add Content" class="item">Add new content</a>
+      <a href="Manage Contents" class="item">Manage Contents</a>
+    </div>
+  </div>
+
+  <div class="item txtsizegrid">
+  <div class="ui left icon input">
     <i class="fas fa-chart-pie"></i>
     &nbsp;&nbsp;Reporting
   </div> 

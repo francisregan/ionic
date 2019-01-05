@@ -27,15 +27,21 @@ $app->group('/school',function(){
     $this->get('', 'SchoolController:listSchool');
 });
 
-
 $app->get('/logout', function (Request $request, Response $response, array $args) {
     session_destroy();
     $_SESSION = array();
     $this->renderer->render($response, 'index.php', $args);
 });
 
-
 $app->group('/profile', function(){
     $this->get('', 'HomeController:profile');
 });
 
+$app->group('/category', function(){
+    $this->get('', 'CategoryController:manageCategories'); 
+});
+
+$app->group('/addcategory', function(){
+ $this->get('', 'CategoryController:showCategory');
+ $this->post('', 'CategoryController:addCategory');
+});

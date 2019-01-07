@@ -1,34 +1,7 @@
 <html>
 <head>
 <title> Manage Student </title>
-<style>
-.pagination li
-{
-	list-style:none;
-	float:left;
-	width :50px;
-	height:50px;
-	border: 1px solid blue;
-	background-color:white;
-	color:blue;
-	text-align:center;
-	cursor:pointer;
-}
-
-.pagination li:hover
-{
-	background-color:blue;
-	border:1px solid blue;
-	color: white;
-}
-
-.pagination ul
-{
-	border:0px;
-	padding:0px;
-}
-
-</style>
+<link href="css/style.css" rel="stylesheet">
 <script>
 $(document).ready(function(){
   var table;
@@ -127,53 +100,8 @@ itemsToPaginate : ".rowdata"
       </th>
     </tr>
   </tfoot>
-  
-  
 </table>
-
-<script>
-	 (function($){
-
-      $.fn.customPaginate = function(options)
-      {
-         var paginationContainer = this;
-         var itemsToPaginate;
-
-        var defaults = {
-
-          itemsPerPage : 5
-        };
-
-        var settings = {};
-        $.extend(settings, defaults, options);
-		
-		    var itemsPerPage = settings.itemsPerPage;
-
-        itemsToPaginate = $(settings.itemsToPaginate);
-	    	var numberOfPaginationLinks = Math.ceil((itemsToPaginate.length / itemsPerPage));
-
-        $('<ul></ul>').prependTo(paginationContainer);
-		
-	    	for(var index = 0; index < numberOfPaginationLinks; index++)
-	    	{
-		    	paginationContainer.find("ul").append("<li>"+ (index+1) +"</li>")
-	    	}
-		
-		    itemsToPaginate.filter(":gt("+ (itemsPerPage - 1) +")").hide();
-
-	    	paginationContainer.find("ul li").on('click', function(){
-			
-		  	var linkNumber = $(this).text();
-		  	var itemsToHide = itemsToPaginate.filter(":lt("+ ((linkNumber-1)  * itemsPerPage) +")");
-		  	$.merge(itemsToHide, itemsToPaginate.filter(":gt("+ ((linkNumber  * itemsPerPage) -1) +")"));
-		  	itemsToHide.hide();
-			
-			  var itemsToShow = itemsToPaginate.not(itemsToHide);
-			  itemsToShow.show();
-		});
-  }
-  
- }(jQuery));
+<script type="text/javascript" src="script/pagination.js">
 </script>
 
 </body>

@@ -1,7 +1,10 @@
 <html>
 <head>
 <title> Add Student </title>
+
 <script>
+
+
   $(document)
     .ready(function() {
       $('.ui.form')
@@ -41,13 +44,13 @@
                   prompt : 'Enter valid mail'
                 }
               ]
-            },
-            sschool: {
-              identifier  : 'sschool',
+            }, 
+            schoolname: {
+              identifier  : 'schoolname',
               rules: [
                 {
-                  type   : 'empty',
-                  prompt : 'Please enter your school name'
+                  type    : 'empty',
+                  prompt  : 'please select school name'
                 }
               ]
             },
@@ -61,15 +64,6 @@
               ]
             },
            
-            sbatch: {
-              identifier  : 'sbatch',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your branch'
-                }
-              ]
-            },
 
             sclass: {
               identifier  : 'sclass',
@@ -136,18 +130,22 @@
         <input type="text" name="smailid" placeholder="abc@gmail.com">
       </div>
     </div>
-    
-  </div>
+     </div>
+
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
       <label>School</label>
       </div>
       <div class="four wide field">
-        <input type="text" name="sschool" placeholder="xxxschool">
+      <select id="schoolname" name="schoolname" >
+      <option value="">Select school </option> 
+      </select>
       </div>
     </div>
   </div>
+
+  
  
   </div>
   <div class="field">
@@ -205,4 +203,38 @@
 </div>
 </form>
 </body>
+<script>
+    $('.ui.dropdown')
+        .dropdown()
+    ;
+  $(document).ready(function(){
+  $.ajax({ 
+    type: 'GET',
+    url: "school",
+    success: function(data){
+      var schools = JSON.parse(data);
+      
+      for (var i =0; i< schools.length; i++){
+        var obj = schools[i];
+        console.log(i);
+        console.log(obj);
+        var element = document.getElementById("schoolname");
+        var option = document.createElement("option");
+        option.value = obj.sno;
+        option.id = obj.sno;
+        option.text = obj.school_name;
+        element.add(option);
+      }
+    },
+    error:function(error){
+      console.log(error);
+    }});
+  });
+  function getText(element) {
+  var textHolder = element.options[element.selectedIndex].text
+  document.getElementById("txt_holder").value = textHolder;
+  }
+
+
+</script>
 </html>

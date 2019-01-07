@@ -14,10 +14,6 @@
                   type   : 'empty',
                   prompt : 'Please enter the school name'
                 },
-                {
-                  type   : 'regExp[/^[A-Za-z ]+$/]',
-                  prompt : 'Please enter valid school name'
-                }
               ]
             },
             sphoneno: {
@@ -28,16 +24,8 @@
                   prompt : 'Please enter your contact no'
                 },
                 {
-<<<<<<< HEAD
-                  type : 'integer'
-                },
-                {
-                  type   : 'exactLength[10]',
-                  prompt : 'Contact no must be 10 digit'
-=======
                   type   : 'length[10]',
                   prompt : 'Your contact no should be exactly 10 digits'
->>>>>>> upstream/master
                 }
               ]
             },
@@ -48,10 +36,6 @@
                   type   : 'empty',
                   prompt : 'Please enter the contact person'
                 },
-                {
-                  type   : 'regExp[/^[A-Za-z ]+$/]',
-                  prompt : 'Please enter valid name of person'
-                }
               ]
             },
             smailid: {
@@ -61,8 +45,8 @@
                   type   : 'empty',
                   prompt : 'Please enter your e-mail'
                 },
-                {                  
-                  type   : 'regExp[/^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/]',
+                {
+                  type   : 'email',
                   prompt : 'Please enter a valid e-mail'
                 }
               ]

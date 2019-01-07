@@ -14,6 +14,10 @@
                   type   : 'empty',
                   prompt : 'Please enter the school name'
                 },
+                {
+                  type   : 'regExp[/^[A-Za-z ]+$/]',
+                  prompt : 'Please enter valid school name'
+                }
               ]
             },
             sphoneno: {
@@ -39,6 +43,10 @@
                   type   : 'empty',
                   prompt : 'Please enter the contact person'
                 },
+                {
+                  type   : 'regExp[/^[A-Za-z ]+$/]',
+                  prompt : 'Please enter valid name of person'
+                }
               ]
             },
             smailid: {
@@ -48,8 +56,8 @@
                   type   : 'empty',
                   prompt : 'Please enter your e-mail'
                 },
-                {
-                  type   : 'email',
+                {                  
+                  type   : 'regExp[/^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/]',
                   prompt : 'Please enter a valid e-mail'
                 }
               ]

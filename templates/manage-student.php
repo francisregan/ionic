@@ -1,7 +1,7 @@
 <html>
 <head>
 <title> Manage Student </title>
-
+<link href="../public/css/pagination.css" rel="stylesheet" type="text/css">
 <script>
 $(document).ready(function(){
 $.ajax({ 

@@ -1,11 +1,41 @@
 <html>
 <head>
 <title> Manage schools </title>
+<style>
+.pagination li
+{
+	list-style:none;
+	float:left;
+	width :50px;
+	height:50px;
+	border: 1px solid blue;
+	background-color:white;
+	color:blue;
+	text-align:center;
+	cursor:pointer;
+}
 
+.pagination li:hover
+{
+	background-color:blue;
+	border:1px solid blue;
+	color: white;
+}
+
+.pagination ul
+{
+	border:0px;
+	padding:0px;
+}
+
+</style>
 <script>
 $(document).ready(function(){
+  var table;
+  var row;
 $.ajax({ 
   type: 'GET',
+  async: false,
   url: "school",
   success: function(data){
     var schools = JSON.parse(data);
@@ -13,8 +43,9 @@ $.ajax({
     for (var i =0; i< schools.length; i++){
       var obj = schools[i];
       console.log(obj);
-      var table = document.getElementById("mytable");
-        var row = table.insertRow(1);
+      table = document.getElementById("mytable");
+        row = table.insertRow(1);
+        row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
         var cellschool = row.insertCell(1);
         var cellcontact = row.insertCell(2);
@@ -37,11 +68,17 @@ $.ajax({
   error:function(error){
     console.log(error);
   }});
+  
+  $(".pagination").customPaginate({
+
+itemsToPaginate : ".rowdata"
+
+});
 });
 </script>
 </head>
 <body>
-
+<div class="page">
 <h3 class="ui header" style="text-align: left;">Manage School</h3>
 
 <br />
@@ -90,17 +127,8 @@ $.ajax({
     <tr>
       <th></th>
       <th colspan="8">
-        <div class="ui right floated pagination menu">
-        <a class="icon item">
-          <i class="left chevron icon"></i>
-        </a>
-        <a class="item">1</a>
-        <a class="item">2</a>
-        <a class="item">3</a>
-        <a class="item">4</a>
-        <a class="icon item">
-          <i class="right chevron icon"></i>
-        </a>
+      <div class="ui right floated pagination menu">
+        
       </div>
         <div class="ui small button">
           Approve
@@ -111,9 +139,53 @@ $.ajax({
       </th>
     </tr> 
   </tfoot>
-  
-  
 </table>
+
+<script>
+	 (function($){
+
+      $.fn.customPaginate = function(options)
+      {
+         var paginationContainer = this;
+         var itemsToPaginate;
+
+        var defaults = {
+
+          itemsPerPage : 5
+        };
+
+        var settings = {};
+        $.extend(settings, defaults, options);
+		
+		    var itemsPerPage = settings.itemsPerPage;
+
+        itemsToPaginate = $(settings.itemsToPaginate);
+	    	var numberOfPaginationLinks = Math.ceil((itemsToPaginate.length / itemsPerPage));
+
+        $('<ul></ul>').prependTo(paginationContainer);
+		
+	    	for(var index = 0; index < numberOfPaginationLinks; index++)
+	    	{
+		    	paginationContainer.find("ul").append("<li>"+ (index+1) +"</li>")
+	    	}
+		
+		    itemsToPaginate.filter(":gt("+ (itemsPerPage - 1) +")").hide();
+
+	    	paginationContainer.find("ul li").on('click', function(){
+			
+		  	var linkNumber = $(this).text();
+		  	var itemsToHide = itemsToPaginate.filter(":lt("+ ((linkNumber-1)  * itemsPerPage) +")");
+		  	$.merge(itemsToHide, itemsToPaginate.filter(":gt("+ ((linkNumber  * itemsPerPage) -1) +")"));
+		  	itemsToHide.hide();
+			
+			  var itemsToShow = itemsToPaginate.not(itemsToHide);
+			  itemsToShow.show();
+		});
+  }
+  
+ }(jQuery));
+</script>
+
 
 </body>
 </html>

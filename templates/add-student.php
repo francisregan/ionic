@@ -44,6 +44,15 @@
                   prompt : 'Enter valid mail'
                 }
               ]
+            }, 
+            schoolname: {
+              identifier  : 'schoolname',
+              rules: [
+                {
+                  type    : 'empty',
+                  prompt  : 'please select school name'
+                }
+              ]
             },
             sage: {
               identifier  : 'sage',
@@ -55,15 +64,6 @@
               ]
             },
            
-            sbatch: {
-              identifier  : 'sbatch',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your branch'
-                }
-              ]
-            },
 
             sclass: {
               identifier  : 'sclass',
@@ -138,7 +138,8 @@
       <label>School</label>
       </div>
       <div class="four wide field">
-      <select id="schoolname" name="schoolname">
+      <select id="schoolname" name="schoolname" >
+      <option value="">Select school </option> 
       </select>
       </div>
     </div>

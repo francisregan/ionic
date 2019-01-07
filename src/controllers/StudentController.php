@@ -18,20 +18,18 @@ class StudentController
     }
     return json_encode($results);
   }
+ 
   public function addStudent($request, $response, $args) 
   {
     $data = $request->getParsedBody();
     $name = filter_var($data['sname'], FILTER_SANITIZE_STRING);
     $contactno = $data['stphoneno'];
     $mail = filter_var($data['smailid'], FILTER_SANITIZE_STRING);
-    $school = $data['sschool'];
+    $school = $data['schoolname'];
     $age = $data['sage'];
     $batch = $data['sbatch'];
     $class = $data['sclass'];
     $parentname = $data['sparentname'];
-    
-
-    
 
   $sqli = $this->container->db;
 

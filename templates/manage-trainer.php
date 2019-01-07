@@ -1,11 +1,42 @@
 <html>
 <head>
 <title> Manage Trainer </title>
+<style>
+.pagination li
+{
+	list-style:none;
+	float:left;
+	width :50px;
+	height:50px;
+	border: 1px solid blue;
+	background-color:white;
+	color:blue;
+	text-align:center;
+	cursor:pointer;
+}
+
+.pagination li:hover
+{
+	background-color:blue;
+	border:1px solid blue;
+	color: white;
+}
+
+.pagination ul
+{
+	border:0px;
+	padding:0px;
+}
+
+</style>
 
 <script>
 $(document).ready(function(){
+  var table;
+  var row;
 $.ajax({ 
   type: 'GET',
+  async: false,
   url: "trainer",
   success: function(data){
     var schools = JSON.parse(data);
@@ -13,32 +44,35 @@ $.ajax({
     for (var i =0; i< schools.length; i++){
       var obj = schools[i];
       console.log(obj);
-      var table = document.getElementById("mytable");
-        var row = table.insertRow(1);
+      table = document.getElementById("mytable");
+      row = table.insertRow(1);
+      row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
-        var cellserial = row.insertCell(1);
-        var celltrainer = row.insertCell(2);
-        var cellcontactno = row.insertCell(3);
-        var cellmail = row.insertCell(4);
-        var cellspecialization = row.insertCell(5);
-        var cellschool = row.insertCell(6);
-        var celledit = row.insertCell(7);
-        var cellremarks = row.insertCell(8);
+        var celltrainer = row.insertCell(1);
+        var cellcontactno = row.insertCell(2);
+        var cellmail = row.insertCell(3);
+        var cellspecialization = row.insertCell(4);
+        var cellschool = row.insertCell(5);
+        var celledit = row.insertCell(6);
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        cellserial.innerHTML = obj.trainer_id;
         celltrainer.innerHTML = obj.trainer_name;
         cellcontactno.innerHTML = obj.contact_no;
         cellmail.innerHTML = obj.mail_id;
         cellspecialization.innerHTML = obj.specialization;
         cellschool.innerHTML = obj.school;
         celledit.innerHTML = document.getElementById("edit").innerHTML
-        cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
     }
   },
   error:function(error){
     console.log(error);
   }});
+
+$(".pagination").customPaginate({
+
+itemsToPaginate : ".rowdata"
+
+});
 });
 
 </script>
@@ -54,14 +88,12 @@ $.ajax({
   <thead>
     <tr>
       <th></th>
-      <th>Trainer ID</th>
       <th>Trainer Name</th>
       <th>Contact No</th>
       <th>Mail Id</th>
       <th>Specialization</th>
       <th>School</th>
       <th>Edit Details</th>
-	  <th>Remarks</th>
     </tr>
   </thead>
   <tbody>
@@ -80,29 +112,14 @@ $.ajax({
 		</div>
   </script>
 
-  <script id="tarea" type="text/template"> 
-		<div class="ui form">
-			<div class="field">
-			<textarea rows="1"></textarea>
-		</div>
-  </script> 
   </tbody>
   <tfoot class="full-width">
     <tr>
       <th></th>
       <th colspan="8">
         <div class="ui right floated pagination menu">
-        <a class="icon item">
-          <i class="left chevron icon"></i>
-        </a>
-        <a class="item">1</a>
-        <a class="item">2</a>
-        <a class="item">3</a>
-        <a class="item">4</a>
-        <a class="icon item">
-          <i class="right chevron icon"></i>
-        </a>
-      </div>
+     
+        </div>
         <div class="ui small button">
           Approve
         </div>
@@ -115,5 +132,49 @@ $.ajax({
   
   
 </table>
+<script>
+	 (function($){
+
+      $.fn.customPaginate = function(options)
+      {
+         var paginationContainer = this;
+         var itemsToPaginate;
+
+        var defaults = {
+
+          itemsPerPage : 5
+        };
+
+        var settings = {};
+        $.extend(settings, defaults, options);
+		
+		    var itemsPerPage = settings.itemsPerPage;
+
+        itemsToPaginate = $(settings.itemsToPaginate);
+	    	var numberOfPaginationLinks = Math.ceil((itemsToPaginate.length / itemsPerPage));
+
+        $('<ul></ul>').prependTo(paginationContainer);
+		
+	    	for(var index = 0; index < numberOfPaginationLinks; index++)
+	    	{
+		    	paginationContainer.find("ul").append("<li>"+ (index+1) +"</li>")
+	    	}
+		
+		    itemsToPaginate.filter(":gt("+ (itemsPerPage - 1) +")").hide();
+
+	    	paginationContainer.find("ul li").on('click', function(){
+			
+		  	var linkNumber = $(this).text();
+		  	var itemsToHide = itemsToPaginate.filter(":lt("+ ((linkNumber-1)  * itemsPerPage) +")");
+		  	$.merge(itemsToHide, itemsToPaginate.filter(":gt("+ ((linkNumber  * itemsPerPage) -1) +")"));
+		  	itemsToHide.hide();
+			
+			  var itemsToShow = itemsToPaginate.not(itemsToHide);
+			  itemsToShow.show();
+		});
+  }
+  
+ }(jQuery));
+</script>
 </body>
 </html>

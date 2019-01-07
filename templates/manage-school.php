@@ -71,7 +71,7 @@ $.ajax({
   
   $(".pagination").customPaginate({
 
-itemsToPaginate : ".rowdata"
+  itemsToPaginate : ".rowdata"
 
 });
 });

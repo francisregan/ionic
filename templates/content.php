@@ -60,7 +60,6 @@
   <div class="menu" id="menu">
   <a href="manage-school.php" class="item"> Manage School</a>
   <a href="add-school.php" class="item">Add a school </a>
-  <a href="edit-school.php" class="item">Edit School</a>
     </div>
   </div>
 
@@ -72,9 +71,8 @@
     <div class="menu" id="menu">
       <a href="manage-trainer.php" class="item">Manage Trainers </a>
       <a href="add-trainer.php" class="item">Add a Trainer </a>
-      <a href="edit-trainer.php" class="item"> Edit Trainer</a>
-     <!-- <a class="item">Allocate trainer to schools </a>
-      <a class="item">Manage content for trainer </a> -->
+     <a class="item">Allocate trainer to schools </a>
+      <a class="item">Manage content for trainer </a> 
     </div>
   </div>
 
@@ -86,11 +84,10 @@
     <div class="menu" id="menu">
       <a href="manage-student.php" class="item" >Manage Students</a>
       <a href="add-student.php" class="item">Add a student</a>
-      <a href="edit-student.php" class="item">Edit Student<a>
-     <!-- <a class="item">Bulk upload student data</a>-->  
+     <a class="item">Bulk upload student data</a>
     </div>
   </div>
-
+  
   <div class="item txtsizegrid">
   <div class="ui left icon input">
     <i class="fas fa-chart-pie"></i>

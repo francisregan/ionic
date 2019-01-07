@@ -28,11 +28,16 @@
                   prompt : 'Please enter your contact no'
                 },
                 {
+<<<<<<< HEAD
                   type : 'integer'
                 },
                 {
                   type   : 'exactLength[10]',
                   prompt : 'Contact no must be 10 digit'
+=======
+                  type   : 'length[10]',
+                  prompt : 'Your contact no should be exactly 10 digits'
+>>>>>>> upstream/master
                 }
               ]
             },
@@ -71,7 +76,24 @@
                 }
               ]
             },
-            
+            sstate: {
+              identifier  : 'sstate',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your state'
+                }
+              ]
+            },
+            scity: {
+              identifier  : 'scity',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please Enter Your City'
+                }
+              ]
+            },
           }
         })
       ;
@@ -142,7 +164,32 @@
       </div>
     </div>
   </div>
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>State</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="sstate" placeholder="abc@gmail.com">
+      </div>
+    </div>
   </div>
+  
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>School City</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="scity" placeholder="Enter the city">
+      </div>
+    </div>
+  </div>
+
+  </div>
+  
 <form class="ui form" action="school" method="post" >
   <div class="seven wide field">
   <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"></i></input>

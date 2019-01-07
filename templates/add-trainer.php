@@ -25,7 +25,7 @@
                 },
                 {
                   type   : 'length[10]',
-                  prompt : 'Your contact no shouldbe exactly 10 characters'
+                  prompt : 'Your contact no should be exactly 10 numbers'
                 }
               ]
             },
@@ -56,7 +56,17 @@
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your school name'
+                  prompt : 'Please enter your school'
+                }
+              ]
+            },
+           
+            taddress: {
+              identifier  : 'taddress',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your address'
                 }
               ]
             },
@@ -126,6 +136,17 @@
       </div>
       <div class="four wide field">
         <input type="text" name="tschool" placeholder="Name of School">
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Address</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="taddress" placeholder="Name of Address">
       </div>
     </div>
   </div>

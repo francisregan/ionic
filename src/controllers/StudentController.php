@@ -22,14 +22,21 @@ class StudentController
   {
     $data = $request->getParsedBody();
     $name = filter_var($data['sname'], FILTER_SANITIZE_STRING);
-    $contact = filter_var($data['sphoneno'], FILTER_SANITIZE_STRING);
+    $contactno = $data['stphoneno'];
     $mail = filter_var($data['smailid'], FILTER_SANITIZE_STRING);
     $school = $data['sschool'];
+    $age = $data['sage'];
     $batch = $data['sbatch'];
+    $class = $data['sclass'];
+    $parentname = $data['sparentname'];
+    
+
+    
+
   $sqli = $this->container->db;
 
-  $result = $sqli->query("INSERT INTO ioniccloud.student (Student_Name, Contact_Number, email, School, Batch) 
-  VALUES ('$name','$contact','$mail','$school','$batch')");
+  $result = $sqli->query("INSERT INTO ioniccloud.student (student_name, contact_number, email, school, age, batch, class, parent_name) 
+  VALUES ('$name','$contactno','$mail','$school','$age','$batch','$class','$parentname')");
   if (mysqli_affected_rows($sqli)==1) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-student'));
   }

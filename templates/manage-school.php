@@ -4,20 +4,17 @@
 <link href="css/style.css" rel="stylesheet">
 <script>
 $(document).ready(function(){
-  var table;
-  var row;
 $.ajax({ 
   type: 'GET',
   async: false,
   url: "school",
   success: function(data){
     var schools = JSON.parse(data);
-    
+    var table = document.getElementById("mytable");
     for (var i =0; i< schools.length; i++){
       var obj = schools[i];
       console.log(obj);
-      table = document.getElementById("mytable");
-        row = table.insertRow(1);
+        var row = table.insertRow(1);
         row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
         var cellschool = row.insertCell(1);
@@ -51,7 +48,6 @@ $.ajax({
 </script>
 </head>
 <body>
-<div class="page">
 <h3 class="ui header" style="text-align: left;">Manage School</h3>
 
 <br />

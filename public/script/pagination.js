@@ -7,7 +7,7 @@
 
       var defaults = {
 
-        itemsPerPage : 10
+        itemsPerPage : 5
       };
 
       var settings = {};

@@ -73,7 +73,7 @@ $.ajax({
 <html>
 <body>
 <div class="ui medium header" align ="left">Status</div>
-<pre 
+<pre>
 <div class="ui tiny header" align ="left">Course 1 </div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button class="ui twitter button"><i class="download icon"></i> Download Certificate</button>
 </pre>
 </div>

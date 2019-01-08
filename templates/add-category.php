@@ -3,6 +3,7 @@
 <head>
 <title> Add category </title>
 <script>
+
   $(document)
     .ready(function() {
       $('.ui.form')
@@ -42,7 +43,7 @@
 <body>
 <form class="ui form" action="addcategory" method="post" >
 <br />
-<h3 class="ui dividing header" style="text-align: left;">Add Student</h3>
+<h3 class="ui dividing header" style="text-align: left;">Add Category</h3>
 <br />
 <div class="ui error message"></div>
 <div style="align:center">
@@ -63,25 +64,16 @@
       <label>Category Type</label>
       </div>
       <div>
-<select name="type">
-  <option value="">Select Type</option>
-  <option value="Beginner">Beginner</option>
-  <option value="Intermediate">Intermediate</option>
-  <option value="Advanced">Advanced</option>
-</select>
+        <select name="type">
+          <option value="">Select Type</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
-      </div>
-    </div>
-  </div>
-  </body>
-  </html>
-  
-   
-        
-      </div>
-    </div>
-  </div>
-  
 <form class="ui form" action="addcategory" method="post" >
 <div class="seven wide field">
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Add a new Category" ></input>

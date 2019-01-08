@@ -9,11 +9,8 @@ $.ajax({
   url: "category",
   success: function(data){
     var category = JSON.parse(data);
-    console.log(category);
-
     for (var i =0; i< category.length; i++){
       var obj = category[i];
-      console.log(obj);
       var table = document.getElementById("mytable");
         var row = table.insertRow(1);
         var cellname = row.insertCell(0);
@@ -26,28 +23,26 @@ $.ajax({
     console.log(error);
   }});
 });
-
 </script>
-
 </head>
 
 <body>
 <h3 class="ui header" style="text-align: left;">Manage Categories</h3>
-
 <br />
-<div>
-<input id="submitBtn" type="submit" class="ui fluid teal submit button" onclick="location.href='addcategory'" value="Add a new Category"></input>
+<div style="text-align: center;">
+<input id="submitBtn" type="submit" class="ui fluid teal submit button" style="width:20%;" onclick="location.href='addcategory'" value="Add a new Category"></input>
 </div>
 <br />
-<table id="mytable" class="ui celled table">
-  <thead>
-    <tr>
-      <th>Category Name</th>
-      <th>Category Type</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-</table>
+<div >
+  <table id="mytable" class="ui celled table" style="width:50%;text-align:center;">
+    <thead>
+      <tr>
+        <th>Category Name</th>
+        <th>Category Type</th>
+      </tr>
+    </thead>
+    <tbody>
+  </table>
+<div >
 </body>
 </html>

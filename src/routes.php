@@ -46,6 +46,6 @@ $app->group('/addcategory', function(){
  $this->post('', 'CategoryController:addCategory');
 });
 
-$app->group('/newcourse', function(){
+$app->group('/course', function(){
     $this->post('', 'CourseController:addcourse');
-});
+}); 

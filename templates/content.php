@@ -95,7 +95,7 @@
   </div> 
     <div class="menu" id="menu">
       <a href="manage-category.php" class="item">Manage Categories</a>
-      <a href="new-course.php" class="item">Add New Course</a>
+      <a href="add-course.php" class="item">Add New Course</a>
       <a href="Manage Courses" class="item">Manage Courses</a>
       <a href="Add Content" class="item">Add new content</a>
       <a href="Manage Contents" class="item">Manage Contents</a>

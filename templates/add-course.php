@@ -63,7 +63,7 @@
 
 <body>
 
-<form class="ui form" action="newcourse" method="post" >
+<form class="ui form" action="course" method="post" >
 <br />
 <h3 class="ui dividing header" style="text-align: left;">Add new course</h3>
 <br />
@@ -87,7 +87,7 @@
       <label>Course Type</label>
       </div>
       <div class="four wide field">
-      
+
 <select name="ctype">
 <option value=""> Select course Type</option>
   <option value="School">School</option>
@@ -143,7 +143,7 @@
       <div class="four wide field">
       <div class="ui form">
   <div class="inline fields">
-    
+
     <div class="field">
       <div class="ui radio checkbox">
         <input type="radio" name="frequency" value="yes" checked="checked">
@@ -172,9 +172,9 @@
       </div>
     </div>
   </div>
-  
+
   </div>
-<form class="ui form" action="newcourse" method="post" >
+<form class="ui form" action="course" method="post" >
 <div class="seven wide field">
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Save" ></input>
 </div>
@@ -209,12 +209,7 @@
       console.log(error);
     }});
   });
-  function getText(element) {
-  var textHolder = element.options[element.selectedIndex].text
-  document.getElementById("txt_holder").value = textHolder;
-  }
-
-
+  
 </script>
 
-</html>
+</html> 

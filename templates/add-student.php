@@ -1,11 +1,8 @@
 <html>
 <head>
 <title> Add Student </title>
-
 <script>
-
-
-  $(document)
+$(document)
     .ready(function() {
       $('.ui.form')
         .form({
@@ -32,19 +29,7 @@
                 }
               ]
             },
-            smailid: {
-              identifier  : 'smailid',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your mail id'
-                },
-                {
-                  type   : 'email',
-                  prompt : 'Enter valid mail'
-                }
-              ]
-            }, 
+             
             schoolname: {
               identifier  : 'schoolname',
               rules: [
@@ -54,17 +39,7 @@
                 }
               ]
             },
-            sage: {
-              identifier  : 'sage',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your age'
-                }
-              ]
-            },
-           
-
+          
             sclass: {
               identifier  : 'sclass',
               rules: [
@@ -73,18 +48,7 @@
                   prompt : 'Please enter your class'
                 }
               ]
-            },
-
-            sparentname: {
-              identifier  : 'sparentname',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your parents name'
-                }
-              ]
-            },
-            
+            }, 
           }
         })
       ;
@@ -121,17 +85,7 @@
       </div>
     </div>
   </div>
-  <div class="field">
-    <div class="two fields">
-      <div class="three wide field">
-      <label>Mail Id</label>
-      </div>
-      <div class="four wide field">
-        <input type="text" name="smailid" placeholder="abc@gmail.com">
-      </div>
-    </div>
-     </div>
-
+  
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -141,20 +95,6 @@
       <select id="schoolname" name="schoolname" >
       <option value="">Select school </option> 
       </select>
-      </div>
-    </div>
-  </div>
-
-  
- 
-  </div>
-  <div class="field">
-    <div class="two fields">
-      <div class="three wide field">
-      <label>Age</label>
-      </div>
-      <div class="four wide field">
-        <input type="text" name="sage" placeholder="12">
       </div>
     </div>
   </div>
@@ -180,20 +120,6 @@
       </div>
     </div>
   </div>
-
-  <div class="field">
-    <div class="two fields">
-      <div class="three wide field">
-      <label>Parents Name</label>
-      </div>
-      <div class="four wide field">
-        <input type="text" name="sparentname" placeholder="Enter your parent name">
-      </div>
-    </div>
-  </div>
-
-  
-
   </div>
 <form class="ui form" action="student" method="post" >
 <div class="seven wide field">
@@ -202,8 +128,13 @@
 </div>
 </div>
 </form>
+<form>
+
 </body>
+
+<form class="ui form" action="student" method="post" >
 <script>
+
     $('.ui.dropdown')
         .dropdown()
     ;
@@ -230,11 +161,5 @@
       console.log(error);
     }});
   });
-  function getText(element) {
-  var textHolder = element.options[element.selectedIndex].text
-  document.getElementById("txt_holder").value = textHolder;
-  }
-
-
 </script>
 </html>

@@ -12,28 +12,25 @@ $.ajax({
     
     for (var i =0; i< schools.length; i++){
       var obj = schools[i];
-      console.log(obj);
       var table = document.getElementById("mytable");
         var row = table.insertRow(1);
         var cellcheckbox = row.insertCell(0);
         var cellserial = row.insertCell(1);
         var cellstudent = row.insertCell(2);
         var cellcontactno = row.insertCell(3);
-        var cellmail = row.insertCell(4);
-        var cellschool = row.insertCell(5);
+        var cellschool = row.insertCell(4);
         var cellbatch = row.insertCell(5);
+        var cellclass = row.insertCell(6);
         var celledit = row.insertCell(7);
-        var cellremarks = row.insertCell(8);
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        cellserial.innerHTML = obj.student_id;
+        cellserial.innerHTML = obj.sno;
         cellstudent.innerHTML = obj.student_name;
         cellcontactno.innerHTML = obj.contact_number;
-        cellmail.innerHTML = obj.email;
-        cellschool.innerHTML = obj.school;
+        cellschool.innerHTML = obj.school_name;
         cellbatch.innerHTML = obj.batch;
+        cellclass.innerHTML = obj.class;
         celledit.innerHTML = document.getElementById("edit").innerHTML
-        cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
     }
   },
   error:function(error){
@@ -56,11 +53,10 @@ $.ajax({
       <th>Student ID</th>
       <th>Student Name</th>
       <th>Contact No</th>
-      <th>Mail Address</th>
       <th>School</th>
       <th>Batch</th>
+      <th>Class</th>
       <th>Edit Details</th>
-	  <th>Remark</th>
     </tr>
   </thead>
   <tbody>

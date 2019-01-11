@@ -61,7 +61,7 @@ $(document)
               ]
             },
            
-          
+
             sclass: {
               identifier  : 'sclass',
               rules: [
@@ -70,7 +70,7 @@ $(document)
                   prompt : 'Please enter your class'
                 }
               ]
-            }, 
+            },
 
             sparentname: {
               identifier  : 'sparentname',
@@ -215,8 +215,6 @@ $(document)
       
       for (var i =0; i< schools.length; i++){
         var obj = schools[i];
-        console.log(i);
-        console.log(obj);
         var element = document.getElementById("schoolname");
         var option = document.createElement("option");
         option.value = obj.sno;

@@ -58,8 +58,8 @@
     &nbsp;&nbsp; School Management
   </div> 
   <div class="menu" id="menu">
-    <a href="manage-school.php" class="item">Manage Schools</a>
-    <a href="add-school.php" class="item">Add a school </a>
+  <a href="manage-school.php" class="item">Manage Schools</a>
+  <a href="add-school.php" class="item">Add a school </a>
   </div>
   </div>
 
@@ -72,7 +72,7 @@
       <a href="manage-trainer.php" class="item">Manage Trainers </a>
       <a href="add-trainer.php" class="item">Add a Trainer </a>
       <a class="item">Allocate trainer to schools </a>
-      <a class="item">Manage content for trainer </a>
+      <a class="item">Manage content for trainer </a> 
     </div>
   </div>
 
@@ -85,6 +85,20 @@
       <a href="manage-student.php" class="item" >Manage Students</a>
       <a href="add-student.php" class="item">Add a student</a>
       <a class="item">Bulk upload student data</a>
+    </div>
+  </div>
+
+  <div class="item txtsizegrid">
+  <div class="ui left icon input">
+    <i class="fas fa-child"></i>
+    &nbsp;&nbsp;Course Management
+  </div> 
+    <div class="menu" id="menu">
+      <a href="manage-category.php" class="item">Manage Categories</a>
+      <a href="add-course.php" class="item">Add New Course</a>
+      <a href="Manage Courses" class="item">Manage Courses</a>
+      <a href="Add Content" class="item">Add new content</a>
+      <a href="Manage Contents" class="item">Manage Contents</a>
     </div>
   </div>
 

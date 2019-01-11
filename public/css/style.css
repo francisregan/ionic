@@ -5,6 +5,30 @@ html {
     color:#3eb8ec
 }
 
+.pagination li
+{
+	list-style:none;
+	float:left;
+	width :50px;
+	height:30px;
+	background-color: transparent;
+	color:black;
+	text-align:center;
+	cursor:pointer;
+}
+
+.pagination li:hover
+{
+  font-size: 110%;
+  color:#2185d0;
+}
+
+.pagination ul
+{
+	border:0px;
+	padding:0px;
+}
+
 .standardbuttoncolor{
     color:#2185d0;
     background-color:#2185d0;
@@ -15,3 +39,5 @@ html {
 }
 
 .html{ font-size: 25px }
+
+

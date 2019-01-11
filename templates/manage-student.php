@@ -1,30 +1,33 @@
 <html>
 <head>
 <title> Manage Student </title>
-
+<link href="css/style.css" rel="stylesheet">
 <script>
 $(document).ready(function(){
+  var table;
+  var row;
 $.ajax({ 
   type: 'GET',
+  async: false,
   url: "student",
   success: function(data){
     var schools = JSON.parse(data);
     
     for (var i =0; i< schools.length; i++){
       var obj = schools[i];
-      var table = document.getElementById("mytable");
-        var row = table.insertRow(1);
+      console.log(obj);
+        table = document.getElementById("mytable");
+        row = table.insertRow(1);
+        row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
-        var cellserial = row.insertCell(1);
-        var cellstudent = row.insertCell(2);
-        var cellcontactno = row.insertCell(3);
+        var cellstudent = row.insertCell(1);
+        var cellcontactno = row.insertCell(2);
+        var cellmail = row.insertCell(3);
         var cellschool = row.insertCell(4);
         var cellbatch = row.insertCell(5);
-        var cellclass = row.insertCell(6);
-        var celledit = row.insertCell(7);
+        var celledit = row.insertCell(6);
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        cellserial.innerHTML = obj.sno;
         cellstudent.innerHTML = obj.student_name;
         cellcontactno.innerHTML = obj.contact_number;
         cellschool.innerHTML = obj.school_name;
@@ -36,6 +39,12 @@ $.ajax({
   error:function(error){
     console.log(error);
   }});
+
+$(".pagination").customPaginate({
+
+itemsToPaginate : ".rowdata"
+
+});
 });
 
 </script>
@@ -50,7 +59,6 @@ $.ajax({
   <thead>
     <tr>
       <th></th>
-      <th>Student ID</th>
       <th>Student Name</th>
       <th>Contact No</th>
       <th>School</th>
@@ -75,31 +83,14 @@ $.ajax({
 		</div>
   </script>
 
-  <script id="tarea" type="text/template"> 
-		<div class="ui form">
-			<div class="field">
-			<textarea rows="1"></textarea>
-		</div>
-  </script> 
-  
-
   </tbody>
   <tfoot class="full-width">
     <tr>
       <th></th>
       <th colspan="8">
         <div class="ui right floated pagination menu">
-        <a class="icon item">
-          <i class="left chevron icon"></i>
-        </a>
-        <a class="item">1</a>
-        <a class="item">2</a>
-        <a class="item">3</a>
-        <a class="item">4</a>
-        <a class="icon item">
-          <i class="right chevron icon"></i>
-        </a>
-      </div>
+
+        </div>
         <div class="ui small button">
           Approve
         </div>
@@ -111,5 +102,8 @@ $.ajax({
   </tfoot>
   
 </table>
+<script type="text/javascript" src="script/pagination.js">
+</script>
+
 </body>
 </html>

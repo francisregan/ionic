@@ -1,20 +1,21 @@
 <html>
 <head>
 <title> Manage schools </title>
-
+<link href="css/style.css" rel="stylesheet">
 <script>
 $(document).ready(function(){
 $.ajax({ 
   type: 'GET',
+  async: false,
   url: "school",
   success: function(data){
     var schools = JSON.parse(data);
-    
+    var table = document.getElementById("mytable");
     for (var i =0; i< schools.length; i++){
       var obj = schools[i];
       console.log(obj);
-      var table = document.getElementById("mytable");
         var row = table.insertRow(1);
+        row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
         var cellschool = row.insertCell(1);
         var cellcontact = row.insertCell(2);
@@ -37,11 +38,16 @@ $.ajax({
   error:function(error){
     console.log(error);
   }});
+  
+  $(".pagination").customPaginate({
+
+  itemsToPaginate : ".rowdata"
+
+});
 });
 </script>
 </head>
 <body>
-
 <h3 class="ui header" style="text-align: left;">Manage School</h3>
 
 <br />
@@ -90,17 +96,8 @@ $.ajax({
     <tr>
       <th></th>
       <th colspan="8">
-        <div class="ui right floated pagination menu">
-        <a class="icon item">
-          <i class="left chevron icon"></i>
-        </a>
-        <a class="item">1</a>
-        <a class="item">2</a>
-        <a class="item">3</a>
-        <a class="item">4</a>
-        <a class="icon item">
-          <i class="right chevron icon"></i>
-        </a>
+      <div class="ui right floated pagination menu">
+        
       </div>
         <div class="ui small button">
           Approve
@@ -111,9 +108,9 @@ $.ajax({
       </th>
     </tr> 
   </tfoot>
-  
-  
 </table>
 
+<script type="text/javascript" src="script/pagination.js">
+</script>
 </body>
 </html>

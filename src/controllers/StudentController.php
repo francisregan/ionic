@@ -22,7 +22,6 @@ class StudentController
     }
     return json_encode($results);
   }
-
   public function addStudent($request, $response, $args) 
   {
     $data = $request->getParsedBody();

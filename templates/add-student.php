@@ -29,7 +29,19 @@ $(document)
                 }
               ]
             },
-             
+            smailid: {
+              identifier  : 'smailid',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your mail id'
+                },
+                {
+                  type   : 'email',
+                  prompt : 'Enter valid mail'
+                }
+              ]
+            }, 
             schoolname: {
               identifier  : 'schoolname',
               rules: [
@@ -39,6 +51,16 @@ $(document)
                 }
               ]
             },
+            sage: {
+              identifier  : 'sage',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your age'
+                }
+              ]
+            },
+           
           
             sclass: {
               identifier  : 'sclass',
@@ -49,6 +71,17 @@ $(document)
                 }
               ]
             }, 
+
+            sparentname: {
+              identifier  : 'sparentname',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your parents name'
+                }
+              ]
+            },
+            
           }
         })
       ;
@@ -85,7 +118,17 @@ $(document)
       </div>
     </div>
   </div>
-  
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Mail Id</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="smailid" placeholder="abc@gmail.com">
+      </div>
+    </div>
+     </div>
+
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -95,6 +138,20 @@ $(document)
       <select id="schoolname" name="schoolname" >
       <option value="">Select school </option> 
       </select>
+      </div>
+    </div>
+  </div>
+
+  
+ 
+  </div>
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Age</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="sage" placeholder="12">
       </div>
     </div>
   </div>
@@ -117,6 +174,17 @@ $(document)
       </div>
       <div class="four wide field">
         <input type="text" name="sclass" placeholder="Specify the Class">
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Parents Name</label>
+      </div>
+      <div class="four wide field">
+        <input type="text" name="sparentname" placeholder="Enter your parent name">
       </div>
     </div>
   </div>

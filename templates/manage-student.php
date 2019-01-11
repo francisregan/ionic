@@ -22,9 +22,9 @@ $.ajax({
         var cellcheckbox = row.insertCell(0);
         var cellstudent = row.insertCell(1);
         var cellcontactno = row.insertCell(2);
-        var cellmail = row.insertCell(3);
-        var cellschool = row.insertCell(4);
-        var cellbatch = row.insertCell(5);
+        var cellschool = row.insertCell(3);
+        var cellbatch = row.insertCell(4);
+        var cellclass = row.insertCell(5);
         var celledit = row.insertCell(6);
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
@@ -33,7 +33,7 @@ $.ajax({
         cellschool.innerHTML = obj.school_name;
         cellbatch.innerHTML = obj.batch;
         cellclass.innerHTML = obj.class;
-        celledit.innerHTML = document.getElementById("edit").innerHTML
+        celledit.innerHTML = document.getElementById("edit").innerHTML;
     }
   },
   error:function(error){

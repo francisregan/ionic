@@ -9,18 +9,18 @@ class TrainerController
    public function __construct(ContainerInterface $container) {
      $this->container = $container;
    }
-
   public function listTrainer($request, $response, $args) {
     $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer;");
     $schoolresult = $this->container->db->query("SELECT * FROM ioniccloud.school;");
     $results = [];
     $schoolresults = [];
-    while($schoolrow = mysqli_fetch_array($schoolresult)) {
+    while($schoolrow = mysqli_fetch_array($schoolresult))
+     {
       array_push($schoolresults, $schoolrow);
     }
     
     while($row = mysqli_fetch_array($result)) {
-      $final = "";
+     $final = "";
       $schoolids = json_decode($row['school'], true);
       $schoolresult = "";
       foreach ($schoolids as $schoolid){

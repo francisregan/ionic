@@ -135,11 +135,12 @@
       <label>School</label>
       </div>
       <div class="four wide field">
-        <input type="text" name="schoolname" placeholder="Enter the school">
+      <select id="schoolname" name="schoolname[]" class="ui fluid search dropdown" multiple="">
+      <option value="">Select school </option> 
+      </select>
       </div>
     </div>
   </div>
-
 
   <div class="field">
     <div class="two fields">
@@ -161,4 +162,31 @@
 
 </form>
 </body>
+<script>
+
+    $('.ui.dropdown')
+        .dropdown()
+    ;
+  $(document).ready(function(){
+  $.ajax({ 
+    type: 'GET',
+    url: "school",
+    success: function(data){
+      var schools = JSON.parse(data);
+      
+      for (var i =0; i< schools.length; i++){
+        var obj = schools[i];
+        var element = document.getElementById("schoolname");
+        var option = document.createElement("option");
+        option.value = obj.sno;
+        option.id = obj.sno;
+        option.text = obj.school_name;
+        element.add(option);
+      }
+    },
+    error:function(error){
+      console.log(error);
+    }});
+  }); 
+</script>
 </html>

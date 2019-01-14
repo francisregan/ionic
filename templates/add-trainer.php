@@ -51,12 +51,12 @@
                 }
               ]
             },
-            tschool: {
-              identifier  : 'tschool',
+            schoolname: {
+              identifier  : 'schoolname',
               rules: [
                 {
-                  type   : 'empty',
-                  prompt : 'Please enter your school'
+                  type    : 'empty',
+                  prompt  : 'Please select school name'
                 }
               ]
             },
@@ -135,10 +135,11 @@
       <label>School</label>
       </div>
       <div class="four wide field">
-        <input type="text" name="tschool" placeholder="Name of School">
+        <input type="text" name="schoolname" placeholder="Enter the school">
       </div>
     </div>
   </div>
+
 
   <div class="field">
     <div class="two fields">

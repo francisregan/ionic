@@ -18,13 +18,15 @@ $.ajax({
         row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
         var cellschool = row.insertCell(1);
-        var cellcontact = row.insertCell(2);
+        var cellcontact = row.insertCell(2);  
         var cellcontactno = row.insertCell(3);
         var cellmail = row.insertCell(4);
         var celladdress = row.insertCell(5);
         var celledit = row.insertCell(6);
         var cellremarks = row.insertCell(7);
-
+        var cellid = row.insertCell(8);
+        cellid.setAttribute("style","display: none;");
+        
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellschool.innerHTML = obj.school_name;
         cellcontact.innerHTML = obj.contact_person;
@@ -33,17 +35,27 @@ $.ajax({
         celladdress.innerHTML = obj.address;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
         cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
+        cellid.innerHTML = obj.sno;
+        cellid.setAttribute("class","sid");
     }
   },
   error:function(error){
     console.log(error);
   }});
-  
+
   $(".pagination").customPaginate({
 
   itemsToPaginate : ".rowdata"
 
-});
+  });
+
+    $(".primary").click(function() {
+      var $row = $(this).closest("tr");    // Find the row
+      var $id = $row.find(".sid").text();  // Find the text
+      console.log($id);
+    var url = "edit?id=" + $id;
+    window.location.href = url;
+  });
 });
 </script>
 </head>
@@ -61,7 +73,8 @@ $.ajax({
       <th>Mail Id</th>
       <th>Address</th>
       <th>Edit Details</th>
-	  <th>Remark</th>
+	    <th>Remark</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -76,11 +89,8 @@ $.ajax({
 
   <script id="edit" type="text/template">
 		<div class="ui form">
-    
-     <button class="ui primary basic button" value="edit">Edits</button>
-    
+     <button class="ui primary basic button" value="edits">Edits</button>
 		</div>
-
   </script>
 
   <script id="tarea" type="text/template"> 

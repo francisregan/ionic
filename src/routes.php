@@ -27,6 +27,11 @@ $app->group('/school',function(){
     $this->get('', 'SchoolController:listSchool');
 });
 
+$app->group('/edit',function(){
+    $this->get('', 'SchoolController:showEditPage');
+});
+
+
 $app->get('/logout', function (Request $request, Response $response, array $args) {
     session_destroy();
     $_SESSION = array();

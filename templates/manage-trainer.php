@@ -33,7 +33,7 @@ $.ajax({
         cellmail.innerHTML = obj.mail_id;
         cellspecialization.innerHTML = obj.specialization;
         cellschool.innerHTML = obj.school;
-        celledit.innerHTML = document.getElementById("edit").innerHTML
+        celledit.innerHTML = document.getElementById("edit").innerHTML;
     }
   },
   error:function(error){

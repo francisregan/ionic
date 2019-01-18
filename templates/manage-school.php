@@ -31,7 +31,7 @@ $.ajax({
         cellcontactno.innerHTML = obj.contact_no;
         cellmail.innerHTML = obj.mail_id;
         celladdress.innerHTML = obj.address;
-        celledit.innerHTML = document.getElementById("edit").innerHTML
+        celledit.innerHTML = document.getElementById("edit").innerHTML;
         cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
     }
   },

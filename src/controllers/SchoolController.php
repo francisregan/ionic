@@ -39,7 +39,7 @@ class SchoolController
       return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-school'));
     }
     echo("<script>window.alert('Record Not Added');</script>");
-        return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-school'));
-    }
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-school'));
+  }
 }
 ?>

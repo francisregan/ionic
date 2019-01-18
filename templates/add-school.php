@@ -103,7 +103,7 @@
       <label>School Name</label>
       </div>
       <div class="four wide field">
-        <input type="text" name="sname" placeholder="Name of School">
+        <input type="text" name="sname" placeholder="Name of School" id="name">
       </div>
     </div>
   </div>
@@ -113,7 +113,7 @@
       <label>Contact No</label>
       </div>
       <div class="four wide field">
-        <input type="text" name="sphoneno" placeholder="Contact Number">
+        <input type="text" name="sphoneno" placeholder="Contact Number" id="contactno">
       </div>
     </div>
   </div>

@@ -57,3 +57,9 @@ $container['CategoryController']=function($c)
 {
     return new App\Controllers\CategoryController($c);
 };
+
+$container['CourseController']=function($c)
+{
+    return new App\Controllers\CourseController($c);
+};
+

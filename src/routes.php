@@ -50,3 +50,7 @@ $app->group('/addcategory', function(){
  $this->get('', 'CategoryController:showCategory');
  $this->post('', 'CategoryController:addCategory');
 });
+
+$app->group('/course', function(){
+    $this->post('', 'CourseController:addcourse');
+}); 

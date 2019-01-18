@@ -1,11 +1,8 @@
 <html>
 <head>
 <title> Add Student </title>
-
 <script>
-
-
-  $(document)
+$(document)
     .ready(function() {
       $('.ui.form')
         .form({
@@ -191,9 +188,6 @@
       </div>
     </div>
   </div>
-
-  
-
   </div>
 <form class="ui form" action="student" method="post" >
 <div class="seven wide field">
@@ -202,8 +196,13 @@
 </div>
 </div>
 </form>
+<form>
+
 </body>
+
+<form class="ui form" action="student" method="post" >
 <script>
+
     $('.ui.dropdown')
         .dropdown()
     ;
@@ -216,8 +215,6 @@
       
       for (var i =0; i< schools.length; i++){
         var obj = schools[i];
-        console.log(i);
-        console.log(obj);
         var element = document.getElementById("schoolname");
         var option = document.createElement("option");
         option.value = obj.sno;
@@ -230,11 +227,5 @@
       console.log(error);
     }});
   });
-  function getText(element) {
-  var textHolder = element.options[element.selectedIndex].text
-  document.getElementById("txt_holder").value = textHolder;
-  }
-
-
 </script>
 </html>

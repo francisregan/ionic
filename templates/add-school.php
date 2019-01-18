@@ -165,15 +165,29 @@
     <div class="two fields">
       <div class="three wide field">
       <label>School City</label>
-      </div>
-      <div class="four wide field">
-        <input type="text" name="scity" placeholder="Enter the city">
-      </div>
+    </div>
+    <div class="four wide field">
+      <input type="text" name="scity" placeholder="Enter the city">
+    </div>
     </div>
   </div>
-
   </div>
-  
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Activate</label>
+    </div>
+    <div class="two wide field">
+    <input type="checkbox" name="activate"  value="Yes">Yes 
+    <input type="hidden"  name="activate" value="No">
+    </div>
+    </div>
+  </div>
+  </div>
+ </div>
+</div>
+
 <form class="ui form" action="school" method="post" >
   <div class="seven wide field">
   <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"></i></input>

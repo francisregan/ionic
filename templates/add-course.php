@@ -176,7 +176,7 @@
   </div>
 <form class="ui form" action="course" method="post" >
 <div class="seven wide field">
-<input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Save" ></input>
+<input id="submitBtn" type="submit" class="ui primary button" name="Add a new course" value="Save" ></input>
 </div>
 </div>
 </div>

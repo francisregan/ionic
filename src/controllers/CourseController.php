@@ -18,6 +18,7 @@ class CourseController
     return json_encode($results);
   }
 
+  
   public function addcourse($request, $response, $args) 
   {
     $data = $request->getParsedBody();

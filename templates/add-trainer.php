@@ -182,7 +182,7 @@
         option.id = obj.sno;
         option.text = obj.school_name;
         element.add(option);
-      }
+     }
     },
     error:function(error){
       console.log(error);

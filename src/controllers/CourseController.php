@@ -9,8 +9,8 @@ class CourseController
    public function __construct(ContainerInterface $container) {
      $this->container = $container;
    }
-   public function managecourse($request, $response, $args) {
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.add_course;");
+   public function listcourse($request, $response, $args) {
+    $result = $this->container->db->query("SELECT * FROM ioniccloud.course;");
     $results = [];
     while($row = mysqli_fetch_array($result)) {
       array_push($results,$row);
@@ -28,7 +28,7 @@ class CourseController
     $value = $data['frequency'];
     $sessions = filter_var($data['sessions'], FILTER_SANITIZE_STRING);
   $sqli = $this->container->db;
-  $result = $sqli->query("insert into ioniccloud.add_course (name, type, category, duration, printing, session ) 
+  $result = $sqli->query("insert into ioniccloud.course (name, type, category, duration, printing, session ) 
   VALUES ('$name','$type','$category','$duration','$value','$sessions')");
   if (mysqli_affected_rows($sqli)==1) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-course'));

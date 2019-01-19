@@ -47,10 +47,11 @@ $app->group('/category', function(){
 });
 
 $app->group('/addcategory', function(){
- $this->get('', 'CategoryController:showCategory');
- $this->post('', 'CategoryController:addCategory');
+  $this->get('', 'CategoryController:showCategory');
+  $this->post('', 'CategoryController:addCategory');
 });
 
 $app->group('/course', function(){
-    $this->post('', 'CourseController:addcourse');
+ $this->post('', 'CourseController:addcourse');
+ $this->get('', 'CourseController:listcourse');
 }); 

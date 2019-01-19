@@ -96,7 +96,7 @@
     <div class="menu" id="menu">
       <a href="manage-category.php" class="item">Manage Categories</a>
       <a href="add-course.php" class="item">Add New Course</a>
-      <a href="Manage Courses" class="item">Manage Courses</a>
+      <a href="manage-course.php" class="item">Manage Course</a>
       <a href="Add Content" class="item">Add new content</a>
       <a href="Manage Contents" class="item">Manage Contents</a>
     </div>
@@ -117,7 +117,4 @@
 <div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center;"> </div>
 </div>
 </body>
-
-
-
 </html>

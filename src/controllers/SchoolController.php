@@ -23,7 +23,6 @@ class SchoolController
   {
     $data = $request->getParsedBody();
     $schoolid = $data['sid'];
-    $this->container->logger->info($schoolid);
     $name = filter_var($data['sname'], FILTER_SANITIZE_STRING);
     $contact = $data['sphoneno'];
     $contactperson = filter_var($data['scontactperson'], FILTER_SANITIZE_STRING);
@@ -40,7 +39,6 @@ class SchoolController
     else{
     $result = $sqli->query("INSERT INTO ioniccloud.school (school_name, contact_no, contact_person, mail_id, address, state, city) 
     VALUES ('$name','$contact','$contactperson','$mailid','$address','$state','$city')");
-     $this->container->logger->info(mysqli_affected_rows($sqli));
     }
     if (mysqli_affected_rows($sqli)==1) {
       return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-school'));

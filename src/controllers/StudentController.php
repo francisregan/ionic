@@ -11,7 +11,7 @@ class StudentController
    }
 
   public function listStudent($request, $response, $args) {
-    $result = $this->container->db->query("SELECT student.sno,student.student_name,student.contact_number,school.school_name,student.batch,student.class
+    $result = $this->container->db->query("SELECT student.student_id,student.student_name,student.contact_number,school.school_name,student.batch,student.class
     FROM student
     INNER JOIN school
     ON student.school=school.sno;");

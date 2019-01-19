@@ -28,7 +28,7 @@ $app->group('/school',function(){
 });
 
 $app->group('/edit',function(){
-    $this->get('', 'SchoolController:showEditPage');
+    $this->get('', 'SchoolController:editSchool');
 });
 
 

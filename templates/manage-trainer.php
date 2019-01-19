@@ -40,9 +40,9 @@ $.ajax({
     console.log(error);
   }});
 
-$(".pagination").customPaginate({
-itemsToPaginate : ".rowdata"
-});
+      $(".pagination").customPaginate({
+      itemsToPaginate : ".rowdata"
+      });
 });
 
 </script>

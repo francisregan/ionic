@@ -49,7 +49,7 @@ class SchoolController
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-school'));
   }
 
-  public function showEditPage($request, $response, $args) {
+  public function editSchool($request, $response, $args) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-school'));
   }  
 }

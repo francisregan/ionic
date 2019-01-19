@@ -35,6 +35,7 @@ class TrainerController
       $row['school'] = $final;
       array_push($results, $row);
     }
+    $this->container->logger->info(json_encode($school)); 
     return json_encode($results);
   }
 

@@ -173,18 +173,18 @@
   </div>
   </div>
 
-  <div class="field">
+  
     <div class="two fields">
       <div class="three wide field">
       <label>Activate</label>
     </div>
-    <div class="two wide field">
-    <input type="checkbox" name="activate"  value="Yes">Yes 
-    <input type="hidden"  name="activate" value="No">
+    <div class="field">
+    
+     <div class="one wide field" >
+     <input type="hidden" name="activate" value="no">
+     <input type="checkbox" name="activate"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
     </div>
     </div>
-  </div>
-  </div>
  </div>
 </div>
 

@@ -52,7 +52,6 @@ class TrainerController
     foreach ($schools as $school)
     {
       $this->container->logger->info("here");
-      $this->container->logger->info(json_encode($school)); 
     }
     $schoolsEncoded = json_encode($schools);
     $address =$data['taddress'];

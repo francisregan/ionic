@@ -29,12 +29,11 @@ class SchoolController
     $address = $data['saddress'];
     $state = $data['sstate'];
     $city = $data['scity'];
-  
-
-    
+    $act=$data['activate'];
+   
     $sqli = $this->container->db;
-    $result = $sqli->query("INSERT INTO ioniccloud.school (school_name, contact_no, contact_person, mail_id, address, state, city) 
-    VALUES ('$name','$contact','$contactperson','$mailid','$address','$state','$city')");
+    $result = $sqli->query("INSERT INTO ioniccloud.school (school_name, contact_no, contact_person, mail_id, address, state, city,activate) 
+    VALUES ('$name','$contact','$contactperson','$mailid','$address','$state','$city','$act')");
     if (mysqli_affected_rows($sqli)==1) {
       return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-school'));
     }

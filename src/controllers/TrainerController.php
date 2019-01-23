@@ -42,6 +42,7 @@ class TrainerController
   public function addTrainer($request, $response, $args) 
   {
     $data = $request->getParsedBody();
+    $trainerid = $data['tid'];
     $name = filter_var($data['tname'], FILTER_SANITIZE_STRING);
     $contact = filter_var($data['tphoneno'], FILTER_SANITIZE_STRING);
     $mail = filter_var($data['tmailid'], FILTER_SANITIZE_STRING);
@@ -56,13 +57,20 @@ class TrainerController
     $schoolsEncoded = json_encode($schools);
     $address =$data['taddress'];
   $sqli = $this->container->db;
-
+  if($trainerid !=NULL){
+    $result = $sqli->query("UPDATE ioniccloud.trainer SET trainer_name='$name', contact_no='$contact', mail_id='$mail',specialization='$specialization', school='$schoolsEncoded', address='$address' WHERE trainer_id='$trainerid';");
+  }else{
   $result = $sqli->query("INSERT INTO ioniccloud.trainer (trainer_name, contact_no, mail_id, specialization, school, address) 
   VALUES ('$name','$contact','$mail','$specialization', '$schoolsEncoded','$address')");
+  }
   if (mysqli_affected_rows($sqli)==1) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-trainer'));
   }
   return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-trainer'));
   }
+  public function editTrainer($request, $response, $args) {
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-trainer'));
+  }  
 }
+
 ?>

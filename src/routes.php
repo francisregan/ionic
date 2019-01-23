@@ -15,11 +15,19 @@ $app->group('/login', function(){
 $app->group('/trainer', function(){
     $this->post('', 'TrainerController:addTrainer');
     $this->get('', 'TrainerController:listTrainer');
-});       
+});      
+
+$app->group('/edittrainer',function(){
+    $this->get('', 'TrainerController:editTrainer');
+});
 
 $app->group('/student',function(){
     $this->post('','StudentController:addStudent');
     $this->get('', 'StudentController:listStudent');  
+});
+
+$app->group('/editstudent',function(){
+    $this->get('', 'StudentController:editStudent');
 });
 
 $app->group('/school',function(){
@@ -27,7 +35,7 @@ $app->group('/school',function(){
     $this->get('', 'SchoolController:listSchool');
 });
 
-$app->group('/edit',function(){
+$app->group('/editschool',function(){
     $this->get('', 'SchoolController:editSchool');
 });
 

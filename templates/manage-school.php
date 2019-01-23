@@ -53,7 +53,7 @@ $.ajax({
       var $row = $(this).closest("tr");    // Find the row
       var $id = $row.find(".sid").text();  // Find the text
       console.log($id);
-    var url = "edit?id=" + $id;
+    var url = "editschool?id=" + $id;
     window.location.href = url;
   });
 });

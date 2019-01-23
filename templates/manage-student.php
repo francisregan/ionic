@@ -26,6 +26,8 @@ $.ajax({
         var cellbatch = row.insertCell(4);
         var cellclass = row.insertCell(5);
         var celledit = row.insertCell(6);
+        var cellid = row.insertCell(7);
+        cellid.setAttribute("style","display: none;");
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellstudent.innerHTML = obj.student_name;
@@ -34,17 +36,27 @@ $.ajax({
         cellbatch.innerHTML = obj.batch;
         cellclass.innerHTML = obj.class;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
+        cellid.innerHTML = obj.student_id;
+        cellid.setAttribute("class","sid");
     }
   },
   error:function(error){
     console.log(error);
   }});
 
-$(".pagination").customPaginate({
+    $(".pagination").customPaginate({
 
-itemsToPaginate : ".rowdata"
+    itemsToPaginate : ".rowdata"
 
-});
+    });
+
+    $(".primary").click(function() {
+      var $row = $(this).closest("tr");    // Find the row
+      var $id = $row.find(".sid").text();  // Find the text
+      console.log($id);
+    var url = "editstudent?id=" + $id;
+    window.location.href = url;
+  });
 });
 
 </script>

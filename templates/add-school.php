@@ -221,9 +221,23 @@
       </div>
     </div>
   </div>
-
   </div>
+
   
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Activate</label>
+    </div>
+    <div class="field">
+    
+     <div class="one wide field" >
+     <input type="hidden" name="activate" value="no">
+     <input type="checkbox" name="activate"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+    </div>
+    </div>
+ </div>
+</div>
+
 <form class="ui form" action="school" method="post" >
   <div class="seven wide field">
   <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"></i>

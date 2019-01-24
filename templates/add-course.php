@@ -26,7 +26,7 @@
                ]
            },
            category: {
-               identifier : 'category';
+               identifier : 'category',
                rules: [
                    {
                        type  : 'empty',
@@ -35,7 +35,7 @@
                ]
            },
            duration: {
-               identifier : 'duration';
+               identifier : 'duration',
                rules: [
                    {
                        type  : 'empty',

@@ -17,7 +17,7 @@
               ]
             },
            ctype: {
-               identifier : 'ctype';
+               identifier : 'ctype',
                rules: [
                    {
                        type  : 'empty',

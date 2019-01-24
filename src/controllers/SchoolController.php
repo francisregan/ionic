@@ -34,7 +34,7 @@ class SchoolController
     $sqli = $this->container->db;
     if($schoolid !=NULL)
     {
-      $result = $sqli->query("UPDATE ioniccloud.school SET school_name='$name', contact_person='$contactperson', contact_no='$contact', mail_id='$mailid', address='$address', state='$state', city='$city' WHERE sno='$schoolid';");
+      $result = $sqli->query("UPDATE ioniccloud.school SET school_name='$name', contact_person='$contactperson', contact_no='$contact', mail_id='$mailid', address='$address', state='$state', activate='$act', city='$city' WHERE sno='$schoolid';");
     }
     else{
       $result = $sqli->query("INSERT INTO ioniccloud.school (school_name, contact_no, contact_person, mail_id, address, state, city,activate) 

@@ -278,7 +278,7 @@ $(document)
                             break;
                         }
                       }
-                    document.getElementById("schoolname").disabled = true;
+                    
                     document.getElementById("age").value = obj.age;
                     document.getElementById("batch").value = obj.batch;
                     document.getElementById("class").value = obj.class;
@@ -289,7 +289,6 @@ $(document)
                 error:function(error){
                   console.log(error);
                 }});
-
         }
     });
 </script>

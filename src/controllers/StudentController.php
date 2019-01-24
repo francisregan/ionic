@@ -35,14 +35,14 @@ class StudentController
     $batch = $data['sbatch'];
     $class = $data['sclass'];
     $parentname = $data['sparentname'];
-
+    $act=$data['activate'];  
   $sqli = $this->container->db;
   if($studentid !=NULL)
   {
     $result = $sqli->query("UPDATE ioniccloud.student SET student_name='$name', contact_number='$contactno', email='$mail', school='$school', age='$age', batch='$batch', class='$class', parent_name='$parentname' WHERE student_id='$studentid';");
   }else{
-  $result = $sqli->query("INSERT INTO ioniccloud.student (student_name, contact_number, email, school, age, batch, class, parent_name)
-  VALUES ('$name','$contactno','$mail','$school','$age','$batch','$class','$parentname')");
+  $result = $sqli->query("INSERT INTO ioniccloud.student (student_name, contact_number, email, school, age, batch, class, parent_name,activate)
+  VALUES ('$name','$contactno','$mail','$school','$age','$batch','$class','$parentname','$act')");
   }
   if (mysqli_affected_rows($sqli)==1) {
   

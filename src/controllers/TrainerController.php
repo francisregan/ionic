@@ -60,7 +60,7 @@ class TrainerController
     $address =$data['taddress'];
   $sqli = $this->container->db;
   if($trainerid !=NULL){
-    $result = $sqli->query("UPDATE ioniccloud.trainer SET trainer_name='$name', contact_no='$contact', mail_id='$mail',specialization='$specialization', school='$schoolsEncoded', address='$address' WHERE trainer_id='$trainerid';");
+    $result = $sqli->query("UPDATE ioniccloud.trainer SET trainer_name='$name', contact_no='$contact', mail_id='$mail',specialization='$specialization', school='$schoolsEncoded', address='$address', activate='$act' WHERE trainer_id='$trainerid';");
   }else{
   $result = $sqli->query("INSERT INTO ioniccloud.trainer (trainer_name, contact_no, mail_id, specialization, school, address,activate) 
   VALUES ('$name','$contact','$mail','$specialization', '$schoolsEncoded','$address','$act')");

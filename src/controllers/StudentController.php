@@ -11,7 +11,7 @@ class StudentController
    }
 
   public function listStudent($request, $response, $args) {
-    $result = $this->container->db->query("SELECT student.student_id,student.student_name,student.contact_number,student.email,student.school,school.school_name,student.age,student.batch,student.class,student.parent_name
+    $result = $this->container->db->query("SELECT student.student_id,student.student_name,student.contact_number,student.email,student.school,school.school_name,student.age,student.batch,student.class,student.parent_name,student.activate
     FROM student
     INNER JOIN school
     ON student.school=school.sno;");
@@ -39,7 +39,7 @@ class StudentController
   $sqli = $this->container->db;
   if($studentid !=NULL)
   {
-    $result = $sqli->query("UPDATE ioniccloud.student SET student_name='$name', contact_number='$contactno', email='$mail', school='$school', age='$age', batch='$batch', class='$class', parent_name='$parentname' WHERE student_id='$studentid';");
+    $result = $sqli->query("UPDATE ioniccloud.student SET student_name='$name', contact_number='$contactno', email='$mail', school='$school', age='$age', batch='$batch', class='$class', parent_name='$parentname', activate='$act' WHERE student_id='$studentid';");
   }else{
   $result = $sqli->query("INSERT INTO ioniccloud.student (student_name, contact_number, email, school, age, batch, class, parent_name,activate)
   VALUES ('$name','$contactno','$mail','$school','$age','$batch','$class','$parentname','$act')");

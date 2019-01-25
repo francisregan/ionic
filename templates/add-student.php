@@ -207,7 +207,7 @@ $(document)
     
      <div class="one wide field" >
      <input type="hidden" name="activate" value="no">
-     <input type="checkbox" name="activate"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+     <input type="checkbox" name="activate" id="myCheck" value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
     </div>
     </div>
  </div>
@@ -284,26 +284,27 @@ $(document)
                     var val = obj.school;
                     var sel = document.getElementById('schoolname');
                     var opts = sel.options;
-                      for (var j = 0; j <= opts.length; j++) {
-                          console.log(j);  
+                      for (var j = 0; j <= opts.length; j++) { 
                           var opt = opts[j];
                           if (opt.value == val) {
                             sel.selectedIndex = j;
                             break;
                         }
                       }
-                    document.getElementById("schoolname").disabled = true;
+                    
                     document.getElementById("age").value = obj.age;
                     document.getElementById("batch").value = obj.batch;
                     document.getElementById("class").value = obj.class;
                     document.getElementById("pname").value = obj.parent_name;
+                    if(obj.activate == "Yes"){
+                      document.getElementById("myCheck").checked = true;
+                    }
                     }
                   }
                 },
                 error:function(error){
                   console.log(error);
                 }});
-
         }
     });
 </script>

@@ -23,18 +23,22 @@ $.ajax({
         var cellmail = row.insertCell(4);
         var celladdress = row.insertCell(5);
         var celledit = row.insertCell(6);
-        var cellremarks = row.insertCell(7);
-        var cellid = row.insertCell(8);
+        var cellid = row.insertCell(7);
         cellid.setAttribute("style","display: none;");
         
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
+        if(obj.activate == "Yes"){
+           document.getElementById("myCheck").checked = true;
+        }else{
+          document.getElementById("myCheck").checked = false;
+        }
+        document.getElementById("myCheck").disabled = true
         cellschool.innerHTML = obj.school_name;
         cellcontact.innerHTML = obj.contact_person;
         cellcontactno.innerHTML = obj.contact_no;
         cellmail.innerHTML = obj.mail_id;
         celladdress.innerHTML = obj.address;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
-        cellremarks.innerHTML = document.getElementById("tarea").innerHTML;
         cellid.innerHTML = obj.sno;
         cellid.setAttribute("class","sid");
     }
@@ -73,7 +77,6 @@ $.ajax({
       <th>Mail Id</th>
       <th>Address</th>
       <th>Edit Details</th>
-	    <th>Remark</th>
       <th></th>
     </tr>
   </thead>
@@ -82,7 +85,7 @@ $.ajax({
   <script id="check" type="text/template">
       <div class="collapsing">
         <div class="ui fitted slider checkbox">
-          <input type="checkbox"><label></label>
+          <input type="checkbox" id="myCheck"><label></label>
         </div>
       </div>
   </script>
@@ -106,15 +109,8 @@ $.ajax({
     <tr>
       <th></th>
       <th colspan="8">
-      <div class="ui right floated pagination menu">
-        
+      <div class="ui right floated pagination menu"> 
       </div>
-        <div class="ui small button">
-          Approve
-        </div>
-        <div class="ui small  disabled button">
-          Approve All
-        </div>
       </th>
     </tr> 
   </tfoot>

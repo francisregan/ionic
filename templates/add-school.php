@@ -117,6 +117,9 @@
                     document.getElementById("address").value = obj.address;
                     document.getElementById("state").value = obj.state;
                     document.getElementById("city").value = obj.city;
+                    if(obj.activate == "Yes"){
+                      document.getElementById("myCheck").checked = true;
+                    }
                     }
                   }
                 },
@@ -232,7 +235,7 @@
     
      <div class="one wide field" >
      <input type="hidden" name="activate" value="no">
-     <input type="checkbox" name="activate"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+     <input type="checkbox" name="activate" id="myCheck"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
     </div>
     </div>
  </div>

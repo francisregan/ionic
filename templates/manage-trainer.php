@@ -30,6 +30,12 @@ $.ajax({
         cellid.setAttribute("style","display: none;");
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
+        if(obj.activate == "Yes"){
+           document.getElementById("myCheck").checked = true;
+        }else{
+          document.getElementById("myCheck").checked = false;
+        }
+        document.getElementById("myCheck").disabled = true
         celltrainer.innerHTML = obj.trainer_name;
         cellcontactno.innerHTML = obj.contact_no;
         cellmail.innerHTML = obj.mail_id;
@@ -83,7 +89,7 @@ $.ajax({
   <script id="check" type="text/template">
       <div class="collapsing">
         <div class="ui fitted slider checkbox">
-          <input type="checkbox"><label></label>
+          <input type="checkbox" id="myCheck"><label></label>
         </div>
       </div>
   </script>
@@ -100,13 +106,6 @@ $.ajax({
       <th></th>
       <th colspan="8">
         <div class="ui right floated pagination menu">
-     
-        </div>
-        <div class="ui small button">
-          Approve
-        </div>
-        <div class="ui small  disabled button">
-          Approve All
         </div>
       </th>
     </tr>

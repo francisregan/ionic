@@ -43,9 +43,6 @@
     });
   </script>
 
-<style>
-    
-</style>
 </head>
 <body>
 <form class="ui form" action="batch" method="post" >
@@ -139,20 +136,16 @@
 </div>
 </form>
 </body>
-
 <script>
-
 $('.ui.dropdown')
     .dropdown()
 ;
-
 $(document).ready(function(){
 $.ajax({ 
 type: 'GET',
 url: "school",
 success: function(data){
   var schools = JSON.parse(data);
-  //console.log(schools.length);
   for (var i =0; i< schools.length; i++){
     var obj = schools[i];
     var element = document.getElementById("schoolname");
@@ -170,12 +163,7 @@ error:function(error){
 }});
 });
 
-
-$(document).ready(function(){
-});
-
-
-(function () {
+  (function () {
     $('#btnRight').click(function (e) {
         var selectedOpts = $('#studentname option:selected');
         if (selectedOpts.length == 0) {
@@ -201,20 +189,16 @@ $(document).ready(function(){
 
     $('#schoolname').on('change', function() {
       var e = document.getElementById("schoolname");
-      console.log(e.selectedIndex);
       var school_id = e.options[e.selectedIndex].value;
-      console.log(school_id);
+      
       $.ajax({ 
         type: 'GET',
         url: "batchedstudents?id="+school_id,
         success: function(data){
           $('#studentname').empty();
           var studentname = JSON.parse(data);
-          console.log('test');
-          console.log(studentname);
           for (var i =0; i< studentname.length; i++){
               var obj = studentname[i];
-              console.log(obj.student_name);
               var element = document.getElementById("studentname");
               var option = document.createElement("option");
               option.value = obj.student_id;
@@ -227,7 +211,8 @@ $(document).ready(function(){
           console.log(error);
         }});
     });
-}(jQuery));
+}
 
+(jQuery));
 </script>
 </html>

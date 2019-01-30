@@ -50,3 +50,13 @@ $app->group('/course', function(){
  $this->post('', 'CourseController:addcourse');
  $this->get('', 'CourseController:listcourse');
 }); 
+
+$app->group('/batch', function(){
+    $this->post('', 'BatchController:addbatch');
+    $this->get('', 'BatchController:listbatch');
+   }); 
+
+$app->group('/batchedstudents', function(){
+    $this->get('', 'BatchController:batchedstudents'); 
+});
+

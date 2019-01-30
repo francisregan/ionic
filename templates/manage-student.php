@@ -26,25 +26,43 @@ $.ajax({
         var cellbatch = row.insertCell(4);
         var cellclass = row.insertCell(5);
         var celledit = row.insertCell(6);
+        var cellid = row.insertCell(7);
+        cellid.setAttribute("style","display: none;");
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
+        if(obj.activate == "Yes"){
+           document.getElementById("myCheck").checked = true;
+        }else{
+          document.getElementById("myCheck").checked = false;
+        }
+        document.getElementById("myCheck").disabled = true
         cellstudent.innerHTML = obj.student_name;
         cellcontactno.innerHTML = obj.contact_number;
         cellschool.innerHTML = obj.school_name;
         cellbatch.innerHTML = obj.batch;
         cellclass.innerHTML = obj.class;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
+        cellid.innerHTML = obj.student_id;
+        cellid.setAttribute("class","sid");
     }
   },
   error:function(error){
     console.log(error);
   }});
 
-$(".pagination").customPaginate({
+    $(".pagination").customPaginate({
 
-itemsToPaginate : ".rowdata"
+    itemsToPaginate : ".rowdata"
 
-});
+    });
+
+    $(".primary").click(function() {
+      var $row = $(this).closest("tr");    // Find the row
+      var $id = $row.find(".sid").text();  // Find the text
+      console.log($id);
+    var url = "editstudent?id=" + $id;
+    window.location.href = url;
+  });
 });
 
 </script>
@@ -72,7 +90,7 @@ itemsToPaginate : ".rowdata"
   <script id="check" type="text/template">
       <div class="collapsing">
         <div class="ui fitted slider checkbox">
-          <input type="checkbox"><label></label>
+          <input type="checkbox" id="myCheck"><label></label>
         </div>
       </div>
   </script>
@@ -89,13 +107,6 @@ itemsToPaginate : ".rowdata"
       <th></th>
       <th colspan="8">
         <div class="ui right floated pagination menu">
-
-        </div>
-        <div class="ui small button">
-          Approve
-        </div>
-        <div class="ui small  disabled button">
-          Approve All
         </div>
       </th>
     </tr>

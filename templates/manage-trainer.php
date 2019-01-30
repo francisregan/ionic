@@ -26,23 +26,41 @@ $.ajax({
         var cellspecialization = row.insertCell(4);
         var cellschool = row.insertCell(5);
         var celledit = row.insertCell(6);
+        var cellid = row.insertCell(7);
+        cellid.setAttribute("style","display: none;");
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
+        if(obj.activate == "Yes"){
+           document.getElementById("myCheck").checked = true;
+        }else{
+          document.getElementById("myCheck").checked = false;
+        }
+        document.getElementById("myCheck").disabled = true
         celltrainer.innerHTML = obj.trainer_name;
         cellcontactno.innerHTML = obj.contact_no;
         cellmail.innerHTML = obj.mail_id;
         cellspecialization.innerHTML = obj.specialization;
         cellschool.innerHTML = obj.school;
-        celledit.innerHTML = document.getElementById("edit").innerHTML
+        celledit.innerHTML = document.getElementById("edit").innerHTML;
+        cellid.innerHTML = obj.trainer_id;
+        cellid.setAttribute("class","tid");
     }
   },
   error:function(error){
     console.log(error);
   }});
 
-$(".pagination").customPaginate({
-itemsToPaginate : ".rowdata"
-});
+      $(".pagination").customPaginate({
+      itemsToPaginate : ".rowdata"
+      });
+
+      $(".primary").click(function() {
+      var $row = $(this).closest("tr");    // Find the row
+      var $id = $row.find(".tid").text();  // Find the text
+      console.log($id);
+      var url = "edittrainer?id=" + $id;
+      window.location.href = url;
+      });
 });
 
 </script>
@@ -71,7 +89,7 @@ itemsToPaginate : ".rowdata"
   <script id="check" type="text/template">
       <div class="collapsing">
         <div class="ui fitted slider checkbox">
-          <input type="checkbox"><label></label>
+          <input type="checkbox" id="myCheck"><label></label>
         </div>
       </div>
   </script>
@@ -88,13 +106,6 @@ itemsToPaginate : ".rowdata"
       <th></th>
       <th colspan="8">
         <div class="ui right floated pagination menu">
-     
-        </div>
-        <div class="ui small button">
-          Approve
-        </div>
-        <div class="ui small  disabled button">
-          Approve All
         </div>
       </th>
     </tr>

@@ -44,7 +44,7 @@ class LessonController
   if (mysqli_affected_rows($sqli)==1) {
     for($i=1; $i<=$totalPage; $i++){
       $content = $lesson[$i-1];
-      $resultPages = $sqli->query("INSERT INTO ioniccloud.lessonpages (lesson_id, page_id, content) 
+      $resultPages = $sqli->query("INSERT INTO ioniccloud.lessonpages (lesson_id, page_no, content) 
       VALUES ('$lessonids','$i','$content')");
       array_push($addedIDs, mysqli_insert_id($sqli));
     }

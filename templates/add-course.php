@@ -99,19 +99,6 @@
  </div>
 
       <div class="field">
-      <div class="two fields">
-      <div class="three wide field">
-      <label>Category</label>
-      </div>
-      <div class="four wide field">
-      <select id="category" name="category">
-      <option value=""> Select Category</option>
-      </select>
-      </div>
-      </div>
-      </div>
-
-      <div class="field">
     <div class="two fields">
       <div class="three wide field">
       <label>Duration</label>
@@ -182,34 +169,5 @@
 </div>
 </form>
 </body>
-<script>
-    $('.ui.dropdown')
-        .dropdown()
-    ;
-  $(document).ready(function(){
-  $.ajax({ 
-    type: 'GET',
-    url: "category",
-    success: function(data){
-      var category = JSON.parse(data);
-      
-      for (var i =0; i< category.length; i++){
-        var obj = category[i];
-        console.log(i);
-        console.log(obj);
-        var element = document.getElementById("category");
-        var option = document.createElement("option");
-        option.value = obj.id;
-        option.id = obj.id;
-        option.text = obj.name;
-        element.add(option);
-      }
-    },
-    error:function(error){
-      console.log(error);
-    }});
-  });
-  
-</script>
 
 </html> 

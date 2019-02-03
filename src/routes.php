@@ -63,3 +63,7 @@ $app->group('/course', function(){
  $this->post('', 'CourseController:addcourse');
  $this->get('', 'CourseController:listcourse');
 }); 
+
+$app->group('/lesson', function(){
+    $this->post('', 'LessonController:addlesson');
+   }); 

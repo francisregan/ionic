@@ -115,7 +115,6 @@ $.ajax({
     </tr> 
   </tfoot>
 </table>
-
 <script type="text/javascript" src="script/pagination.js">
 </script>
 </body>

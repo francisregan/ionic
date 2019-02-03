@@ -63,3 +63,7 @@ $container['CourseController']=function($c)
     return new App\Controllers\CourseController($c);
 };
 
+$container['LessonController']=function($c)
+{
+    return new App\Controllers\LessonController($c);
+};

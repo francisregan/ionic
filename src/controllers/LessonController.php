@@ -21,12 +21,10 @@ class LessonController
     $this->container->logger->info("----");
 
     $lesson = [];
-    $pageids = [];
     $pageArray = json_decode($pages, true);
     for($i=0; $i<$totalPage; $i++){
       $tempdata = $pageArray[$i];
       $pageid = ($i+1);
-      array_push($pageids, $pageid);
       array_push($lesson, $tempdata);
     }
     
@@ -38,14 +36,25 @@ class LessonController
       $lessonids = json_decode($row['id'], true);
       $this->container->logger->info($lessonids);
     }
+    $this->container->logger->info("here");
     $lessonids = $lessonids+1;
     $sqli = $this->container->db;
     $addedIDs = [];
   if (mysqli_affected_rows($sqli)==1) {
     for($i=1; $i<=$totalPage; $i++){
       $content = $lesson[$i-1];
-      $resultPages = $sqli->query("INSERT INTO ioniccloud.lessonpages (lesson_id, page_no, content) 
-      VALUES ('$lessonids','$i','$content')");
+      
+      $lessonname = str_replace(' ', '', $name);  //remove space from string
+
+      $pagename = "../../".$lessonname.'_'.$i.".txt";
+      $myfile = fopen($pagename, "w");
+      fwrite($myfile, $content);
+      fclose($myfile);
+      $md5file = md5_file($pagename);
+      $this->container->logger->info($md5file);
+
+      $resultPages = $sqli->query("INSERT INTO ioniccloud.lessonpages (lesson_id, page_no, content, md5file) 
+      VALUES ('$lessonids','$i','$pagename','$md5file')");
       array_push($addedIDs, mysqli_insert_id($sqli));
     }
     $pageidsEncode = json_encode($addedIDs);

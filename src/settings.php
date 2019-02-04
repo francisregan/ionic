@@ -23,5 +23,8 @@ return [
             'pass' => 'mysql',
             'dbname' => 'ioniccloud'
         ], 
+        'files' =>[
+            'lesson_dir' => 'C://'
+        ]
     ],
 ];

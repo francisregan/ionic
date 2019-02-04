@@ -67,3 +67,12 @@ $app->group('/course', function(){
 $app->group('/lesson', function(){
     $this->post('', 'LessonController:addlesson');
    }); 
+
+$app->group('/batch', function(){
+    $this->post('', 'BatchController:addbatch');
+    $this->get('', 'BatchController:listbatch');
+   }); 
+
+$app->group('/batchedstudents', function(){
+    $this->get('', 'BatchController:batchedstudents'); 
+});

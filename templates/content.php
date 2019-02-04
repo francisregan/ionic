@@ -104,6 +104,17 @@
 
   <div class="item txtsizegrid">
   <div class="ui left icon input">
+    <i class="fas fa-users"></i>
+    &nbsp;&nbsp;Batch Management
+  </div> 
+    <div class="menu" id="menu">
+      <a href="manage-batch.php" class="item">Manage Batches</a>
+      <a href="add-batch.php" class="item">Add New Batches</a>
+    </div>
+  </div>
+
+  <div class="item txtsizegrid">
+  <div class="ui left icon input">
     <i class="fas fa-chart-pie"></i>
     &nbsp;&nbsp;Reporting
   </div> 

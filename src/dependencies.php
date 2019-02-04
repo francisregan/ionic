@@ -67,3 +67,7 @@ $container['LessonController']=function($c)
 {
     return new App\Controllers\LessonController($c);
 };
+$container['BatchController']=function($c)
+{
+    return new App\Controllers\BatchController($c);
+};

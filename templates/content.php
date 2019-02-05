@@ -13,6 +13,76 @@
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  
+.ui-datepicker {
+	width: 17em;
+	padding: .2em .2em 0;
+	display: none;
+    background:#ffffff;  
+}
+.ui-datepicker .ui-datepicker-title {
+	margin: 0 2.3em;
+	line-height: 1.8em;
+	text-align: center;
+    color:#3399ff;
+    background:#ffffff;  
+}
+.ui-datepicker table {
+	width: 100%;
+	font-size: .7em;
+	border-collapse: collapse;
+    font-family:verdana;
+	margin: 0 0 .4em;
+    color:#000000;
+    background:#;    
+}
+
+.ui-datepicker td {
+
+	border: 0;
+	padding: 1px;
+  
+
+    
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+	display: block;
+	padding: .8em;
+	text-align: right;
+	text-decoration: underline;
+  
+}
+
+.subject-info-box-1,
+.subject-info-box-2 {
+    float: left;
+    width: 30%;
+    
+    select {
+        height: 100px;
+        padding: 0;
+       background:#ffffff;
+
+        option {
+            padding: 4px 10px 4px 10px;
+        }
+
+        option:hover {
+            background:#ffffff;  
+        }
+    }
+}
+
+.subject-info-arrows {
+    float: center;
+    width: 6%;
+
+    input {
+        width: 30%;
+        margin-bottom:45px;
+    }
+}
 </style>
 
 </head>

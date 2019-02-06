@@ -141,12 +141,10 @@
         var markupStr = $('.summernote').eq(i).summernote('code');
         arr.push(markupStr);
     }
-    var myJsonString = JSON.stringify(arr);
-    document.getElementById("arr").value = myJsonString;
+    document.getElementById("arr").value = JSON.stringify(arr);
   });
   });
-</script>   
-<script>
+
 function myFunction() {
   var selectValue = document.getElementById("mySelect").value;
   var node = document.getElementById("snote");
@@ -167,8 +165,7 @@ function myFunction() {
         node.appendChild(createSummerNote);
         node.appendChild(lineBreak);
         $('.summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
+        placeholder: 'Write your page content',
         height: 300   
         });
     } 

@@ -24,44 +24,44 @@ class LessonController
     foreach($pageArray as $page){
     array_push($lesson, $page);
     }
-    
-    // Find out the last added ID in lesson table
-    $lastidlesson = $this->container->db->query("SELECT id FROM lesson ORDER BY ID DESC LIMIT 1;");
-    
-    while($row = mysqli_fetch_array($lastidlesson)) {
-      $lessonids = json_decode($row['id'], true);
-    }
-    $lessonids = $lessonids+1;
+    $this->container->logger->info($lesson[0]);
+    $this->container->logger->info($lesson[1]);
     $sqli = $this->container->db;
-    $addedIDs = [];
 
-    $path = $this->container->files;
+    // Find out the last added ID in lesson table
+    $lastIdLesson = $sqli->query("SELECT id FROM ioniccloud.lesson ORDER BY ID DESC LIMIT 1;");
      
-  if (mysqli_affected_rows($sqli)==1) {
+    while($row = mysqli_fetch_array($lastIdLesson)) {
+      $lessonIds = $row['id'];
+    }
+    $lessonIds = $lessonIds+1;
+    
+    $addedIDs = [];
+ 
     for($i=1; $i<=$totalPage; $i++){
       $content = $lesson[$i-1];
       
-      $lessonname = str_replace(' ', '', $name);  //remove space from string
+      $lessonName = str_replace(' ', '', $name);  //remove space from string
 
-      $pagename = $path.$lessonname.'_'.$i.".txt";
-      $myfile = fopen($pagename, "w");
+      $pageName = $this->container->files.$lessonName.'_'.$i.".txt";
+      $myfile = fopen($pageName, "w");
       fwrite($myfile, $content);
       fclose($myfile);
 
-      $md5file = md5_file($pagename);
+      $md5File = md5_file($pageName);
 
       $resultPages = $sqli->query("INSERT INTO ioniccloud.lessonpages (lesson_id, page_no, content, md5file) 
-      VALUES ('$lessonids','$i','$pagename','$md5file')");
+      VALUES ('$lessonIds','$i','$pageName','$md5File')");
       array_push($addedIDs, mysqli_insert_id($sqli));
-    }
-    $pageidsEncode = json_encode($addedIDs);
 
+    $pageidsEncode = json_encode($addedIDs);
+  }
 
     $result = $sqli->query("INSERT INTO ioniccloud.lesson (lesson_name, category_id, total_pages, page_ids) 
     VALUES ('$name','$category','$totalPage','$pageidsEncode')");
 
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>''));
-  }
+ 
   return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-lesson'));
   }
 }

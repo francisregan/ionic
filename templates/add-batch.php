@@ -4,11 +4,10 @@
 <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="jquery-ui.js"></script>
 <script>
-    var $i = jQuery.noConflict();
+var $i = jQuery.noConflict();
 </script> 
 
 <head>
-<link href="css/style.css" rel="stylesheet">
 <title> Add category </title>
  <script>
     $(document)
@@ -93,9 +92,10 @@
         </div>
   
       <div class="subject-info-arrows text-center">
-        <input type="button" id="btnRight" value=">"style="margin-right:10px;margin-left:10px; margin-top: 40px;  class="btn btn-default" /><br />
-        <input type="button" id="btnLeft" value="<" style="margin-right:10px;margin-left:10px; margin-top: 30px; class="btn btn-default" /><br />
+        <input type="button" id="btnRight" value=">"style="margin-right:10px; margin-left:10px; margin-top: 40px; class="btn btn-default" /><br />
+        <input type="button" id="btnLeft" value="<" style="margin-right:10px; margin-left:10px; margin-top: 30px; class="btn btn-default" /><br />
       </div>
+
       <div class="subject-info-box-2">
         Allocated Students 
         <select multiple="multiple" id='assignedStudents' name="assignedStudents[]" class="form-control">

@@ -32,7 +32,9 @@ $.ajax({
         celledit.innerHTML = document.getElementById("edit").innerHTML
     }
   },
-  });  
+  error:function(error){
+    console.log(error);
+  }});  
   $(".pagination").customPaginate({
     itemsToPaginate : ".rowdata"
   });

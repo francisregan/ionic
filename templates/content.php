@@ -5,17 +5,6 @@
 <script src="semantic/dist/semantic.min.js"></script>
 <link href="css/style.css" rel="stylesheet">
 
-<style>
-  .content {
-    display: block;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-</style>
-
 </head>
 <body >
 

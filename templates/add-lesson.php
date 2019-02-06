@@ -122,16 +122,14 @@
     url: "category",
     success: function(data){
       var category = JSON.parse(data);
-      
-      for (var i =0; i< category.length; i++){
-        var obj = category[i];
+      category.forEach(function(obj){
         var element = document.getElementById("category");
         var option = document.createElement("option");
         option.value = obj.id;
         option.id = obj.id;
         option.text = obj.name;
         element.add(option);
-      }
+});
     },
     error:function(error){
       console.log(error);
@@ -139,13 +137,11 @@
     $(".primary").click(function() {
         var totalPage = $('#mySelect').val();
         var arr = [];
-        console.log(totalPage);
         for(var i=0;i<totalPage;i++){
         var markupStr = $('.summernote').eq(i).summernote('code');
         arr.push(markupStr);
     }
     var myJsonString = JSON.stringify(arr);
-    console.log(myJsonString);
     document.getElementById("arr").value = myJsonString;
   });
   });
@@ -173,7 +169,6 @@ function myFunction() {
         $('.summernote').summernote({
         placeholder: 'Hello stand alone ui',
         tabsize: 2,
-        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'cursive', 'Impact', 'Serif', 'Sans-serif', 'Tahoma', 'Times New Roman', 'Times', 'Georgia', 'Verdana', 'Palatino Linotype', 'Book Antiqua', 'Palatino'],
         height: 300   
         });
     } 

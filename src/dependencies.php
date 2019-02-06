@@ -24,6 +24,11 @@ $container['db'] = function ($c) {
     return new mysqli($settings['host'], $settings['user'], $settings['pass'], $settings['dbname']);
 }; 
 
+$container['files'] = function ($c) {
+    $settings = $c->get('settings')['files'];
+    return $settings['lesson_dir'];
+}; 
+
 $container['flash'] = function () {
     return new Slim\Flash\Messages();
 };

@@ -25,7 +25,7 @@ return [
         ], 
 
         'files' => [
-            'lesson_dir' => 'C://Program Files (x86)//Ampps//www//'
+            'lesson_dir' => 'C://Program Files (x86)//Ampps//www//Ionic File//'
         ],
     ],
 ];

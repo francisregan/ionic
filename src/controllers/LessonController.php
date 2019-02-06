@@ -24,8 +24,7 @@ class LessonController
     foreach($pageArray as $page){
     array_push($lesson, $page);
     }
-    $this->container->logger->info($lesson[0]);
-    $this->container->logger->info($lesson[1]);
+   
     $sqli = $this->container->db;
 
     // Find out the last added ID in lesson table
@@ -42,8 +41,13 @@ class LessonController
       $content = $lesson[$i-1];
       
       $lessonName = str_replace(' ', '', $name);  //remove space from string
+      
+      //creating folder of lesson
+      if (!file_exists($this->container->files.'/'.$lessonName)) {      
+        mkdir($this->container->files.'/'.$lessonName);
+    }
 
-      $pageName = $this->container->files.$lessonName.'_'.$i.".txt";
+      $pageName = $this->container->files.'/'.$lessonName.'/'.$lessonName.'_'.$i.".txt";
       $myfile = fopen($pageName, "w");
       fwrite($myfile, $content);
       fclose($myfile);

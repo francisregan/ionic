@@ -36,7 +36,7 @@ class LessonController
     $addedIDs = [];
 
     $path = $this->container->files;
-
+     
   if (mysqli_affected_rows($sqli)==1) {
     for($i=1; $i<=$totalPage; $i++){
       $content = $lesson[$i-1];

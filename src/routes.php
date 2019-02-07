@@ -64,6 +64,10 @@ $app->group('/course', function(){
  $this->get('', 'CourseController:listcourse');
 }); 
 
+$app->group('/lesson', function(){
+    $this->post('', 'LessonController:addlesson');
+   }); 
+
 $app->group('/batch', function(){
     $this->post('', 'BatchController:addbatch');
     $this->get('', 'BatchController:listbatch');
@@ -72,4 +76,3 @@ $app->group('/batch', function(){
 $app->group('/batchedstudents', function(){
     $this->get('', 'BatchController:batchedstudents'); 
 });
-

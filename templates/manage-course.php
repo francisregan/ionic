@@ -19,16 +19,14 @@ $.ajax({
         var cellcheckbox = row.insertCell(0);
         var cellname = row.insertCell(1);
         var celltype = row.insertCell(2);
-        var cellcategory = row.insertCell(3);
-        var cellduration = row.insertCell(4);
-        var cellprinting = row.insertCell(5);
-        var cellsession = row.insertCell(6);
+        var cellduration = row.insertCell(3);
+        var cellprinting = row.insertCell(4);
+        var cellsession = row.insertCell(5);
     
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellname.innerHTML = obj.name;
         celltype.innerHTML = obj.type;
-        cellcategory.innerHTML = obj.category;
         cellduration.innerHTML = obj.duration;
         cellprinting.innerHTML = obj.printing;
         cellsession.innerHTML = obj.session;
@@ -57,7 +55,6 @@ $.ajax({
       <th></th>
       <th>Name</th>
       <th>Type</th>
-      <th>Category</th>
       <th>Duration</th>
       <th>Printing</th>
       <th>Session</th>

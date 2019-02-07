@@ -1,10 +1,16 @@
  
 <html>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jquery-ui.js"></script>
+<script>
+var $i = jQuery.noConflict();
+</script> 
+
 <head>
 <title> Add category </title>
-<script>
-
-  $(document)
+ <script>
+    $(document)
     .ready(function() {
       $('.ui.form')
         .form({
@@ -41,7 +47,7 @@
         })
       ;
     });
-  </script>
+  </script> 
 
 </head>
 <body>
@@ -80,62 +86,65 @@
   <div class="field">
     <div class="two fields">
       <div class="subject-info-box-1">
-        Unallocated Students
+       Unallocated Students
         <select multiple="multiple" id='studentname' name="studentname[]" class="form-control">
         </select>
-      </div>
+        </div>
+  
       <div class="subject-info-arrows text-center">
-        <input type="button" id="btnRight" value=">" class="btn btn-default" /><br />
-        <input type="button" id="btnLeft" value="<" class="btn btn-default" /><br />
+        <input type="button" id="btnRight" value=">"style="margin-right:10px; margin-left:10px; margin-top: 40px; class="btn btn-default" /><br />
+        <input type="button" id="btnLeft" value="<" style="margin-right:10px; margin-left:10px; margin-top: 30px; class="btn btn-default" /><br />
       </div>
+
       <div class="subject-info-box-2">
         Allocated Students 
         <select multiple="multiple" id='assignedStudents' name="assignedStudents[]" class="form-control">
         </select>
-      </div>
+
     </div>
   </div>
-
-  <div class="field">
-    <div class="two fields">
+    <div class="field">
+     <div class="six fields">
       <div class="three wide field">
-        <label>Start Date</label>
+      	<label>Start Date</label>
       </div>
       <div class="four wide field">
-        <div class="ui calendar">
-          <div class="ui input left icon">
-            <i class="calendar icon"></i>
-            <input type="Date" placeholder="Date" name="sdate">
-          </div>
-        </div>
+<input type="text" id="sdate" name="sdate" /> 
       </div>
     </div>
   </div>
-
-  <div class="field">
-    <div class="two fields">
+    <div class="field">
+     <div class="six fields">
       <div class="three wide field">
-        <label>End Date</label>
+      	<label>End Date</label>
       </div>
       <div class="four wide field">
-        <div class="ui calendar">
-          <div class="ui input left icon">
-            <i class="calendar icon"></i>
-            <input type="Date" placeholder="Date" name="edate">
-          </div>
-        </div>
+<input type="text" id="edate" name="edate" />
       </div>
     </div>
   </div>
-
+   
 <form class="ui form" action="batch" method="post" >
   <div class="seven wide field">
-    <input id="submitBtn" type="submit" class="ui primary button" name="Create a new Batch" value="Add this batch record"></i></input>
+    <input id="submitBtn" type="submit" class="ui primary basic button" name="Create a new Batch" value="Save "></i></input>
   </div>
 </div>
 </div>
 </form>
 </body>
+<script>
+var dateToday = new Date();
+var dates = $i("#sdate, #edate").datepicker({
+  changeMonth: true,
+  minDate: dateToday,
+  onSelect: function(selectedDate) {
+      var option = this.id == "sdate" ? "minDate" : "maxDate",
+          instance = $i(this).data("datepicker"),
+          date = $i.datepicker.parseDate(instance.settings.dateFormat || $i.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+      dates.not(this).datepicker("option", option, date);
+  }
+});
+</script>
 <script>
 $('.ui.dropdown')
     .dropdown()
@@ -212,6 +221,7 @@ error:function(error){
         }});
     });
 }
+
 
 (jQuery));
 </script>

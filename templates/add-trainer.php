@@ -212,19 +212,16 @@
   }); 
 </script>
 <script type="text/javascript">
-    $(function () {
-       
-        var params = window.location.search.split('?')[1].split('&');
-        var key = params[0].split('=')[0];
-        var value = decodeURIComponent(params[0].split('=')[1]);
-        
-        if (value != null) {
-            document.getElementById("eid").value = value;
+    $(function () {        
+        if (window.location.href.indexOf("id") > -1) {
+            var params = window.location.search.split('?')[1].split('&');
+            var trainerId = decodeURIComponent(params[0].split('=')[1]);
+            document.getElementById("eid").value = trainerId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("schoolheader").innerText = "Edit Trainer Details";
             $.ajax({ 
                 type: 'GET',
-                url: "etrainer?id="+value,
+                url: "edittrainers?id="+trainerId,
                 success: function(data){
                   var schools = JSON.parse(data);
                     var obj = schools[0];
@@ -233,19 +230,14 @@
                     document.getElementById("mailid").value = obj.mail_id;
                     document.getElementById("spec").value = obj.specialization;
                     var val = obj.school;
-                    var ar =[];
-                    ar = val.split(',');              
-                      var select = document.getElementById( 'schoolname' );
-                      var l, o;
-                      l = select.options.length;
-                      for ( var i = 0; i < l; i++ )
-                      {
-                        o = select.options[i];
-                        if ( ar.indexOf( o.text ) != -1 )
-                        {
-                          $('#schoolname').dropdown('set selected',[o.value]);
-                        }
-                      }
+                    console.log(val.length);
+
+                    var select = document.getElementById( 'schoolname' );
+                    for ( var i = 0; i < val.length; i++ ){
+                      var schoolID = val[i];
+                      $('#schoolname').dropdown('set selected',schoolID);
+
+                    } 
                     document.getElementById("address").value = obj.address;
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;

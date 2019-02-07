@@ -86,17 +86,15 @@
 
 <script type="text/javascript">
     $(function () {
-        var params = window.location.search.split('?')[1].split('&');
-        var key = params[0].split('=')[0];
-        var value = decodeURIComponent(params[0].split('=')[1]);
-
-        if (value != null) {
-            document.getElementById("eid").value = value;
+        if (window.location.href.indexOf("id") > -1) {
+            var params = window.location.search.split('?')[1].split('&');
+            var schoolId = decodeURIComponent(params[0].split('=')[1]);
+            document.getElementById("eid").value = schoolId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("schoolheader").innerText = "Edit School Details";
             $.ajax({
                 type: 'GET',
-                url: "eschool?id="+value,
+                url: "editschools?id="+schoolId,
                 success: function(data){
                   var schools = JSON.parse(data);
                     var obj = schools[0];
@@ -110,8 +108,6 @@
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;
                     }
-       
-
                 },
                 error:function(error){
                   console.log(error);

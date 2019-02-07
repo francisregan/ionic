@@ -21,7 +21,7 @@ $app->group('/edittrainer',function(){
     $this->get('', 'TrainerController:editTrainer');
 });
 
-$app->group('/etrainer',function(){
+$app->group('/edittrainers',function(){
     $this->get('', 'TrainerController:listTrainer');
 });
 
@@ -34,7 +34,7 @@ $app->group('/editstudent',function(){
     $this->get('', 'StudentController:editStudent');
 });
 
-$app->group('/estudent',function(){
+$app->group('/editstudents',function(){
     $this->get('', 'StudentController:listStudent');
 });
 
@@ -47,7 +47,7 @@ $app->group('/editschool',function(){
     $this->get('', 'SchoolController:editSchool');
 });
 
-$app->group('/eschool',function(){
+$app->group('/editschools',function(){
     $this->get('', 'SchoolController:listSchool');
 });
 

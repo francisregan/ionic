@@ -254,19 +254,16 @@ $(document)
 
 <script type="text/javascript">
     
-    $(function () {
-       
-      var params = window.location.search.split('?')[1].split('&');
-      var key = params[0].split('=')[0];
-      var value = decodeURIComponent(params[0].split('=')[1]);
-           
-        if (value != null) {
-            document.getElementById("eid").value = value;
+    $(function () {           
+        if (window.location.href.indexOf("id") > -1) {
+            var params = window.location.search.split('?')[1].split('&');
+            var studentId = decodeURIComponent(params[0].split('=')[1]);
+            document.getElementById("eid").value = studentId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("studentheader").innerText = "Edit Student Details";
             $.ajax({ 
                 type: 'GET',
-                url: "estudent?id="+value,
+                url: "editstudents?id="+studentId,
                 success: function(data){
                   var schools = JSON.parse(data);
                     var obj = schools[0];

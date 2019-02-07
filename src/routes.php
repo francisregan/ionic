@@ -39,7 +39,6 @@ $app->group('/editschool',function(){
     $this->get('', 'SchoolController:editSchool');
 });
 
-
 $app->get('/logout', function (Request $request, Response $response, array $args) {
     session_destroy();
     $_SESSION = array();

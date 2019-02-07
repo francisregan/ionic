@@ -253,20 +253,15 @@ $(document)
 </script>
 
 <script type="text/javascript">
-    var queryString = new Array();
+    
     $(function () {
-        if (queryString.length == 0) {
-            if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-        }
-        if (queryString["id"] != null) {
-            document.getElementById("eid").value = queryString["id"];
+       
+      var params = window.location.search.split('?')[1].split('&');
+      var key = params[0].split('=')[0];
+      var value = decodeURIComponent(params[0].split('=')[1]);
+           
+        if (value != null) {
+            document.getElementById("eid").value = value;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("studentheader").innerText = "Edit Student Details";
             $.ajax({ 
@@ -276,7 +271,7 @@ $(document)
                   var schools = JSON.parse(data);
                   for (var i =0; i< schools.length; i++){
                     var obj = schools[i];
-                    if(obj.student_id == queryString["id"]){
+                    if(obj.student_id == value){
                     console.log(obj);
                     document.getElementById("name").value = obj.student_name;
                     document.getElementById("contactno").value = obj.contact_number;

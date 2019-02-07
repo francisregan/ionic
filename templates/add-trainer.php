@@ -224,24 +224,20 @@
             document.getElementById("schoolheader").innerText = "Edit Trainer Details";
             $.ajax({ 
                 type: 'GET',
-                url: "trainer",
+                url: "etrainer?id="+value,
                 success: function(data){
                   var schools = JSON.parse(data);
-                  for (var i =0; i< schools.length; i++){
-                    var obj = schools[i];
-                    if(obj.trainer_id == value){
+                    var obj = schools[0];
                     document.getElementById("name").value = obj.trainer_name;
                     document.getElementById("contactno").value = obj.contact_no;
                     document.getElementById("mailid").value = obj.mail_id;
                     document.getElementById("spec").value = obj.specialization;
                     var val = obj.school;
                     var ar =[];
-                    ar = val.split(',');
-                    console.log(ar.length);               
+                    ar = val.split(',');              
                       var select = document.getElementById( 'schoolname' );
                       var l, o;
                       l = select.options.length;
-                      console.log(ar[0]);
                       for ( var i = 0; i < l; i++ )
                       {
                         o = select.options[i];
@@ -254,8 +250,6 @@
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;
                     }
-                    }
-                  }
                 },
                 error:function(error){
                   console.log(error);

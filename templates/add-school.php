@@ -96,13 +96,10 @@
             document.getElementById("schoolheader").innerText = "Edit School Details";
             $.ajax({
                 type: 'GET',
-                url: "school",
+                url: "eschool?id="+value,
                 success: function(data){
                   var schools = JSON.parse(data);
-                  for (var i =0; i< schools.length; i++){
-                    var obj = schools[i];
-                    console.log(obj);
-                    if(obj.sno == value){
+                    var obj = schools[0];
                     document.getElementById("name").value = obj.school_name;
                     document.getElementById("contactno").value = obj.contact_no;
                     document.getElementById("contactperson").value = obj.contact_person;
@@ -113,8 +110,8 @@
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;
                     }
-                    }
-                  }
+       
+
                 },
                 error:function(error){
                   console.log(error);

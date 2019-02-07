@@ -10,7 +10,13 @@ class TrainerController
      $this->container = $container;
    }
   public function listTrainer($request, $response, $args) {
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer;");
+    $data = $request->getParsedBody();
+    $id = $request->getParam('id');
+    if($id !=NULL){
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer where trainer_id = '$id';");
+    }else{
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer;");
+    }
     $schoolresult = $this->container->db->query("SELECT * FROM ioniccloud.school;");
     $results = [];
     $schoolresults = [];
@@ -72,7 +78,6 @@ class TrainerController
   }
   public function editTrainer($request, $response, $args) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-trainer'));
-  }  
+  }
 }
-
 ?>

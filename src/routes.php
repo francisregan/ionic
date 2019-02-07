@@ -21,6 +21,10 @@ $app->group('/edittrainer',function(){
     $this->get('', 'TrainerController:editTrainer');
 });
 
+$app->group('/etrainer',function(){
+    $this->get('', 'TrainerController:listTrainer');
+});
+
 $app->group('/student',function(){
     $this->post('','StudentController:addStudent');
     $this->get('', 'StudentController:listStudent');  
@@ -30,6 +34,10 @@ $app->group('/editstudent',function(){
     $this->get('', 'StudentController:editStudent');
 });
 
+$app->group('/estudent',function(){
+    $this->get('', 'StudentController:listStudent');
+});
+
 $app->group('/school',function(){
     $this->post('','SchoolController:addSchool');
     $this->get('', 'SchoolController:listSchool');
@@ -37,6 +45,10 @@ $app->group('/school',function(){
 
 $app->group('/editschool',function(){
     $this->get('', 'SchoolController:editSchool');
+});
+
+$app->group('/eschool',function(){
+    $this->get('', 'SchoolController:listSchool');
 });
 
 $app->get('/logout', function (Request $request, Response $response, array $args) {
@@ -75,3 +87,5 @@ $app->group('/batch', function(){
 $app->group('/batchedstudents', function(){
     $this->get('', 'BatchController:batchedstudents'); 
 });
+
+?>

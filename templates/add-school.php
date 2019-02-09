@@ -85,31 +85,19 @@
   </script>
 
 <script type="text/javascript">
-    var queryString = new Array();
     $(function () {
-        if (queryString.length == 0) {
-            if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-        }
-        if (queryString["id"] != null) {
-            document.getElementById("eid").value = queryString["id"];
+        if (window.location.href.indexOf("id") > -1) {
+            var params = window.location.search.split('?')[1].split('&');
+            var schoolId = decodeURIComponent(params[0].split('=')[1]);
+            document.getElementById("eid").value = schoolId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("schoolheader").innerText = "Edit School Details";
-            $.ajax({ 
+            $.ajax({
                 type: 'GET',
-                url: "school",
+                url: "editschools?id="+schoolId,
                 success: function(data){
                   var schools = JSON.parse(data);
-                  for (var i =0; i< schools.length; i++){
-                    var obj = schools[i];
-                    console.log(obj);
-                    if(obj.sno == queryString["id"]){
+                    var obj = schools[0];
                     document.getElementById("name").value = obj.school_name;
                     document.getElementById("contactno").value = obj.contact_no;
                     document.getElementById("contactperson").value = obj.contact_person;
@@ -120,8 +108,6 @@
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;
                     }
-                    }
-                  }
                 },
                 error:function(error){
                   console.log(error);

@@ -10,32 +10,37 @@ class TrainerController
      $this->container = $container;
    }
   public function listTrainer($request, $response, $args) {
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer;");
+    $data = $request->getParsedBody();
+    $id = $request->getParam('id');
+    if($id !=NULL){
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer where trainer_id = '$id';");
+    }else{
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer;");
+    }
     $schoolresult = $this->container->db->query("SELECT * FROM ioniccloud.school;");
     $results = [];
     $schoolresults = [];
     while($schoolrow = mysqli_fetch_array($schoolresult))
-     {
+    {
       array_push($schoolresults, $schoolrow);
     }
     
     while($row = mysqli_fetch_array($result)) {
      $final = "";
       $schoolids = json_decode($row['school'], true);
-      $schoolresult = "";
+      $schoolresult = [];
       foreach ($schoolids as $schoolid){
           foreach ($schoolresults as $school){
             if($school['sno'] === $schoolid){
-              $schoolresult = $school['school_name'];
-              $final  .=  $schoolresult . "," ;
+              array_push($schoolresult, $school['school_name']);
               break;
             }
           }
-      } 
-      $row['school'] = $final;
+      }  
+      $row['school'] = $schoolresult; 
       array_push($results, $row);
     }
-    $this->container->logger->info(json_encode($school)); 
+    $this->container->logger->info(json_encode($school));
     return json_encode($results);
   }
 
@@ -50,13 +55,12 @@ class TrainerController
     $schools = $data['schoolname'];
     
     $act=$data['activate'];  
-    $this->container->logger->info("school info is");
-    $this->container->logger->info($school);
     foreach ($schools as $school)
     {
       $this->container->logger->info("here");
     }
     $schoolsEncoded = json_encode($schools);
+    $this->container->logger->info($schoolsEncoded);
     $address =$data['taddress'];
   $sqli = $this->container->db;
   if($trainerid !=NULL){
@@ -72,7 +76,6 @@ class TrainerController
   }
   public function editTrainer($request, $response, $args) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-trainer'));
-  }  
+  }
 }
-
 ?>

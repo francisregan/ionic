@@ -253,31 +253,20 @@ $(document)
 </script>
 
 <script type="text/javascript">
-    var queryString = new Array();
-    $(function () {
-        if (queryString.length == 0) {
-            if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-        }
-        if (queryString["id"] != null) {
-            document.getElementById("eid").value = queryString["id"];
+    
+    $(function () {           
+        if (window.location.href.indexOf("id") > -1) {
+            var params = window.location.search.split('?')[1].split('&');
+            var studentId = decodeURIComponent(params[0].split('=')[1]);
+            document.getElementById("eid").value = studentId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("studentheader").innerText = "Edit Student Details";
             $.ajax({ 
                 type: 'GET',
-                url: "student",
+                url: "editstudents?id="+studentId,
                 success: function(data){
                   var schools = JSON.parse(data);
-                  for (var i =0; i< schools.length; i++){
-                    var obj = schools[i];
-                    if(obj.student_id == queryString["id"]){
-                    console.log(obj);
+                    var obj = schools[0];
                     document.getElementById("name").value = obj.student_name;
                     document.getElementById("contactno").value = obj.contact_number;
                     document.getElementById("mailid").value = obj.email;
@@ -291,7 +280,6 @@ $(document)
                             break;
                         }
                       }
-                    
                     document.getElementById("age").value = obj.age;
                     document.getElementById("batch").value = obj.batch;
                     document.getElementById("class").value = obj.class;
@@ -299,8 +287,6 @@ $(document)
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;
                     }
-                    }
-                  }
                 },
                 error:function(error){
                   console.log(error);

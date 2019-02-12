@@ -2,7 +2,6 @@
 namespace App\Controllers;
 use Psr\Container\ContainerInterface;
 session_start();
-
 class BatchController
 {
    protected $container;
@@ -18,7 +17,6 @@ class BatchController
     
     $results = [];
     $studentresults =[];
-
    while($studentrow = mysqli_fetch_array($studentresult)){
     array_push($studentresults, $studentrow);
     }
@@ -45,7 +43,6 @@ class BatchController
     $assignedStudents = $data['assignedStudents'];
     $this->container->logger->info($assignedStudents);
     $studentsEncoded = json_encode($assignedStudents);
-
     $startdate = filter_var($data['sdate'], FILTER_SANITIZE_STRING); 
     $enddate = filter_var($data['edate'], FILTER_SANITIZE_STRING);
     $date=date('y-m-d',strtotime($startdate));
@@ -84,13 +81,11 @@ class BatchController
     }
   return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-batch'));
   }
-
   public function unAllocatedStudents($request, $response, $args)
   {
     $data = $request->getParsedBody();
     $schoolid = $request->getParam('id');
     $schoolid = filter_var($schoolid, FILTER_SANITIZE_STRING); 
-
     $batchid = filter_var($batch_id, FILTER_SANITIZE_STRING); 
     $studentresult = $this->container->db->query("Select * from student where school='$schoolid' and student_id not in(Select student_id from studentbatch where school_id='$schoolid');");
     $studentresults =[];
@@ -100,13 +95,11 @@ class BatchController
     }
     return json_encode($studentresults); 
   }
-
   public function allocatedStudents($request, $response, $args)
   {
     $data = $request->getParsedBody();
     $schoolid = $request->getParam('id');
     $schoolid = filter_var($schoolid, FILTER_SANITIZE_STRING); 
-
     $batchid = filter_var($batch_id, FILTER_SANITIZE_STRING); 
     $studentresult = $this->container->db->query("Select * from student where school='$schoolid' and student_id in(Select student_id from studentbatch where school_id='$schoolid');");
     $studentresults =[];
@@ -116,11 +109,9 @@ class BatchController
     }
     return json_encode($studentresults); 
   }
-
   public function editBatch($request, $response, $args) { 
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-batch'));
    } 
-
   public function fetchBatch($request, $response, $args) {
     $data = $request->getParsedBody();
     $id = $request->getParam('id');
@@ -137,5 +128,4 @@ class BatchController
     return json_encode($result); 
   }
 }
-
 ?>

@@ -22,6 +22,9 @@ $.ajax({
         var cellstartdate = row.insertCell(4);
         var cellenddate = row.insertCell(5);
         var celledit = row.insertCell(6);
+        var coursename = row.insertCell(7);
+        var selectcourse = row.insertCell(8);
+        var manageLessonPlan = row.insertCell(9);
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellname.innerHTML = obj.name;
@@ -29,7 +32,9 @@ $.ajax({
         cellstudent.innerHTML = obj.student;
         cellstartdate.innerHTML = obj.sdate;
         cellenddate.innerHTML = obj.edate;
-        celledit.innerHTML = document.getElementById("edit").innerHTML
+        celledit.innerHTML = document.getElementById("edit").innerHTML;
+        selectcourse.innerHTML = document.getElementById("selectcourse").innerHTML;
+        manageLessonPlan.innerHTML = document.getElementById("managelessonplan").innerHTML;
     }
   },
   error:function(error){
@@ -55,6 +60,9 @@ $.ajax({
       <th>Start Date</th>
       <th>End Date</th>
       <th>Edit Details</th>
+      <th>Course</th>
+      <th>Select Course</th>
+      <th>Manage Lesson Plan</th>
 
     </tr>
   </thead>
@@ -76,11 +84,24 @@ $.ajax({
     </div>
 
   </script>
+
+  <script id="selectcourse" type="text/template">
+    <div class="ui form">
+     <button class="ui primary basic button" value="selectcourse">Select Course</button>
+    </div>
+  </script>
+
+  <script id="managelessonplan" type="text/template">
+    <div class="ui form">
+     <button class="ui primary basic button" value="managelessonplan">Manage Lesson Plan</button>
+    </div>
+  </script>
+
   </tbody>
   <tfoot class="full-width">
     <tr>
       <th></th>
-      <th colspan="8">
+      <th colspan="10">
       <div class="ui right floated pagination menu">
         
       </div>

@@ -87,6 +87,7 @@
       <a href="add-course.php" class="item">Add New Course</a>
       <a href="manage-course.php" class="item">Manage Course</a>
       <a href="add-lesson.php" class="item">Add new lesson</a>
+      <a href="manage-lesson.php" class="item">Manage Lesson</a>
       <a href="Manage Contents" class="item">Manage Contents</a>
     </div>
   </div>

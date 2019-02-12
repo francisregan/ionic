@@ -10,6 +10,19 @@ class LessonController
      $this->container = $container;
    }
 
+   public function listlesson($request, $response, $args) {
+    $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.category_id,category.name,lesson.total_pages
+    FROM lesson
+    INNER JOIN category
+    ON lesson.category_id=category.id;");
+   
+    $results = [];
+    while($row = mysqli_fetch_array($result)) {
+      array_push($results, $row);
+    }
+    return json_encode($results);
+  }
+  
   public function addLesson($request, $response, $args) 
   {
     $data = $request->getParsedBody();
@@ -65,7 +78,7 @@ class LessonController
     $result = $sqli->query("INSERT INTO ioniccloud.lesson (lesson_name, category_id, total_pages, page_ids, course_id) 
     VALUES ('$name','$category','$totalPage','$pageidsEncode','$course')");
 
-    return $this->container->renderer->render($response, 'index.php', array('redirect'=>''));
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-lesson'));
  
   return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-lesson'));
   }

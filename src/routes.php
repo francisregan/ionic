@@ -77,6 +77,7 @@ $app->group('/course', function(){
 
 $app->group('/lesson', function(){
     $this->post('', 'LessonController:addlesson');
+    $this->get('', 'LessonController:listlesson');
    }); 
 
 $app->group('/batch', function(){

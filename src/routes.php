@@ -67,9 +67,21 @@ $app->group('/course', function(){
 $app->group('/batch', function(){
     $this->post('', 'BatchController:addbatch');
     $this->get('', 'BatchController:listbatch');
-   }); 
+}); 
 
-$app->group('/batchedstudents', function(){
-    $this->get('', 'BatchController:batchedstudents'); 
+$app->group('/unAllocatedStudents', function(){
+    $this->get('', 'BatchController:unAllocatedStudents'); 
 });
 
+$app->group('/allocatedStudents', function(){
+    $this->get('', 'BatchController:allocatedStudents'); 
+});
+
+
+$app->group('/editbatch',function(){
+    $this->get('', 'BatchController:editBatch');
+});
+
+$app->group('/fetchBatch', function(){
+    $this->get('', 'BatchController:fetchBatch'); 
+});

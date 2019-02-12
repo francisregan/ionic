@@ -3,7 +3,8 @@
 <html>
 <head>
     <link href="semantic/dist/semantic.min.css" rel="stylesheet">
-    <script src="jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <script src="semantic/dist/semantic.min.js"></script>
     <link href="css/style.css" rel="stylesheet">
     <style>

@@ -24,6 +24,11 @@ $container['db'] = function ($c) {
     return new mysqli($settings['host'], $settings['user'], $settings['pass'], $settings['dbname']);
 }; 
 
+$container['files'] = function ($c) {
+    $settings = $c->get('settings')['files'];
+    return $settings['lesson_dir'];
+}; 
+
 $container['flash'] = function () {
     return new Slim\Flash\Messages();
 };
@@ -63,6 +68,10 @@ $container['CourseController']=function($c)
     return new App\Controllers\CourseController($c);
 };
 
+$container['LessonController']=function($c)
+{
+    return new App\Controllers\LessonController($c);
+};
 $container['BatchController']=function($c)
 {
     return new App\Controllers\BatchController($c);

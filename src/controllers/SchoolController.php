@@ -11,7 +11,13 @@ class SchoolController
    }
 
   public function listSchool($request, $response, $args) {
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.school;");
+    $data = $request->getParsedBody();
+    $id = $request->getParam('id');
+    if($id != NULL){
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.school where sno = '$id';");
+    }else {
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.school;");
+    }
     $results = [];
     while($row = mysqli_fetch_array($result)) {
       array_push($results, $row);

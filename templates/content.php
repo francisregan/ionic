@@ -2,19 +2,8 @@
 <head>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 <link href="semantic/dist/semantic.min.css" rel="stylesheet">
-<script src="jquery-3.1.1.min.js"></script>
 <script src="semantic/dist/semantic.min.js"></script>
 <link href="css/style.css" rel="stylesheet">
-
-<style>
-  .content {
-    display: block;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-</style>
 
 </head>
 <body >
@@ -97,7 +86,8 @@
       <a href="manage-category.php" class="item">Manage Categories</a>
       <a href="add-course.php" class="item">Add New Course</a>
       <a href="manage-course.php" class="item">Manage Course</a>
-      <a href="Add Content" class="item">Add new content</a>
+      <a href="add-lesson.php" class="item">Add new lesson</a>
+      <a href="manage-lesson.php" class="item">Manage Lesson</a>
       <a href="Manage Contents" class="item">Manage Contents</a>
     </div>
   </div>

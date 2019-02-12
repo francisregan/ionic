@@ -212,56 +212,36 @@
   }); 
 </script>
 <script type="text/javascript">
-    var queryString = new Array();
-    $(function () {
-        if (queryString.length == 0) {
-            if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-        }
-        if (queryString["id"] != null) {
-            document.getElementById("eid").value = queryString["id"];
+    $(function () {        
+        if (window.location.href.indexOf("id") > -1) {
+            var params = window.location.search.split('?')[1].split('&');
+            var trainerId = decodeURIComponent(params[0].split('=')[1]);
+            document.getElementById("eid").value = trainerId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("schoolheader").innerText = "Edit Trainer Details";
             $.ajax({ 
                 type: 'GET',
-                url: "trainer",
+                url: "edittrainers?id="+trainerId,
                 success: function(data){
                   var schools = JSON.parse(data);
-                  for (var i =0; i< schools.length; i++){
-                    var obj = schools[i];
-                    if(obj.trainer_id == queryString["id"]){
+                    var obj = schools[0];
                     document.getElementById("name").value = obj.trainer_name;
                     document.getElementById("contactno").value = obj.contact_no;
                     document.getElementById("mailid").value = obj.mail_id;
                     document.getElementById("spec").value = obj.specialization;
                     var val = obj.school;
-                    var ar =[];
-                    ar = val.split(',');
-                    console.log(ar.length);               
-                      var select = document.getElementById( 'schoolname' );
-                      var l, o;
-                      l = select.options.length;
-                      console.log(ar[0]);
-                      for ( var i = 0; i < l; i++ )
-                      {
-                        o = select.options[i];
-                        if ( ar.indexOf( o.text ) != -1 )
-                        {
-                          $('#schoolname').dropdown('set selected',[o.value]);
-                        }
-                      }
+                    console.log(val.length);
+
+                    var select = document.getElementById( 'schoolname' );
+                    for ( var i = 0; i < val.length; i++ ){
+                      var schoolID = val[i];
+                      $('#schoolname').dropdown('set selected',schoolID);
+
+                    } 
                     document.getElementById("address").value = obj.address;
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;
                     }
-                    }
-                  }
                 },
                 error:function(error){
                   console.log(error);

@@ -1,0 +1,112 @@
+1. CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `type` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+2. CREATE TABLE `course` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `type` varchar(150) NOT NULL,
+  `duration` varchar(150) NOT NULL,
+  `printing` varchar(150) NOT NULL,
+  `session` int(3) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+3. CREATE TABLE `lesson` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lesson_name` varchar(150) NOT NULL,
+  `category_id` varchar(150) NOT NULL,
+  `total_pages` varchar(150) NOT NULL,
+  `page_ids` varchar(150) NOT NULL,
+  `course_id` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+4. CREATE TABLE `lessonpages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lesson_id` varchar(150) NOT NULL,
+  `page_no` varchar(150) NOT NULL,
+  `content` varchar(150) NOT NULL,
+  `md5file` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+5. CREATE TABLE `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `address` varchar(45) NOT NULL,
+  `gender` varchar(45) NOT NULL,
+  `course` varchar(45) NOT NULL,
+  `school_name` varchar(45) NOT NULL,
+  `branch` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+);
+
+6. CREATE TABLE `school` (
+  `sno` int(10) NOT NULL AUTO_INCREMENT,
+  `school_name` varchar(150) NOT NULL,
+  `contact_no` bigint(10) NOT NULL,
+  `contact_person` varchar(150) NOT NULL,
+  `mail_id` varchar(150) NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `state` varchar(150) NOT NULL,
+  `city` varchar(150) NOT NULL,
+  `activate` varchar(150) NOT NULL,
+  `remarks` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`sno`),
+  UNIQUE KEY `mail_id_UNIQUE` (`mail_id`)
+);
+
+7. CREATE TABLE `student` (
+  `student_id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_name` varchar(150) NOT NULL,
+  `contact_number` bigint(10) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `school` varchar(150) NOT NULL,
+  `age` int(2) NOT NULL,
+  `batch` varchar(150) NOT NULL,
+  `class` varchar(150) NOT NULL,
+  `parent_name` varchar(150) NOT NULL,
+  `activate` varchar(150) NOT NULL,
+  PRIMARY KEY (`student_id`)
+);
+
+8. CREATE TABLE `trainer` (
+  `trainer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `trainer_name` varchar(150) NOT NULL,
+  `contact_no` varchar(150) NOT NULL,
+  `mail_id` varchar(150) NOT NULL,
+  `specialization` varchar(150) NOT NULL,
+  `school` varchar(150) NOT NULL,
+  `address` varchar(150) NOT NULL,
+  `activate` varchar(150) NOT NULL,
+  PRIMARY KEY (`trainer_id`)
+);
+
+9. CREATE TABLE `batch` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `school` varchar(45) NOT NULL,
+  `student` varchar(45) NOT NULL,
+  `sdate` date NOT NULL,
+  `edate` date NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `student_UNIQUE` (`student`)
+);
+
+10.CREATE TABLE `studentbatch` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_id` varchar(45) NOT NULL,
+  `batch_id` varchar(45) NOT NULL,
+  `school_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `student_id_UNIQUE` (`student_id`)
+);

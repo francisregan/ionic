@@ -11,11 +11,19 @@ class StudentController
    }
 
   public function listStudent($request, $response, $args) {
-    $result = $this->container->db->query("SELECT student.student_id,student.student_name,student.contact_number,student.email,student.school,school.school_name,student.age,student.batch,student.class,student.parent_name,student.activate
-    FROM student
-    INNER JOIN school
-    ON student.school=school.sno;");
-
+    $data = $request->getParsedBody();
+    $id = $request->getParam('id');
+    if($id != NULL){
+      $result = $this->container->db->query("SELECT student.student_id,student.student_name,student.contact_number,student.email,student.school,school.school_name,student.age,student.batch,student.class,student.parent_name,student.activate
+      FROM student
+      INNER JOIN school
+      ON student.school=school.sno where student_id = '$id';");
+    }else{
+      $result = $this->container->db->query("SELECT student.student_id,student.student_name,student.contact_number,student.email,student.school,school.school_name,student.age,student.batch,student.class,student.parent_name,student.activate
+      FROM student
+      INNER JOIN school
+      ON student.school=school.sno;");
+    }
     $results = [];
     while($row = mysqli_fetch_array($result)) {
       array_push($results, $row);
@@ -54,6 +62,6 @@ class StudentController
 
   public function editStudent($request, $response, $args) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-student'));
-  }  
+  }
 }
 ?>

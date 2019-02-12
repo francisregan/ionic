@@ -54,6 +54,20 @@
             </div>
         </div>
       </div>
+
+      <div class="field">
+        <div class="two fields">
+            <div class="three wide field">
+                <label>Course</label>
+            </div>
+            <div class="four wide field">
+                <select id="course" name="course">
+                     <option value=""> Select Course</option>
+                </select>
+            </div>
+        </div>
+      </div>
+
     <div class="field">
         <div class="two fields">
             <div class="three wide field">
@@ -134,6 +148,25 @@
     error:function(error){
       console.log(error);
     }});
+
+    $.ajax({ 
+    type: 'GET',
+    url: "course",
+    success: function(data){
+      var course = JSON.parse(data);
+      course.forEach(function(obj){
+        var element = document.getElementById("course");
+        var option = document.createElement("option");
+        option.value = obj.id;
+        option.id = obj.id;
+        option.text = obj.name;
+        element.add(option);
+});
+    },
+    error:function(error){
+      console.log(error);
+    }});
+
     $(".primary").click(function() {
         var totalPage = $('#mySelect').val();
         var arr = [];

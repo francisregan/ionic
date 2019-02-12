@@ -27,6 +27,7 @@ class LessonController
   {
     $data = $request->getParsedBody();
     
+    $course = filter_var($data['course'], FILTER_SANITIZE_STRING);
     $name = filter_var($data['lessonname'], FILTER_SANITIZE_STRING);
     $category = filter_var($data['category'], FILTER_SANITIZE_STRING);
     $totalPage = filter_var($data['noofpages'], FILTER_SANITIZE_STRING);
@@ -74,8 +75,8 @@ class LessonController
     $pageidsEncode = json_encode($addedIDs);
   }
 
-    $result = $sqli->query("INSERT INTO ioniccloud.lesson (lesson_name, category_id, total_pages, page_ids) 
-    VALUES ('$name','$category','$totalPage','$pageidsEncode')");
+    $result = $sqli->query("INSERT INTO ioniccloud.lesson (lesson_name, category_id, total_pages, page_ids, course_id) 
+    VALUES ('$name','$category','$totalPage','$pageidsEncode','$course')");
 
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-lesson'));
  

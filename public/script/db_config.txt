@@ -3,7 +3,7 @@
   `name` varchar(150) NOT NULL,
   `type` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+);
 
 2. CREATE TABLE `course` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -13,7 +13,7 @@
   `printing` varchar(150) NOT NULL,
   `session` int(3) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+);
 
 3. CREATE TABLE `lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -22,7 +22,7 @@
   `total_pages` varchar(45) NOT NULL,
   `page_ids` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=latin1;
+);
 
 4. CREATE TABLE `lessonpages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,7 @@
   `content` varchar(150) NOT NULL,
   `md5file` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
+);
 
 5. CREATE TABLE `login` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -47,7 +47,7 @@
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`email`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+);
 
 6. CREATE TABLE `school` (
   `sno` int(10) NOT NULL AUTO_INCREMENT,
@@ -62,7 +62,7 @@
   `remarks` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`sno`),
   UNIQUE KEY `mail_id_UNIQUE` (`mail_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=latin1;
+);
 
 7. CREATE TABLE `student` (
   `student_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -76,7 +76,7 @@
   `parent_name` varchar(150) NOT NULL,
   `activate` varchar(150) NOT NULL,
   PRIMARY KEY (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+);
 
 8. CREATE TABLE `trainer` (
   `trainer_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -88,7 +88,7 @@
   `address` varchar(150) NOT NULL,
   `activate` varchar(150) NOT NULL,
   PRIMARY KEY (`trainer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+);
 
 9. CREATE TABLE `batch` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -99,7 +99,7 @@
   `edate` date NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `student_UNIQUE` (`student`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+);
 
 10.CREATE TABLE `studentbatch` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -108,4 +108,4 @@
   `school_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `student_id_UNIQUE` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=latin1;
+);

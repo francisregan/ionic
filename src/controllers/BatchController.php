@@ -9,7 +9,7 @@ class BatchController
      $this->container = $container;
    }
    public function listbatch($request, $response, $args) {
-    $result = $this->container->db->query("SELECT batch.id,batch.name,batch.school,school.school_name,batch.student,batch.sdate,batch.edate,batch.activate
+    $result = $this->container->db->query("SELECT batch.id,batch.name,batch.school,school.school_name,batch.student,batch.sdate,batch.edate, batch.activate
     FROM batch
     INNER JOIN school
     ON batch.school=school.sno;");
@@ -26,7 +26,18 @@ class BatchController
       $final = "";
       $studentids = json_decode($row['student'], true);
       $studentresult = "";
-      
+
+          foreach ($studentids as $studentid){
+     $this->container->logger->info(activate);
+        foreach ($studentresults as $student){
+          if($student['student_id'] === $studentid){
+            $studentresult = $student['student_name'];
+            $final  .=  $studentresult . "," ;
+            break;
+          }
+        }
+      } 
+          $row['student'] = $final;
     array_push($results, $row);
     }
     return json_encode($results);
@@ -36,36 +47,39 @@ class BatchController
   {
     $data = $request->getParsedBody();
     $batchid = $data['bid'];
+    
     $name = filter_var($data['bname'], FILTER_SANITIZE_STRING);
     $school = filter_var($data['schoolname'], FILTER_SANITIZE_STRING);
-    
     $students = filter_var($data['studentname']);
     $assignedStudents = $data['assignedStudents'];
-    $this->container->logger->info($assignedStudents);
     $studentsEncoded = json_encode($assignedStudents);
+    $this->container->logger->info("---------------");
+    $this->container->logger->info($studentsEncoded);
+    $this->container->logger->info("------------");
+
     $startdate = filter_var($data['sdate'], FILTER_SANITIZE_STRING); 
     $enddate = filter_var($data['edate'], FILTER_SANITIZE_STRING);
     $date=date('y-m-d',strtotime($startdate));
     $edate=date('y-m-d',strtotime($enddate));
-    $act=$data['activate'];  
+    /* $act=$data['activate'];   */
     
     $sqli = $this->container->db;
     if($batchid != NULL)
   
       {
       
-        $result = $sqli->query("UPDATE ioniccloud.batch SET name='$name', school='$school', student='$studentsEncoded', sdate='$date', edate='$edate', activate='$act' WHERE id='$batchid';");
+        $result = $sqli->query("UPDATE ioniccloud.batch SET name='$name', school='$school', student='$studentsEncoded', sdate='$date', edate='$edate' WHERE id='$batchid';");
       }
     
     else{
-      $result = $sqli->query("insert into ioniccloud.batch (name, school, student, sdate, edate,activate ) 
-      VALUES ('$name','$school','$studentsEncoded','$date','$edate','$act' )");
+      $result = $sqli->query("insert into ioniccloud.batch (name, school, student, sdate, edate ) 
+      VALUES ('$name','$school','$studentsEncoded','$date','$edate' )");
     }
   
     if (mysqli_affected_rows($sqli)==1) {
     
       $last_id = mysqli_insert_id($sqli);
-      $result = $sqli->query("delete from ioniccloud.studentbatch where batch_id =$batchid");
+       $result = $sqli->query("delete from ioniccloud.studentbatch where batch_id =$batchid");
       
        foreach($assignedStudents as $assignedStu){
           $this->container->logger->info($assignedStu);
@@ -116,7 +130,6 @@ class BatchController
     $data = $request->getParsedBody();
     $id = $request->getParam('id');
     $query = "Select * from batch where id='$id';";
-    $this->container->logger->info($query);
     $batchResult = $this->container->db->query($query);
     $result =[];
     foreach($batchResult as $batch)

@@ -49,9 +49,9 @@
 <br />
 <div class="ui error message"></div>
 <div style="align:center">
-<div>
+  <div>
 
-<div class="field">
+      <div class="field">
         <div class="three fields" style="display: none;">
           <div class="three wide field">
             <label>Batch ID</label>
@@ -60,103 +60,100 @@
             <input type="text" name="bid" id="eid">
           </div>
         </div>
-    </div>
+      </div>
 
 
-    <div class="field">
-    <div class="two fields">
-      <div class="three wide field">
-      <label>Batch Name</label>
-      </div>
-      <div class="four wide field">
-        <input type="text" name="bname" placeholder="Specify the Batch" id="batch">
-      </div>
-    </div>
-  </div>
-
-    <div class="field">
-    <div class="two fields">
-      <div class="three wide field">
-      <label>School</label>
-      </div>
-      <div class="four wide field">
-      <select id="schoolname" name="schoolname" >
-      <option value="0">Select school </option> 
-      </select>
-      </div>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="two fields">
-      <div class="subject-info-box-1">
-        Unallocated Students
-        <select multiple="multiple" id='studentname' name="studentname[]" class="form-control">
-        </select>
-      </div>
-      <div class="subject-info-arrows text-center">
-        <input type="button" id="btnRight" value=">" class="btn btn-default" /><br />
-        <input type="button" id="btnLeft" value="<" class="btn btn-default" /><br />
-      </div>
-      <div class="subject-info-box-2">
-        Allocated Students 
-        <select multiple="multiple" id='assignedStudents' name="assignedStudents[]" class="form-control">
-        </select>
-      </div>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="two fields">
-      <div class="three wide field">
-        <label>Start Date</label>
-      </div>
-      <div class="four wide field">
-        <div class="ui calendar">
-          <div class="ui input left icon">
-            <i class="calendar icon"></i>
-            <input type="Date" name="sdate" placeholder="Date" id="date">
+      <div class="field">
+        <div class="two fields">
+          <div class="three wide field">
+            <label>Batch Name</label>
+          </div>
+          <div class="four wide field">
+            <input type="text" name="bname" placeholder="Specify the Batch" id="batch">
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-
-  <div class="field">
-    <div class="two fields">
-      <div class="three wide field">
-        <label>End Date</label>
-      </div>
-      <div class="four wide field">
-        <div class="ui calendar">
-          <div class="ui input left icon">
-            <i class="calendar icon"></i>
-            <input type="Date" name="edate" placeholder="Date" id="edate">
+      <div class="field">
+        <div class="two fields">
+          <div class="three wide field">
+            <label>School</label>
+          </div>
+          <div class="four wide field">
+            <select id="schoolname" name="schoolname" >
+              <option value="0">Select school </option> 
+            </select>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="two fields">
-      <div class="three wide field">
-      <label>Activate</label>
-    </div>
-    <div class="field">
-    
-     <div class="one wide field" >
-     <input type="hidden" name="activate" value="no">
-     <input type="checkbox" name="activate" id="myCheck" value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
-    </div>
-    </div>
-   </div>
-</div>
-<form class="ui form" action="batch" method="post" >
-  <div class="seven wide field">
-    <input id="submitBtn" type="submit" class="ui primary button" name="Create a new Batch" value="Add this batch record"></i></input>
+      <div class="field">
+        <div class="two fields">
+          <div class="subject-info-box-1">
+            Unallocated Students
+            <select multiple="multiple" id='studentname' name="studentname[]" class="form-control">
+            </select>
+          </div>
+          <div class="subject-info-arrows text-center">
+            <input type="button" id="btnRight" value=">" class="btn btn-default" /><br />
+            <input type="button" id="btnLeft" value="<" class="btn btn-default" /><br />
+          </div>
+          <div class="subject-info-box-2">
+            Allocated Students 
+            <select multiple="multiple" id='assignedStudents' name="assignedStudents[]" class="form-control">
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="two fields">
+          <div class="three wide field">
+            <label>Start Date</label>
+          </div>
+          <div class="four wide field">
+            <div class="ui calendar">
+              <div class="ui input left icon">
+                <i class="calendar icon"></i>
+                <input type="Date" name="sdate" placeholder="Date" id="date">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="field">
+        <div class="two fields">
+          <div class="three wide field">
+            <label>End Date</label>
+          </div>
+          <div class="four wide field">
+            <div class="ui calendar">
+              <div class="ui input left icon">
+                <i class="calendar icon"></i>
+                <input type="Date" name="edate" placeholder="Date" id="edate">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="two fields">
+          <div class="three wide field">
+            <label>Activate</label>
+          </div>
+          <div class="field">
+           <div class="one wide field" >
+            <input type="hidden" name="activate" value="no">
+            <input type="checkbox" name="activate" id="myCheck" value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+           </div>
+        </div>
+      </div> -->
+      <div class="seven wide field">
+        <input id="submitBtn" type="submit" class="ui primary button" name="Create a new Batch" value="Add this batch record"></i></input>
+      </div>
   </div>
-</div>
 </div>
 </form>
 </body>
@@ -286,12 +283,6 @@
               var obj = sbatch[0];
               console.log(obj);
               document.getElementById("batch").value = obj.name;
-              document.getElementById("date").value = obj.sdate;
-              document.getElementById("edate").value = obj.edate;
-              if(obj.activate == "Yes"){
-                console.log(obj.activate);
-                document.getElementById("myCheck").checked = true;
-              }
               var school;
               for (var i = 0; i < schoolArray.length; i++) {
                 if(schoolArray[i] == obj.school){
@@ -301,6 +292,14 @@
               }
               getUnallocatedStudents();
               getAllocatedStudents();
+              console.log("---------");
+              console.log(getAllocatedStudents());
+              document.getElementById("date").value = obj.sdate;
+              document.getElementById("edate").value = obj.edate;
+              // if(obj.activate == "Yes"){
+              //   console.log(obj.activate);
+              //   document.getElementById("myCheck").checked = true;
+              // }
             },
           error:function(error){
           console.log(error);

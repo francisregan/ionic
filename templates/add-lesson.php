@@ -39,7 +39,7 @@
 <body>
 <form class="ui form" action="lesson" method="post" >
 <br />
-
+<h3 class="ui dividing header" style="text-align: left;">Add Lesson</h3>
 <br />
 <div class="ui error message"></div>
 <div style="align:center">

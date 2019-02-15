@@ -25,6 +25,8 @@ $.ajax({
         var coursename = row.insertCell(7);
         var selectcourse = row.insertCell(8);
         var manageLessonPlan = row.insertCell(9);
+        var cellbatchid = row.insertCell(10);
+        cellbatchid.setAttribute("style","display: none;");
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellname.innerHTML = obj.name;
@@ -35,6 +37,8 @@ $.ajax({
         celledit.innerHTML = document.getElementById("edit").innerHTML;
         selectcourse.innerHTML = document.getElementById("selectcourse").innerHTML;
         manageLessonPlan.innerHTML = document.getElementById("managelessonplan").innerHTML;
+        cellbatchid.innerHTML = obj.id;
+        cellbatchid.setAttribute("class","batchid");
     }
   },
   error:function(error){
@@ -43,6 +47,14 @@ $.ajax({
   $(".pagination").customPaginate({
     itemsToPaginate : ".rowdata"
   });
+
+  $(".managelessonplan").click(function() {
+      var $row = $(this).closest("tr");    // Find the row
+      var $id = $row.find(".batchid").text();  // Find the text
+    var url = "managelessonplan?id=" + $id;
+    window.location.href = url;
+  });
+
 });
 </script>
 </head>
@@ -93,7 +105,7 @@ $.ajax({
 
   <script id="managelessonplan" type="text/template">
     <div class="ui form">
-     <button class="ui primary basic button" value="managelessonplan">Manage Lesson Plan</button>
+     <button class="ui primary basic button managelessonplan" value="managelessonplan">Manage Lesson Plan</button>
     </div>
   </script>
 

@@ -263,7 +263,7 @@ $(document)
             document.getElementById("studentheader").innerText = "Edit Student Details";
             $.ajax({ 
                 type: 'GET',
-                url: "editstudents?id="+studentId,
+                url: "student?id="+studentId,
                 success: function(data){
                   var schools = JSON.parse(data);
                     var obj = schools[0];

@@ -9,7 +9,55 @@ class BatchController
      $this->container = $container;
    }
    public function listbatch($request, $response, $args) {
-    $result = $this->container->db->query("SELECT batch.id,batch.name,school.school_name,batch.student,batch.sdate,batch.edate,batch.course_id
+    $data = $request->getParsedBody();
+    $id = $request->getParam('id');
+    if($id != NULL){
+      $result = $this->container->db->query("SELECT school.sno, batch.id,batch.name,school.school_name,batch.student,batch.course_id
+      FROM batch
+      INNER JOIN school
+      ON batch.school=school.sno where id = '$id';");
+      $trainerresult = $this->container->db->query("SELECT school,trainer_name FROM ioniccloud.trainer;");
+      $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson;");
+      $results = [];
+      $trainerresults = [];
+      $lessonresults = [];
+
+      while($lessonrow = mysqli_fetch_array($lessonresult))
+      {
+        array_push($lessonresults, $lessonrow);
+      }
+
+      while($row = mysqli_fetch_array($result)) {
+          while($trainerrow = mysqli_fetch_array($trainerresult)){
+            $schoolids = json_decode($trainerrow['school'], true);
+            foreach ($schoolids as $schoolid){
+                  if($row['sno'] === $schoolid){
+                    array_push($trainerresults, $trainerrow['trainer_name']);
+                    break;
+                  }
+            }   
+          }     
+          $lessonnames = [];
+          foreach ($lessonresults as $lessonname){
+            if($row['course_id'] === $lessonname['course_id']){
+              array_push($lessonnames, $lessonname['lesson_name']);
+              break;
+            }
+          }
+          $courseId = $row['course_id'];
+          $courseresult = $this->container->db->query("SELECT name FROM ioniccloud.course where id='$courseId';");
+          $courseresults = [];
+          while($courserow = mysqli_fetch_array($courseresult))
+          {
+            $row['coursename'] = $courserow['name'];
+          }
+          $row['trainername'] = $trainerresults;
+          $row['lessonname'] = $lessonnames;
+          
+          array_push($results, $row);
+      }
+    }else {
+    $result = $this->container->db->query("SELECT batch.id,batch.name,school.school_name,batch.student,batch.sdate,batch.edate,batch.course_id  
     FROM batch
     INNER JOIN school
     ON batch.school=school.sno;");
@@ -29,15 +77,13 @@ class BatchController
     }
    
     while($row = mysqli_fetch_array($result)) {
-      $final = "";
       $studentids = json_decode($row['student'], true);
-      $studentresult = "";
+      $studentresult = [];
       
       foreach ($studentids as $studentid){
         foreach ($studentresults as $student){
           if($student['student_id'] === $studentid){
-            $studentresult = $student['student_name'];
-            $final  .=  $studentresult . "," ;
+            array_push($studentresult, $student['student_name']);
             break;
           }
         }
@@ -53,6 +99,7 @@ class BatchController
     $row['course_id'] = $courseresult;
     array_push($results, $row);
     }
+  }
     return json_encode($results);
   }
   
@@ -98,10 +145,10 @@ class BatchController
     }
     return json_encode($studentresults); 
   }
-  public function selectcourse($request, $response, $args) {
+  public function selectCourse($request, $response, $args) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'select-course'));
   }
-  public function updatecourse ($request, $response, $args){
+  public function updateCourse ($request, $response, $args){
     $data = $request->getParsedBody();
     $batchid = $data['batchid'];
     $selectcourse = filter_var($data['selectcourse'], FILTER_SANITIZE_STRING);
@@ -115,5 +162,8 @@ class BatchController
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-batch'));
   }
   
+  public function manageLessonPlan($request, $response, $args) {
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-lesson-plan'));
+  }
 }
 ?>

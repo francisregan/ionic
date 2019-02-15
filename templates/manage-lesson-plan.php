@@ -22,7 +22,11 @@
                           document.getElementById("trainer").appendChild(linebreak)
                         }
 
-                        document.getElementById("course").innerHTML= obj.coursename;
+                        if(obj.coursename != null){
+                          document.getElementById("course").innerHTML= obj.coursename;
+                        }else{
+                          document.getElementById("course").innerHTML= "The Course is not allocated for this Batch";
+                        }
 
                         var table = document.getElementById("mytable");
                         for (var i =0; i< obj.lessonname.length; i++){

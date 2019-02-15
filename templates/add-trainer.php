@@ -221,7 +221,7 @@
             document.getElementById("schoolheader").innerText = "Edit Trainer Details";
             $.ajax({ 
                 type: 'GET',
-                url: "edittrainers?id="+trainerId,
+                url: "trainer?id="+trainerId,
                 success: function(data){
                   var schools = JSON.parse(data);
                     var obj = schools[0];

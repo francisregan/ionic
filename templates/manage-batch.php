@@ -16,22 +16,20 @@ $.ajax({
         var row = table.insertRow(1);
         row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
-        var cellname = row.insertCell(1);
+        var cellbatch = row.insertCell(1);
         var cellschool = row.insertCell(2);
-        var cellstudent = row.insertCell(3);
-        var cellstartdate = row.insertCell(4);
-        var cellenddate = row.insertCell(5);
-        var celledit = row.insertCell(6);
-        var coursename = row.insertCell(7);
-        var selectcourse = row.insertCell(8);
-        var manageLessonPlan = row.insertCell(9);
-        var cellbatchid = row.insertCell(10);
+        var cellstartdate = row.insertCell(3);
+        var cellenddate = row.insertCell(4);
+        var celledit = row.insertCell(5);
+        var coursename = row.insertCell(6);
+        var selectcourse = row.insertCell(7);
+        var manageLessonPlan = row.insertCell(8);
+        var cellbatchid = row.insertCell(9);
         cellbatchid.setAttribute("style","display: none;");
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        cellname.innerHTML = obj.name;
+        cellbatch.innerHTML = obj.name;
         cellschool.innerHTML = obj.school_name;
-        cellstudent.innerHTML = obj.student;
         cellstartdate.innerHTML = obj.sdate;
         cellenddate.innerHTML = obj.edate;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
@@ -66,9 +64,8 @@ $.ajax({
   <thead>
     <tr>
       <th></th>
-      <th>Name</th>
+      <th>Batch</th>
       <th>School</th>
-      <th>Student</th>
       <th>Start Date</th>
       <th>End Date</th>
       <th>Edit Details</th>

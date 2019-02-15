@@ -73,20 +73,18 @@ class BatchController
     }
    
     while($row = mysqli_fetch_array($result)) {
-      $final = "";
       $studentids = json_decode($row['student'], true);
-      $studentresult = "";
+      $studentresult = [];
       
       foreach ($studentids as $studentid){
         foreach ($studentresults as $student){
           if($student['student_id'] === $studentid){
-            $studentresult = $student['student_name'];
-            $final  .=  $studentresult . "," ;
+            array_push($studentresult, $student['student_name']);
             break;
           }
         }
       } 
-    $row['student'] = $final;
+    $row['student'] = $studentresult;
     array_push($results, $row);
     }
   }

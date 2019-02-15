@@ -10,18 +10,24 @@ class BatchController
      $this->container = $container;
    }
    public function listbatch($request, $response, $args) {
-    $result = $this->container->db->query("SELECT batch.name,school.school_name,batch.student,batch.sdate,batch.edate
+    $result = $this->container->db->query("SELECT batch.id,batch.name,school.school_name,batch.student,batch.sdate,batch.edate,batch.course_id
     FROM batch
     INNER JOIN school
     ON batch.school=school.sno;");
      $studentresult = $this->container->db->query("SELECT * FROM ioniccloud.student;");
+     $courseresult = $this->container->db->query("SELECT id, name FROM ioniccloud.course;");
     
     $results = [];
     $studentresults =[];
-
+    $courseresults=[];
     while($studentrow = mysqli_fetch_array($studentresult))
     {
      array_push($studentresults, $studentrow);
+    }
+
+    while($courserow = mysqli_fetch_array($courseresult))
+    {
+     array_push($courseresults, $courserow);
     }
    
     while($row = mysqli_fetch_array($result)) {
@@ -38,7 +44,16 @@ class BatchController
           }
         }
       } 
+      $courseresult = [];
+      foreach ($courseresults as $coursename){
+        if($row['course_id'] === $coursename['id']){
+          array_push($courseresult, $coursename['name']);
+          break;
+        }
+      }
+
     $row['student'] = $final;
+    $row['course_id'] = $courseresult;
     array_push($results, $row);
     }
     return json_encode($results);
@@ -89,6 +104,26 @@ class BatchController
     }
     return json_encode($studentresults); 
   }
+  public function selectcourse($request, $response, $args) {
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'select-course'));
+  }
+  public function updatecourse ($request, $response, $args){
+    $data = $request->getParsedBody();
+    $batchid = $data['batchid'];
+    $selectcourse = filter_var($data['selectcourse'], FILTER_SANITIZE_STRING);
+    $sqli = $this->container->db;
+
+    $result = $sqli->query("UPDATE batch SET course_id= '$selectcourse' WHERE id = '$batchid';");
+
+    
+    if (mysqli_affected_rows($sqli)==1) {
+      return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-batch'));
+    }
+
+    echo("<script>window.alert('Record Not Added');</script>");
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'select-course'));
+  }
+  
 }
 
 ?>

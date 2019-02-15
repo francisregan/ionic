@@ -16,15 +16,17 @@ $.ajax({
         var row = table.insertRow(1);
         row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
-        var cellname = row.insertCell(1);
+        var cellname = row.insertCell(1); 
         var cellschool = row.insertCell(2);
         var cellstudent = row.insertCell(3);
         var cellstartdate = row.insertCell(4);
         var cellenddate = row.insertCell(5);
         var celledit = row.insertCell(6);
-        var coursename = row.insertCell(7);
+        var cellcoursename = row.insertCell(7);
         var selectcourse = row.insertCell(8);
         var manageLessonPlan = row.insertCell(9);
+        var cellbatchid = row.insertCell(10);
+        cellbatchid.setAttribute("style","display: none;");
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellname.innerHTML = obj.name;
@@ -32,9 +34,13 @@ $.ajax({
         cellstudent.innerHTML = obj.student;
         cellstartdate.innerHTML = obj.sdate;
         cellenddate.innerHTML = obj.edate;
+      
         celledit.innerHTML = document.getElementById("edit").innerHTML;
+        cellcoursename.innerHTML = obj.course_id;
         selectcourse.innerHTML = document.getElementById("selectcourse").innerHTML;
         manageLessonPlan.innerHTML = document.getElementById("managelessonplan").innerHTML;
+        cellbatchid.innerHTML = obj.id;
+        cellbatchid.setAttribute("class","batchid");
     }
   },
   error:function(error){
@@ -43,6 +49,14 @@ $.ajax({
   $(".pagination").customPaginate({
     itemsToPaginate : ".rowdata"
   });
+
+  $(".selectcourse").click(function() {
+      var $row = $(this).closest("tr");    // Find the row
+      var $id = $row.find(".batchid").text();  // Find the text
+    var url = "selectcourse?id=" + $id;
+    window.location.href = url;
+  });
+
 });
 </script>
 </head>
@@ -87,7 +101,7 @@ $.ajax({
 
   <script id="selectcourse" type="text/template">
     <div class="ui form">
-     <button class="ui primary basic button" value="selectcourse">Select Course</button>
+     <button class="ui primary basic button selectcourse" value="selectcourse">Select Course</button>
     </div>
   </script>
 

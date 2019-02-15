@@ -2,7 +2,6 @@
 namespace App\Controllers;
 use Psr\Container\ContainerInterface;
 session_start();
-
 class BatchController
 {
    protected $container;
@@ -24,7 +23,6 @@ class BatchController
     {
      array_push($studentresults, $studentrow);
     }
-
     while($courserow = mysqli_fetch_array($courseresult))
     {
      array_push($courseresults, $courserow);
@@ -51,7 +49,6 @@ class BatchController
           break;
         }
       }
-
     $row['student'] = $final;
     $row['course_id'] = $courseresult;
     array_push($results, $row);
@@ -68,7 +65,6 @@ class BatchController
     $students = filter_var($data['studentname']);
     $assignedStudents = $data['assignedStudents'];
     $studentsEncoded = json_encode($assignedStudents);
-
     $startdate = filter_var($data['sdate'], FILTER_SANITIZE_STRING); 
     $enddate = filter_var($data['edate'], FILTER_SANITIZE_STRING);
     $date=date('y-m-d',strtotime($startdate));
@@ -77,7 +73,6 @@ class BatchController
     $sqli = $this->container->db;
     $result = $sqli->query("insert into ioniccloud.batch (name, school, student, sdate, edate ) 
     VALUES ('$name','$school','$studentsEncoded','$date','$edate')");
-
     if (mysqli_affected_rows($sqli)==1) {
       $last_id = mysqli_insert_id($sqli);
         foreach($assignedStudents as $assignedStu){
@@ -89,7 +84,6 @@ class BatchController
     } echo("<script>window.alert('Record Could Not Be Added');</script>");
   return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-batch'));
   }
-
   public function batchedstudents($request, $response, $args)
   {
     $data = $request->getParsedBody();
@@ -112,18 +106,14 @@ class BatchController
     $batchid = $data['batchid'];
     $selectcourse = filter_var($data['selectcourse'], FILTER_SANITIZE_STRING);
     $sqli = $this->container->db;
-
     $result = $sqli->query("UPDATE batch SET course_id= '$selectcourse' WHERE id = '$batchid';");
-
     
     if (mysqli_affected_rows($sqli)==1) {
       return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-batch'));
     }
-
     echo("<script>window.alert('Record Not Added');</script>");
-    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'select-course'));
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-batch'));
   }
   
 }
-
 ?>

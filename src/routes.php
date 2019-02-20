@@ -73,11 +73,15 @@ $app->group('/batch', function(){
     $this->get('', 'BatchController:listbatch');
    }); 
 
+$app->group('/editbatch', function(){
+    $this->get('', 'BatchController:editBatch');
+   }); 
+
 $app->group('/batchedstudents', function(){
     $this->get('', 'BatchController:batchedstudents'); 
 });
 
-$app->group('/managelessonplan',function(){
-    $this->get('', 'BatchController:manageLessonPlan');
+$app->group('/lessonplan',function(){
+    $this->get('', 'BatchController:lessonPlan');
 });
 ?>

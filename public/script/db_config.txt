@@ -98,9 +98,13 @@
   `student` varchar(45) NOT NULL,
   `sdate` date NOT NULL,
   `edate` date NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `student_UNIQUE` (`student`)
+  `activate` varchar(45) NOT NULL,
+  `course_id` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 );
+
+
+
 
 10.CREATE TABLE `studentbatch` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

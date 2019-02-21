@@ -69,7 +69,7 @@ class BatchController
           array_push($results, $row);
       }
     }else {
-    $result = $this->container->db->query("SELECT batch.id,batch.name,school.school_name,batch.student,batch.sdate,batch.edate,batch.course_id  
+    $result = $this->container->db->query("SELECT batch.id,batch.name,school.school_name,batch.student,batch.sdate,batch.edate,batch.course_id,batch.activate
     FROM batch
     INNER JOIN school
     ON batch.school=school.sno;");

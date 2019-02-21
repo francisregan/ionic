@@ -81,6 +81,11 @@ $app->group('/batchedstudents', function(){
     $this->get('', 'BatchController:batchedstudents'); 
 });
 
+$app->group('/selectcourse', function(){
+    $this->get('', 'BatchController:selectCourse'); 
+    $this->post('', 'BatchController:updateCourse');
+});
+
 $app->group('/lessonplan',function(){
     $this->get('', 'BatchController:lessonPlan');
 });

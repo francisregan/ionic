@@ -23,7 +23,7 @@ $.ajax({
         var cellstartdate = row.insertCell(3);
         var cellenddate = row.insertCell(4);
         var celledit = row.insertCell(5);
-        var coursename = row.insertCell(6);
+        var cellcoursename = row.insertCell(6);
         var selectcourse = row.insertCell(7);
         var manageLessonPlan = row.insertCell(8);
         var cellbatchid = row.insertCell(9);
@@ -41,6 +41,7 @@ $.ajax({
         cellstartdate.innerHTML = obj.sdate;
         cellenddate.innerHTML = obj.edate;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
+        cellcoursename.innerHTML = obj.course_id;
         selectcourse.innerHTML = document.getElementById("selectcourse").innerHTML;
         manageLessonPlan.innerHTML = document.getElementById("managelessonplan").innerHTML;
         cellbatchid.innerHTML = obj.id;
@@ -54,6 +55,12 @@ $.ajax({
     itemsToPaginate : ".rowdata"
   });
 
+  $(".selectcourse").click(function() {
+      var $row = $(this).closest("tr");    // Find the row
+      var $id = $row.find(".batchid").text();  // Find the text
+    var url = "selectcourse?id=" + $id;
+    window.location.href = url;
+  });
   $(".lessonplan").click(function() {
       var $row = $(this).closest("tr");    // Find the row
       var $id = $row.find(".batchid").text();  // Find the text
@@ -111,7 +118,7 @@ $.ajax({
 
   <script id="selectcourse" type="text/template">
     <div class="ui form">
-     <button class="ui primary basic button" value="selectcourse">Select Course</button>
+     <button class="ui primary basic button selectcourse" value="selectcourse">Select Course</button>
     </div>
   </script>
 

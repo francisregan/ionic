@@ -32,7 +32,7 @@ $.ajax({
         }else{
           document.getElementById("myCheck").checked = false;
         }
-        document.getElementById("myCheck").disabled = true
+        document.getElementById("myCheck").disabled = true;
         cellschool.innerHTML = obj.school_name;
         cellcontact.innerHTML = obj.contact_person;
         cellcontactno.innerHTML = obj.contact_no;

@@ -28,6 +28,12 @@ $.ajax({
         cellbatchid.setAttribute("style","display: none;");
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
+        if(obj.activate == "Yes"){
+           document.getElementById("myCheck").checked = true;
+        }else{
+          document.getElementById("myCheck").checked = false;
+        }
+        document.getElementById("myCheck").disabled = true;
         cellbatch.innerHTML = obj.name;
         cellschool.innerHTML = obj.school_name;
         cellstartdate.innerHTML = obj.sdate;
@@ -53,10 +59,17 @@ $.ajax({
     var url = "selectcourse?id=" + $id;
     window.location.href = url;
   });
-  $(".managelessonplan").click(function() {
+  $(".lessonplan").click(function() {
       var $row = $(this).closest("tr");    // Find the row
       var $id = $row.find(".batchid").text();  // Find the text
-    var url = "managelessonplan?id=" + $id;
+      var url = "lessonplan?id=" + $id;
+    window.location.href = url;
+  });
+
+  $(".editbatch").click(function() {
+      var $row = $(this).closest("tr");    
+      var $id = $row.find(".batchid").text();  
+      var url = "editbatch?id=" + $id;
     window.location.href = url;
   });
 
@@ -87,7 +100,7 @@ $.ajax({
   <script id="check" type="text/template">
       <div class="collapsing">
         <div class="ui fitted slider checkbox">
-          <input type="checkbox"><label></label>
+          <input type="checkbox" id="myCheck"><label></label>
         </div>
       </div>
   </script>
@@ -95,7 +108,7 @@ $.ajax({
   <script id="edit" type="text/template">
     <div class="ui form">
     
-     <button class="ui primary basic button" value="edit">Edits</button>
+     <button class="ui primary basic button editbatch" value="edit">Edits</button>
     
     </div>
 
@@ -109,7 +122,7 @@ $.ajax({
 
   <script id="managelessonplan" type="text/template">
     <div class="ui form">
-     <button class="ui primary basic button managelessonplan" value="managelessonplan">Manage Lesson Plan</button>
+     <button class="ui primary basic button lessonplan" value="managelessonplan">Manage Lesson Plan</button>
     </div>
   </script>
 

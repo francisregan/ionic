@@ -171,8 +171,8 @@ class BatchController
     {
       array_push($allocated,$student);
     }
-    $studentresults['unAllocatedStudent_name'] = $unAllocated;
-    $studentresults['allocatedStudent_name'] = $allocated;
+    $studentresults['unAllocated'] = $unAllocated;
+    $studentresults['allocated'] = $allocated;
     return json_encode($studentresults); 
   }
   public function selectCourse($request, $response, $args) {

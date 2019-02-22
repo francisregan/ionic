@@ -165,8 +165,7 @@ var dates = $i("#sdate, #edate").datepicker({
       dates.not(this).datepicker("option", option, date);
   }
 });
-</script>
-<script>
+
 $('.ui.dropdown')
     .dropdown();
 $(document).ready(function(){
@@ -190,10 +189,8 @@ success: function(data){
 error:function(error){
   console.log(error);
 }});
-});
 
-  (function () {
-    $('#btnRight').click(function (e) {
+$('#btnRight').click(function (e) {
         var selectedOpts = $('#studentname option:selected');
         if (selectedOpts.length == 0) {
             alert("Nothing to move.");
@@ -219,36 +216,8 @@ error:function(error){
     $('#schoolname').on('change', function() {
       unallocatedStudents();
     });
-}
 
-
-(jQuery));
-function unallocatedStudents(){
-  var e = document.getElementById("schoolname");
-      var school_id = e.options[e.selectedIndex].value;
-      
-      $.ajax({ 
-        type: 'GET',
-        url: "batchedstudents?id="+school_id,
-        success: function(data){
-          $('#studentname').empty();
-          var studentname = JSON.parse(data);
-          for (var i =0; i< studentname.unAllocatedStudent_name.length; i++){
-              var obj = studentname.unAllocatedStudent_name[i];
-              var element = document.getElementById("studentname");
-              var option = document.createElement("option");
-              option.value = obj.student_id;
-              option.id = obj.student_id;
-              option.text = obj.student_name;
-              element.add(option);
-            }
-        },
-        error:function(error){
-          console.log(error);
-        }});
-}
-$(function () {
-        if (window.location.href.indexOf("id") > -1) {
+    if (window.location.href.indexOf("id") > -1) {
             var params = window.location.search.split('?')[1].split('&');
             var batchId = decodeURIComponent(params[0].split('=')[1]);
             document.getElementById("eid").value = batchId;
@@ -261,7 +230,6 @@ $(function () {
                 success: function(data){
                   var schools = JSON.parse(data);
                     var obj = schools[0];
-                    console.log(obj);
                     document.getElementById("bname").value = obj.name;
                     var val = obj.school;
                     var sel = document.getElementById('schoolname');
@@ -279,8 +247,8 @@ $(function () {
                         success: function(data){
                           $('#studentname').empty();
                           var studentname = JSON.parse(data);
-                          for (var i =0; i< studentname.unAllocatedStudent_name.length; i++){
-                              var obj = studentname.unAllocatedStudent_name[i];
+                          for (var i =0; i< studentname.unAllocated.length; i++){
+                              var obj = studentname.unAllocated[i];
                               var element = document.getElementById("studentname");
                               var option = document.createElement("option");
                               option.value = obj.student_id;
@@ -288,8 +256,8 @@ $(function () {
                               option.text = obj.student_name;
                               element.add(option);
                             }
-                            for (var i =0; i< studentname.allocatedStudent_name.length; i++){
-                              var obj = studentname.allocatedStudent_name[i];
+                            for (var i =0; i< studentname.allocated.length; i++){
+                              var obj = studentname.allocated[i];
                               var element = document.getElementById("assignedStudents");
                               var option = document.createElement("option");
                               option.value = obj.student_id;
@@ -312,7 +280,33 @@ $(function () {
                   console.log(error);
                 }});
         }
-    });
+
+});
+
+function unallocatedStudents(){
+  var e = document.getElementById("schoolname");
+      var school_id = e.options[e.selectedIndex].value;
+      
+      $.ajax({ 
+        type: 'GET',
+        url: "batchedstudents?id="+school_id,
+        success: function(data){
+          $('#studentname').empty();
+          var studentname = JSON.parse(data);
+          for (var i =0; i< studentname.unAllocated.length; i++){
+              var obj = studentname.unAllocated[i];
+              var element = document.getElementById("studentname");
+              var option = document.createElement("option");
+              option.value = obj.student_id;
+              option.id = obj.student_id;
+              option.text = obj.student_name;
+              element.add(option);
+            }
+        },
+        error:function(error){
+          console.log(error);
+        }});
+}
     function myFunction(){
       $('#assignedStudents option').prop('selected', true);
     }

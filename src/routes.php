@@ -89,4 +89,8 @@ $app->group('/selectcourse', function(){
 $app->group('/lessonplan',function(){
     $this->get('', 'BatchController:lessonPlan');
 });
+
+$app->group('/progresses',function(){
+    $this->get('', 'BatchController:studentProgress');
+});
 ?>

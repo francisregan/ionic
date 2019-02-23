@@ -12,7 +12,39 @@ class BatchController
     $data = $request->getParsedBody();
     $manageid = $request->getParam('id');
     $editId = $request->getParam('editid');
-    if($editId != NULL){
+    $lessonId = $request->getParam('lid');
+    $batchid = $request->getParam('bid');
+    $schoolsid = $request->getParam('sid');
+    $courseid = $request->getParam('cid');
+    if($batchid != NULL && $schoolsid != NULL && $courseid != NULL){
+
+      $result = $this->container->db->query("SELECT student FROM ioniccloud.batch where id = '$batchid' and school = '$schoolsid' and course_id = '$courseid';");
+      $studentResult = $this->container->db->query("SELECT * FROM ioniccloud.student;");
+
+      $this->container->logger->info("hi i am here");
+      $results = [];
+      $studentResults = [];
+      $studentnames = [];
+      while($studentrow = mysqli_fetch_array($studentResult))
+      {
+        array_push($studentResults, $studentrow);
+      }
+      while($row = mysqli_fetch_array($result)) {
+        $studentids = json_decode($row['student'], true);
+        foreach ($studentResults as $studentname){
+          foreach ($studentids as $studentid){
+            if($studentid === $studentname['student_id']){
+              array_push($studentnames, $studentname['student_name']);
+              break;
+            }
+          }
+        }
+        $row['student'] = $studentnames;
+        array_push($results, $row);
+      }
+      return json_encode($results);
+
+    }else if($editId != NULL){
       $result = $this->container->db->query("SELECT batch.name, school.school_name, batch.school, batch.sdate, batch.edate, batch.activate
       FROM batch
       INNER JOIN school
@@ -51,9 +83,11 @@ class BatchController
             }   
           }     
           $lessonnames = [];
+          $lessonIds = [];
           foreach ($lessonresults as $lessonname){
             if($row['course_id'] === $lessonname['course_id']){
               array_push($lessonnames, $lessonname['lesson_name']);
+              array_push($lessonIds, $lessonname['id']);
             }
           }
           $courseId = $row['course_id'];
@@ -65,7 +99,8 @@ class BatchController
           }
           $row['trainername'] = $trainerresults;
           $row['lessonname'] = $lessonnames;
-          
+          $row['lessonid'] = $lessonIds;
+          $this->container->logger->info($row['lessonid']);
           array_push($results, $row);
       }
     }else {
@@ -193,10 +228,13 @@ class BatchController
   }
   
   public function lessonPlan($request, $response, $args) {
-    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-lesson-plan'));
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'lesson-plan'));
   }
   public function editBatch($request, $response, $args) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-batch'));
+  }
+  public function studentProgress($request, $response, $args) {
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'student-progress'));
   }
 }
 ?>

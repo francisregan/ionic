@@ -21,7 +21,6 @@ class BatchController
       $result = $this->container->db->query("SELECT student FROM ioniccloud.batch where id = '$batchid' and school = '$schoolsid' and course_id = '$courseid';");
       $studentResult = $this->container->db->query("SELECT * FROM ioniccloud.student;");
 
-      $this->container->logger->info("hi i am here");
       $results = [];
       $studentResults = [];
       $studentnames = [];

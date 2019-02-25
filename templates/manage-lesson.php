@@ -13,7 +13,6 @@ $.ajax({
         var lesson = JSON.parse(data);
         for (var i =0; i< lesson.length; i++){
         var obj = lesson[i];
-        console.log(obj);
         table = document.getElementById("mytable");
         row = table.insertRow(1);
         row.setAttribute("class","rowdata");

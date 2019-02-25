@@ -100,7 +100,6 @@ class BatchController
           $row['trainername'] = $trainerresults;
           $row['lessonname'] = $lessonnames;
           $row['lessonid'] = $lessonIds;
-          $this->container->logger->info($row['lessonid']);
           array_push($results, $row);
       }
     }else {

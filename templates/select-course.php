@@ -74,7 +74,7 @@
     <tr>
       <td class="three wide column">Selectcourse</td>
       <td class="three wide column">
-      <select id="selectcourse" name="selectcourse" >
+      <select id="selectcourse" name="selectcourse"   style="width:40%;" >
       <option value="0">Select course </option> 
       </td>
     </tr>

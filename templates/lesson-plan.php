@@ -1,8 +1,8 @@
 <html>
     <head>
-        <title>Manage Lesson Plan</title>
-        <script type="text/javascript">
-        $(function () {
+        <title>Lesson Plan</title>
+        <script>
+        $(document).ready(function(){
             if (window.location.href.indexOf("id") > -1) {
                 var params = window.location.search.split('?')[1].split('&');
                 var batchId = decodeURIComponent(params[0].split('=')[1]);
@@ -12,14 +12,14 @@
                     success: function(data){
                     var schools = JSON.parse(data);
                         var obj = schools[0];
-                        console.log(schools);
+                        console.log(obj);
                         document.getElementById("batch").innerHTML = obj.name;
                         document.getElementById("school").innerHTML= obj.school_name;
                         
                         linebreak = document.createElement("br");
                         for(var i=0; i<obj.trainername.length; i++){
                           document.getElementById("trainer").innerHTML += obj.trainername[i];
-                          document.getElementById("trainer").appendChild(linebreak)
+                          document.getElementById("trainer").appendChild(linebreak);
                         }
 
                         if(obj.coursename != null){
@@ -33,26 +33,35 @@
                             var row = table.insertRow(1);
                             var celllessonname = row.insertCell(0);
                             var cellunabledisable = row.insertCell(1);
-                            var cellprogress= row.insertCell(2);
-                            var cellupdate = row.insertCell(3);
+                            var cellupdate = row.insertCell(2);
+                            var cellprogress= row.insertCell(3);
+                            var cellid= row.insertCell(4);
+                            cellid.setAttribute("style","display: none;");
 
                             celllessonname.innerHTML = obj.lessonname[i];
                             cellunabledisable.innerHTML = document.getElementById("unabledisable").innerHTML;
-                            cellprogress.innerHTML = document.getElementById("progress").innerHTML;
                             cellupdate.innerHTML = document.getElementById("update").innerHTML;
+                            cellprogress.innerHTML = document.getElementById("progress").innerHTML;
+                            cellid.innerHTML = obj.lessonid[i];
+                            cellid.setAttribute("class","lessonid");
+                            $(".progresses").click(function() {
+                              var $row = $(this).closest("tr");    
+                              var $id = $row.find(".lessonid").text();  
+                              var url = "progresses?id=" + $id+"&cid="+obj.course_id+"&bid="+batchId+"&sid="+obj.sno;
+                              window.location.href = url;
+                            });
                             
                         }
                     },
                     error:function(error){
                     console.log(error);
                     }});
-
             }
         });
     </script>
     </head>
     <body>
-	<form class="ui form">
+
     <br />
         <h3 class="ui dividing header" style="text-align: left;">Manage Lesson Plan</h3>
     <br />
@@ -82,8 +91,8 @@
         <tr>
           <th>Lesson Name</th>
           <th>Enable/Disable</th>
-          <th>Progress</th>
           <th>Update Details</th>
+          <th>Student Progress</th>
         </tr>
       </thead>
       <tbody>
@@ -99,14 +108,12 @@
           </div>
         </script>
         <script id="progress" type="text/template">
-          <div class="ui blue progress">
-            <div class="bar">
-              <div class="progress"></div>
-            </div>
+          <div class="ui form">
+            <button class="ui primary basic button progresses" value="progresses">Progress</button>
           </div>
         </script>
       </tbody>
     </table>
-    </form>
+
     </body>
 </html>

@@ -56,21 +56,21 @@ $.ajax({
   $(".selectcourse").click(function() {
       var $row = $(this).closest("tr");    // Find the row
       var $id = $row.find(".batchid").text();  // Find the text
-    var url = "selectcourse?id=" + $id;
-    window.location.href = url;
+      var url = "selectcourse?id=" + $id;
+      window.location.href = url;
   });
   $(".lessonplan").click(function() {
       var $row = $(this).closest("tr");    // Find the row
       var $id = $row.find(".batchid").text();  // Find the text
       var url = "lessonplan?id=" + $id;
-    window.location.href = url;
+      window.location.href = url;
   });
 
   $(".editbatch").click(function() {
       var $row = $(this).closest("tr");    
       var $id = $row.find(".batchid").text();  
       var url = "editbatch?id=" + $id;
-    window.location.href = url;
+      window.location.href = url;
   });
 
 });

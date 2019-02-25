@@ -13,7 +13,6 @@ $.ajax({
     var table = document.getElementById("mytable");
     for (var i =0; i< schools.length; i++){
       var obj = schools[i];
-      console.log(obj);
         var row = table.insertRow(1);
         row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);

@@ -72,7 +72,7 @@ include 'navigation.php';
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="login" placeholder="E-mail address">
+            <input type="text" name="login" placeholder="User id">
           </div>
         </div>
 

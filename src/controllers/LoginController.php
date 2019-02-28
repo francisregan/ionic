@@ -22,7 +22,8 @@ class LoginController
     $userid = filter_var($data['login'], FILTER_SANITIZE_STRING);
     $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
     $type = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
-    if($type == 1){
+    $firstword = substr($userid,0,3);
+    if($type == 1 && $firstword=='STU'){
       $studentid = ltrim(substr($userid,7,4),'\0');
       $schoolid = ltrim(substr($userid,3,4),'\0');
       $result = $this->container->db->query("SELECT * FROM ioniccloud.student where student_id='$studentid' AND school='$schoolid';");
@@ -33,6 +34,21 @@ class LoginController
           $_SESSION['school_id'] = $row['school'];
           $_SESSION['type']= $type;
           $lastword = substr(preg_replace('/\s+/', '', $row['student_name']),-3);
+          $generatedPassword = $lastword."@ionic";
+        }
+        $passwordresult = strcmp($password,$generatedPassword);
+        if($passwordresult == 0){
+          return $this->container->renderer->render($response, 'index.php', $args);
+        }
+      }
+    } else if($type == 2 && $firstword=='TRA'){
+      $trainerid = ltrim(substr($userid,7,4),'\0');
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer where trainer_id='$trainerid';");
+      if ($result->num_rows > 0) {
+        while($row = mysqli_fetch_array($result)) {
+          $_SESSION['user'] = $row['trainer_name'];
+          $_SESSION['type']= $type;
+          $lastword = substr(preg_replace('/\s+/', '', $row['trainer_name']),-3);
           $generatedPassword = $lastword."@ionic";
         }
         $passwordresult = strcmp($password,$generatedPassword);

@@ -28,7 +28,9 @@
 <div class="ui horizontal menu">
 
 <div class="ui vertical menu left" style="width:15em; font-size: 1.5rem; text-align: left;">
-
+<?php 
+if( $_SESSION['type'] == 1){
+?>
 <div class="item txtsizegrid">
   <div class="ui left icon input">
     <i class="fas fa-home"></i>
@@ -40,7 +42,19 @@
     <a class="item">Edit Profile</a>
   </div>
   </div>
-
+    <div class="item txtsizegrid">
+      <div class="ui left icon input">
+      <i class="fas fa-book-reader"></i>
+        &nbsp;&nbsp; 
+        Course
+      </div> 
+      <div class="menu" id="menu">
+        <a href="view-course.php" class="item">Manage Course</a>
+      </div>
+    </div>
+<?php 
+}else{
+?>
 <div class="item txtsizegrid">
   <div class="ui left icon input">
     <i class="fas fa-university"></i>
@@ -114,6 +128,9 @@
       <a class="item">Check student feedbacks</a>
     </div>
 </div>
+<?php
+}
+?>
 </div>
 <div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center;"> </div>
 </div>

@@ -67,7 +67,6 @@ class LoginController
       while($row = mysqli_fetch_array($result)) {
         $_SESSION['user'] = $row[$columnname];
         $_SESSION['type']= $type;
-        $this->container->logger->info($type);
         if($type == 1){
           $_SESSION['student_id'] = $row['student_id'];
           $_SESSION['school_id'] = $row['school'];

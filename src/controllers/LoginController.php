@@ -23,46 +23,65 @@ class LoginController
     $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
     $type = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
     $firstword = substr($userid,0,3);
+    $middleword = ltrim(substr($userid,3,4),'\0');
     $id = ltrim(substr($userid,7,4),'\0');
+    $args = [];
+    $args[0] = $password;
+    $args[1] = $type;
     switch ($type) {
       case 0:
         if($firstword=='ION'){
-          $result = $this->container->db->query("SELECT * FROM ioniccloud.login where id='$id';");
-          $columnname = "name";
-          $this->checkLogin($request, $response, $args, $result, $password, $columnname);
-          return 0;
+          $result = $this->container->db->query("SELECT * FROM ioniccloud.login where id='$id' and RIGHT(phone, 4) = '$middleword';");
+          $args[2] = "name";
+          $args[3] = $result;
+          $loginresult = $this->checkLogin($args);
+          if($loginresult == 0){
+            return $this->container->renderer->render($response, 'index.php', $args);
+          }
         }
         break;
       case 1:
           if($firstword=='STU'){
-            $schoolid = ltrim(substr($userid,3,4),'\0');
-            $result = $this->container->db->query("SELECT * FROM ioniccloud.student where student_id='$id' AND school='$schoolid';");
-            $columnname = "student_name";
-            $this->checkLogin($request, $response, $args, $result, $password, $columnname, $type);
-            return 0;
+            $result = $this->container->db->query("SELECT * FROM ioniccloud.student where student_id='$id' AND school='$middleword';");
+            $args[2] = "student_name";
+            $args[3] = $result;
+            $loginresult = $this->checkLogin($args);
+            if($loginresult == 0){
+              return $this->container->renderer->render($response, 'index.php', $args);
+            }
           }
           break;
       case 2:
           if($firstword=='TRA'){
-            $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer where trainer_id='$id';");
-            $columnname = "trainer_name";
-            $this->checkLogin($request, $response, $args, $result, $password, $columnname, $type);
-            return 0;
+            $result = $this->container->db->query("SELECT * FROM ioniccloud.trainer where trainer_id='$id' and RIGHT(contact_no, 4) = '$middleword';");
+            $args[2] = "trainer_name";
+            $args[3] = $result;
+            $loginresult = $this->checkLogin($args);
+            if($loginresult == 0){
+              return $this->container->renderer->render($response, 'index.php', $args);
+            }
           }
           break;
       case 3:
           if($firstword=='SCH'){
-            $result = $this->container->db->query("SELECT * FROM ioniccloud.school where sno='$id';");
-            $columnname = "school_name";
-            $this->checkLogin($request, $response, $args, $result, $password, $columnname, $type);
-            return 0;
+            $result = $this->container->db->query("SELECT * FROM ioniccloud.school where sno='$id' and RIGHT(contact_no, 4) = '$middleword';");
+            $args[2] = "school_name";
+            $args[3] = $result;
+            $loginresult = $this->checkLogin($args);
+            if($loginresult == 0){
+              return $this->container->renderer->render($response, 'index.php', $args);
+            }
           }
           break;
   }
     echo("<script>window.alert('USERNAME OR PASSWORD IS INCORRECT');</script>");
     return $this->container->renderer->render($response, 'login.php', $args);
   }
- public function checkLogin($request, $response, $args, $result, $password, $columnname, $type){
+ public function checkLogin($args){
+   $password = $args[0];
+   $type = $args[1];
+   $columnname = $args[2];
+   $result = $args[3];
     if ($result->num_rows > 0) {
       while($row = mysqli_fetch_array($result)) {
         $_SESSION['user'] = $row[$columnname];
@@ -74,10 +93,7 @@ class LoginController
         $lastword = substr(preg_replace('/\s+/', '', $row[$columnname]),-3);
         $generatedPassword = $lastword."@ionic";
       }
-      $passwordresult = strcmp($password,$generatedPassword);
-      if($passwordresult == 0){
-        return $this->container->renderer->render($response, 'index.php', $args);
-      }
+      return strcmp($password,$generatedPassword);
     }
   }
 }

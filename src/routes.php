@@ -93,4 +93,9 @@ $app->group('/lessonplan',function(){
 $app->group('/progresses',function(){
     $this->get('', 'BatchController:studentProgress');
 });
+
+$app->group('/viewlesson',function(){
+    $this->get('', 'LessonController:viewLesson');
+});
+
 ?>

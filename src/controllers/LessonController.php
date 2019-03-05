@@ -11,11 +11,16 @@ class LessonController
    }
 
    public function listlesson($request, $response, $args) {
+    $data = $request->getParsedBody();
+    $courseid = $request->getParam('id');
+    if($courseid!= NULL){
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.lesson where course_id=$courseid;");
+    }else{
     $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.category_id,category.name,lesson.total_pages
     FROM lesson
     INNER JOIN category
     ON lesson.category_id=category.id;");
-   
+   }
     $results = [];
     while($row = mysqli_fetch_array($result)) {
       array_push($results, $row);
@@ -81,6 +86,9 @@ class LessonController
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-lesson'));
  
   return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-lesson'));
+  }
+  public function viewLesson($request, $response, $args) {
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'view-lesson'));
   }
 }
 ?>

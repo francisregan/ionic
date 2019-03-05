@@ -10,10 +10,49 @@ class CourseController
      $this->container = $container;
    }
    public function listcourse($request, $response, $args) {
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.course;");
-    $results = [];
-    while($row = mysqli_fetch_array($result)) {
-      array_push($results,$row);
+    if( $_SESSION['type'] == 1){
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.course;");
+      $results = [];
+      $schoolid = $_SESSION['school_id'];
+      $batchresult = $this->container->db->query("SELECT * FROM ioniccloud.batch where school = '$schoolid';");
+      $batchresults = [];
+
+      $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson;");
+      $lessonresults = [];
+      $noOfLessons = [];
+      while($lessonrow = mysqli_fetch_array($lessonresult)) {
+        array_push($lessonresults,$lessonrow);
+      }
+
+      while($batchrow = mysqli_fetch_array($batchresult)) {
+        $studentids = json_decode($batchrow['student'], true);
+        foreach ($studentids as $studentid){   
+              if($studentid === $_SESSION['student_id']){
+                array_push($batchresults,$batchrow);
+            }
+        } 
+      }
+
+      while($row = mysqli_fetch_array($result)) {
+        foreach($batchresults as $batch){
+          if($row['id']===$batch['course_id']){
+            $count = 0;
+            foreach($lessonresults as $lesson){
+              if($row['id']===$lesson['course_id']){
+                $count = $count + 1;
+              }
+            }
+            $row['nooflesson'] = $count;
+            array_push($results,$row);
+          }
+        }
+      }
+    }else{
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.course;");
+      $results = [];
+      while($row = mysqli_fetch_array($result)) {
+        array_push($results,$row);
+      }
     }
     return json_encode($results);
   }

@@ -24,7 +24,7 @@ $.ajax({
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellname.innerHTML = obj.name;
-        celllesson.innerHTML = obj.nooflesson;
+        celllesson.innerHTML = obj.Total_Lesson;
         cellprogress.innerHTML = document.getElementById("progress").innerHTML;
         cellstart.innerHTML = document.getElementById("start").innerHTML;
         cellid.innerHTML = obj.id;
@@ -37,9 +37,7 @@ $.ajax({
   }});
   
   $(".pagination").customPaginate({
-
   itemsToPaginate : ".rowdata"
-
 });
 
 $(".viewcourse").click(function() {

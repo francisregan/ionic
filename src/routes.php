@@ -98,4 +98,11 @@ $app->group('/viewlesson',function(){
     $this->get('', 'LessonController:viewLesson');
 });
 
+$app->group('/viewcontent',function(){
+    $this->get('', 'LessonController:viewContent');
+});
+
+$app->group('/viewcontents',function(){
+    $this->get('', 'LessonController:viewContents');
+});
 ?>

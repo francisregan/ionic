@@ -1,5 +1,5 @@
 <?php
-    include 'navigation.php';
+    include 'content-navigation.php';
 ?>
 
 <html>
@@ -15,7 +15,7 @@
             if($redirect){
                 $var = $redirect;
             }
-            include 'content.php'; 
+            include 'student-content.php'; 
         }
     ?>
     </body>

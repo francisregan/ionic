@@ -23,6 +23,9 @@ class LessonController
    }
     $results = [];
     while($row = mysqli_fetch_array($result)) {
+      if($_SESSION['type'] == 1){
+        $_SESSION['lesson_id'] = $row['id'];
+      }
       array_push($results, $row);
     }
     return json_encode($results);
@@ -89,6 +92,23 @@ class LessonController
   }
   public function viewLesson($request, $response, $args) {
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'view-lesson'));
+  }
+  
+  public function viewContent($request, $response, $args) {
+    return $this->container->renderer->render($response, 'content-index.php', array('redirect'=>'view-content'));
+  }
+  public function viewContents($request, $response, $args) {
+    $data = $request->getParsedBody();
+    $lessonid = $request->getParam('id');
+    $result = $this->container->db->query("SELECT * FROM ioniccloud.lessonpages where lesson_id = $lessonid;");
+    $results = [];
+    $content = [];
+    while($row = mysqli_fetch_array($result)) {
+      $file = file_get_contents($row['content'], true);
+      $row['content'] = $file;
+      array_push($results,$row);
+    }
+    return json_encode($results);
   }
 }
 ?>

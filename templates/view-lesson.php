@@ -40,6 +40,13 @@ $(document).ready(function(){
         $(".pagination").customPaginate({
             itemsToPaginate : ".rowdata"
         });
+        $(".viewlesson").click(function() {
+          var $row = $(this).closest("tr"); 
+          var $id = $row.find(".lessonid").text();
+          var url = "viewcontent?id=" + $id;
+          // window.location.href = url;
+          window.open(url, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes");
+        });
     }
 });
 </script>

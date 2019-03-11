@@ -14,11 +14,15 @@
                         var viewLessons = JSON.parse(data);
                         var contents = document.getElementById("content");
                         var contentHolder = document.createElement("div");
+                        contentHolder.setAttribute("style","padding: 60px;");
                         contentHolder.setAttribute("class","content-holder");
                         contents.appendChild(contentHolder);
                         for (var i =0; i< viewLessons.length; i++){
                         var obj = viewLessons[i];
+                        console.log(obj);
                         var createPage = document.createElement("div");
+                        var pageHead = document.createElement("div");
+                        createPage.setAttribute("style","border: 1px solid powderblue; padding: 60px;");
                         if(i==0){
                             createPage.setAttribute("class","vote-result first selectedDiv");
                         }else if(i==viewLessons.length-1){
@@ -28,9 +32,13 @@
                         }
                         createPage.setAttribute("name","Page"+(i+1));
                         createPage.setAttribute("id",obj.id);
-                        
+                        pageHead.setAttribute("id",obj.page_no);
+
+                        createPage.appendChild(pageHead);
                         contentHolder.appendChild(createPage);
-                        document.getElementById(obj.id).innerHTML = obj.content;
+                        
+                        document.getElementById(obj.id).innerHTML += obj.content;
+                        document.getElementById(obj.page_no).innerHTML = "<h3>"+obj.lesson_name+"</h3>"+obj.page_no+"/"+viewLessons.length;
                         }
                         var buttons = document.getElementById("previousContinuous");
                         contentHolder.appendChild(buttons);
@@ -71,6 +79,7 @@
         </script>
     </head>
     <body>
+    <div id="pagehead"></div>
     <div class="field" id="content">
 
     </div>

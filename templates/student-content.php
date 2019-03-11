@@ -27,40 +27,7 @@
 
 <div class="ui horizontal menu">
 
-<div class="ui vertical menu left" style="width:15em; font-size: 1.5rem; text-align: left;">
-
-    <div class="item txtsizegrid">
-        <div class="ui left icon input">
-            <i class="fas fa-info"></i>
-            &nbsp;&nbsp; 
-            Introducation
-        </div> 
-        <div class="menu" id="menu">
-            <a class="item">Intro</a>
-        </div>
-    </div>
-    <div class="item txtsizegrid">
-      <div class="ui left icon input">
-        <i class="fas fa-book-open"></i>
-        &nbsp;&nbsp; 
-        Explanation
-      </div> 
-      <div class="menu" id="menu">
-        <a class="item">Explain</a>
-      </div>
-    </div>
-    <div class="item txtsizegrid">
-      <div class="ui left icon input">
-        <i class="fas fa-cloud-upload-alt"></i>
-        &nbsp;&nbsp; 
-        Submission
-      </div> 
-      <div class="menu" id="menu">
-        <a class="item">Explain</a>
-      </div>
-    </div>
-</div>
-<div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center;"> </div>
+<div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center; padding: 60px;"> </div>
 </div>
 </body>
 </html>

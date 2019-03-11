@@ -14,7 +14,7 @@ class LessonController
     $data = $request->getParsedBody();
     $courseid = $request->getParam('id');
     if($courseid!= NULL){
-      $result = $this->container->db->query("SELECT * FROM ioniccloud.lesson where course_id=$courseid;");
+      $result = $this->container->db->query("SELECT l.id, l.lesson_name, c.name FROM ioniccloud.lesson l, ioniccloud.course c  where l.course_id=$courseid and l.course_id = c.id;");
     }else{
     $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.category_id,category.name,lesson.total_pages
     FROM lesson
@@ -100,7 +100,7 @@ class LessonController
   public function viewContents($request, $response, $args) {
     $data = $request->getParsedBody();
     $lessonid = $request->getParam('id');
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.lessonpages where lesson_id = $lessonid;");
+    $result = $this->container->db->query("SELECT lp.*, l.lesson_name FROM ioniccloud.lessonpages lp, ioniccloud.lesson l where lesson_id = $lessonid and l.id = lp.lesson_id;");
     $results = [];
     $content = [];
     while($row = mysqli_fetch_array($result)) {

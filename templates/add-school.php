@@ -1,4 +1,12 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
+<!-- <script src="semantic/dist/semantic.js"></script>
+<script src="semantic/dist/semantic.js"></script> -->
 <head>
 <title> Add School </title>
 <script>
@@ -24,8 +32,16 @@
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
+                  type   : 'exactLength[10]',
                   prompt : 'Your contact no should be exactly 10 digits'
+                },
+                {
+                  type   : 'number',
+                  prompt : 'Your contact no should not contain any character and any other sign'
+                },
+                {
+                  type   : 'not[0000000000]',
+                  prompt : 'Please enter valid Contact number'
                 }
               ]
             },
@@ -50,8 +66,8 @@
                   prompt : 'Please enter your e-mail'
                 },
                 {
-                  type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
+                  type   : 'regExp[/^([a-z0-9\\+_\\-]+)(\\.[a-z0-9\\+_\\-]+)*@([a-z0-9\\-]+\\.)+[a-z]{2,6}$/]',
+                  prompt :  'Please enter valid mail'
                 }
               ]
             },
@@ -104,8 +120,10 @@
                     var obj = schools[0];
                     document.getElementById("name").value = obj.school_name;
                     document.getElementById("contactno").value = obj.contact_no;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("contactperson").value = obj.contact_person;
                     document.getElementById("mailid").value = obj.mail_id;
+                    document.getElementById("mailid").readOnly = true;
                     document.getElementById("address").value = obj.address;
                     document.getElementById("state").value = obj.state;
                     document.getElementById("city").value = obj.city;
@@ -180,7 +198,7 @@
       </div>
     </div>
   </div>
- 
+
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -202,7 +220,7 @@
       </div>
     </div>
   </div>
-  
+
 
   <div class="field">
     <div class="two fields">
@@ -216,13 +234,13 @@
   </div>
   </div>
 
-  
+
     <div class="two fields">
       <div class="three wide field">
       <label>Activate</label>
     </div>
     <div class="field">
-    
+
      <div class="one wide field" >
      <input type="hidden" name="activate" value="no">
      <input type="checkbox" name="activate" id="myCheck"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
@@ -231,7 +249,9 @@
  </div>
 </div>
 
-<form class="ui form" action="school" method="post" >
+<?php
+$_SESSION['sch_res'] = true;
+?>
   <div class="seven wide field">
   <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"  disabled="disabled" ></i>
 </div>

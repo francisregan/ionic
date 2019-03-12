@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add New Course </title>
@@ -50,10 +56,16 @@
                   type   : 'empty',
                   prompt : 'Please enter the session'
                 },
+                {
+                  type   : 'number',
+                  prompt : 'Sessions should not contain any character and any other sign only numeric value accept'
+                },
+                {
+                  type   : 'not[0]',
+                  prompt : 'Please enter atleat one Session number'
+                }
               ]
             },
-          
-            
           }
         })
       ;
@@ -161,7 +173,9 @@
   </div>
 
   </div>
-<form class="ui form" action="course" method="post" >
+  <?php
+$_SESSION['cou_res'] = true;
+?>
 <div class="seven wide field">
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new course" value="Save" ></input>
 </div>
@@ -170,4 +184,4 @@
 </form>
 </body>
 
-</html> 
+</html>

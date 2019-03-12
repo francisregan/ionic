@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add Trainer </title>
@@ -24,8 +30,16 @@
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
+                  type   : 'exactLength[10]',
                   prompt : 'Your contact no should be exactly 10 numbers'
+                },
+                {
+                  type   : 'number',
+                  prompt : 'Your contact no should not contain any character and any other sign'
+                },
+                {
+                  type   : 'not[0000000000]',
+                  prompt : 'Please enter valid Contact number'
                 }
               ]
             },
@@ -37,8 +51,8 @@
                   prompt : 'Please enter your mail id'
                 },
                 {
-                  type   : 'email',
-                  prompt : 'Enter valid mail'
+                  type   : 'regExp[/^([a-z0-9\\+_\\-]+)(\\.[a-z0-9\\+_\\-]+)*@([a-z0-9\\-]+\\.)+[a-z]{2,6}$/]',
+                  prompt : 'Please Enter valid mail'
                 }
               ]
             },
@@ -60,7 +74,7 @@
                 }
               ]
             },
-           
+
             taddress: {
               identifier  : 'taddress',
               rules: [
@@ -70,7 +84,7 @@
                 }
               ]
             },
-            
+
           }
         })
       ;
@@ -136,7 +150,7 @@
       </div>
     </div>
   </div>
- 
+
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -144,7 +158,7 @@
       </div>
       <div class="four wide field">
       <select id="schoolname" name="schoolname[]" class="ui fluid search dropdown" multiple="">
-      <option value="">Select school </option> 
+      <option value="">Select school </option>
       </select>
       </div>
     </div>
@@ -166,7 +180,7 @@
       <label>Activate</label>
     </div>
     <div class="field">
-    
+
      <div class="one wide field" >
      <input type="hidden" name="activate" value="no">
      <input type="checkbox" name="activate" id="myCheck"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
@@ -175,8 +189,10 @@
  </div>
 </div>
 
-<form class="ui form" action="trainer" method="post" >
 <div class="seven wide field">
+<?php
+$_SESSION['tra_res'] = true;
+?>
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new trainer" value="Add this trainer record" disabled="disabled"  ></input>
 </div>
 </div>
@@ -190,7 +206,7 @@
         .dropdown()
     ;
   $(document).ready(function(){
-  $.ajax({ 
+  $.ajax({
     type: 'GET',
     url: "school",
     success: function(data){
@@ -224,17 +240,17 @@
     error:function(error){
       console.log(error);
     }});
-  }); 
+  });
 </script>
 <script type="text/javascript">
-    $(function () {        
+    $(function () {
         if (window.location.href.indexOf("id") > -1) {
             var params = window.location.search.split('?')[1].split('&');
             var trainerId = decodeURIComponent(params[0].split('=')[1]);
             document.getElementById("eid").value = trainerId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("schoolheader").innerText = "Edit Trainer Details";
-            $.ajax({ 
+            $.ajax({
                 type: 'GET',
                 url: "trainer?id="+trainerId,
                 success: function(data){
@@ -242,17 +258,18 @@
                     var obj = schools[0];
                     document.getElementById("name").value = obj.trainer_name;
                     document.getElementById("contactno").value = obj.contact_no;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("mailid").value = obj.mail_id;
+                    document.getElementById("mailid").readOnly = true;
                     document.getElementById("spec").value = obj.specialization;
                     var val = obj.school;
-                    console.log(val.length);
 
                     var select = document.getElementById( 'schoolname' );
                     for ( var i = 0; i < val.length; i++ ){
                       var schoolID = val[i];
                       $('#schoolname').dropdown('set selected',schoolID);
 
-                    } 
+                    }
                     document.getElementById("address").value = obj.address;
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;

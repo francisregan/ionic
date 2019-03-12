@@ -1,4 +1,9 @@
- 
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add category </title>
@@ -25,11 +30,11 @@
                   type   : 'empty',
                   prompt : 'Please select type'
                 },
-             
+
               ]
             },
-           
-            
+
+
           }
         })
       ;
@@ -37,7 +42,7 @@
   </script>
 
 <style>
-    
+
 </style>
 </head>
 <body>
@@ -74,7 +79,9 @@
     </div>
   </div>
 
-<form class="ui form" action="addcategory" method="post" >
+  <?php
+$_SESSION['cat_res'] = true;
+?>
 <div class="seven wide field">
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Add a new Category" ></input>
 </div>

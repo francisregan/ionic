@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add New Lesson </title>
@@ -133,6 +139,10 @@
      <div class="field">
         <div class="ten wide" id="snote" name="page[]"></div>
      </div>
+
+     <?php
+$_SESSION['les_res'] = true;
+?>
      <div class="field">
         <div class="seven wide field">
              <input id="submitBtn" type="submit" class="ui primary button" name="Add a new Lesson" value="Add lesson" />
@@ -221,4 +231,8 @@ function myFunction() {
     }
 }
 </script>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> upstream/master

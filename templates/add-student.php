@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add Student </title>
@@ -24,8 +30,16 @@ $(document)
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
+                  type   : 'exactLength[10]',
                   prompt : 'Your contact no should be exactly 10 numbers'
+                },
+                {
+                  type   : 'number',
+                  prompt : 'Your contact no should not contain any character and any other sign'
+                },
+                {
+                  type   : 'not[0000000000]',
+                  prompt : 'Please enter valid Contact number'
                 }
               ]
             },
@@ -37,11 +51,11 @@ $(document)
                   prompt : 'Please enter your mail id'
                 },
                 {
-                  type   : 'email',
-                  prompt : 'Enter valid mail'
+                  type   : 'regExp[/^([a-z0-9\\+_\\-]+)(\\.[a-z0-9\\+_\\-]+)*@([a-z0-9\\-]+\\.)+[a-z]{2,6}$/]',
+                  prompt : 'Please Enter valid mail'
                 }
               ]
-            }, 
+            },
             schoolname: {
               identifier  : 'schoolname',
               rules: [
@@ -60,7 +74,7 @@ $(document)
                 }
               ]
             },
-           
+
 
             sclass: {
               identifier  : 'sclass',
@@ -85,13 +99,13 @@ $(document)
                 }
               ]
             },
-            
+
           }
         })
       ;
     });
   </script>
-  
+
 </head>
 <body>
 <form class="ui form" action="student" method="post" >
@@ -149,14 +163,14 @@ $(document)
       </div>
       <div class="four wide field">
       <select id="schoolname" name="schoolname" >
-      <option value="0">select</option> 
+      <option value="0">Select school </option>
       </select>
       </div>
     </div>
   </div>
 
-  
- 
+
+
   </div>
   <div class="field">
     <div class="two fields">
@@ -168,7 +182,7 @@ $(document)
       </div>
     </div>
   </div>
- 
+
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -202,13 +216,13 @@ $(document)
     </div>
   </div>
   </div>
-  
+
   <div class="two fields">
       <div class="three wide field">
       <label>Activate</label>
     </div>
     <div class="field">
-    
+
      <div class="one wide field" >
      <input type="hidden" name="activate" value="no">
      <input type="checkbox" name="activate" id="myCheck" value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
@@ -216,16 +230,18 @@ $(document)
     </div>
  </div>
 </div>
-<form class="ui form" action="student" method="post" >
 <div class="seven wide field">
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Add this student record"  disabled="disabled"  ></input>
 
+<?php
+$_SESSION['stu_res'] = true;
+?>
+
+<input type="submit" id="submitBtn" class="ui primary button" name="submit" value="submit" />
 </div>
 </div>
 </div>
 </form>
-<form>
-
 </body>
 
 <form class="ui form" action="student" method="post" >
@@ -236,7 +252,7 @@ $(document)
         .dropdown()
     ;
   $(document).ready(function(){
-  $.ajax({ 
+  $.ajax({
     type: 'GET',
     url: "school",
     success: function(data){
@@ -274,15 +290,15 @@ $('#name,#contactno,#myCheck,#mailid,#age,#batch,#class,#pname').on('input chang
 </script>
 
 <script type="text/javascript">
-    
-    $(function () {           
+
+    $(function () {
         if (window.location.href.indexOf("id") > -1) {
             var params = window.location.search.split('?')[1].split('&');
             var studentId = decodeURIComponent(params[0].split('=')[1]);
             document.getElementById("eid").value = studentId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("studentheader").innerText = "Edit Student Details";
-            $.ajax({ 
+            $.ajax({
                 type: 'GET',
                 url: "student?id="+studentId,
                 success: function(data){
@@ -290,11 +306,13 @@ $('#name,#contactno,#myCheck,#mailid,#age,#batch,#class,#pname').on('input chang
                     var obj = schools[0];
                     document.getElementById("name").value = obj.student_name;
                     document.getElementById("contactno").value = obj.contact_number;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("mailid").value = obj.email;
+                    document.getElementById("mailid").readOnly = true;
                     var val = obj.school;
                     var sel = document.getElementById('schoolname');
                     var opts = sel.options;
-                      for (var j = 0; j <= opts.length; j++) { 
+                      for (var j = 0; j <= opts.length; j++) {
                           var opt = opts[j];
                           if (opt.value == val) {
                             sel.selectedIndex = j;

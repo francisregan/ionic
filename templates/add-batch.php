@@ -1,10 +1,15 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <html>
 <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="jquery-ui.js"></script>
 <script type="text/javascript" src="script/moment.js"></script>
 <script>
 var $i = jQuery.noConflict();
-</script> 
+</script>
 
 <head>
 <title> Add category </title>
@@ -41,12 +46,12 @@ var $i = jQuery.noConflict();
                 }
               ]
             },
-           
+
           }
         })
       ;
     });
-  </script> 
+  </script>
 
 </head>
 <body>
@@ -86,7 +91,7 @@ var $i = jQuery.noConflict();
             </div>
             <div class="four wide field">
               <select id="schoolname" name="schoolname" >
-                <option value="">Select school </option> 
+                <option value="">Select school </option>
               </select>
             </div>
           </div>
@@ -99,14 +104,14 @@ var $i = jQuery.noConflict();
               <select multiple="multiple" id='studentname' name="studentname[]" class="form-control">
               </select>
             </div>
-        
+
             <div class="subject-info-arrows text-center">
               <input type="button" id="btnRight" value=">"style="margin-right:10px; margin-left:10px; margin-top: 40px;" class="btn btn-default" /><br />
               <input type="button" id="btnLeft" value="<" style="margin-right:10px; margin-left:10px; margin-top: 30px; class="btn btn-default" /><br />
             </div>
 
             <div class="subject-info-box-2">
-              Allocated Students 
+              Allocated Students
               <select multiple="multiple" id='assignedStudents' name="assignedStudents[]" class="form-control">
               </select>
             </div>
@@ -132,7 +137,7 @@ var $i = jQuery.noConflict();
             </div>
           </div>
         </div>
-   
+
         <div class="two fields">
           <div class="three wide field">
             <label>Activate</label>
@@ -145,7 +150,9 @@ var $i = jQuery.noConflict();
           </div>
         </div>
 
-        <form class="ui form" action="batch" method="post" >
+        <?php
+$_SESSION['bat_res'] = true;
+?>
           <div class="seven wide field">
             <input id="submitBtn" type="submit" class="ui primary basic button" name="Create a new Batch" value="Save" onfocus="myFunction()"></i></input>
           </div>
@@ -169,7 +176,7 @@ var dates = $i("#sdate, #edate").datepicker({
 $('.ui.dropdown')
     .dropdown();
 $(document).ready(function(){
-$.ajax({ 
+$.ajax({
 type: 'GET',
 url: "school",
 success: function(data){
@@ -201,7 +208,7 @@ $('#btnRight').click(function (e) {
         $(selectedOpts).remove();
         e.preventDefault();
     });
-   
+
     $('#btnLeft').click(function (e) {
         var selectedOpts = $('#assignedStudents option:selected');
         if (selectedOpts.length == 0) {
@@ -223,7 +230,7 @@ $('#btnRight').click(function (e) {
             document.getElementById("eid").value = batchId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("batchheader").innerText = "Edit Batch Details";
-          
+
             $.ajax({
                 type: 'GET',
                 url: "batch?editid="+batchId,
@@ -234,14 +241,14 @@ $('#btnRight').click(function (e) {
                     var val = obj.school;
                     var sel = document.getElementById('schoolname');
                     var opts = sel.options;
-                      for (var j = 0; j <= opts.length; j++) { 
+                      for (var j = 0; j <= opts.length; j++) {
                           var opt = opts[j];
                           if (opt.value == val) {
                             sel.selectedIndex = j;
                             break;
                         }
                       }
-                     $.ajax({ 
+                     $.ajax({
                         type: 'GET',
                         url: "batchedstudents?id="+opt.value+"&bid="+batchId,
                         success: function(data){
@@ -286,8 +293,8 @@ $('#btnRight').click(function (e) {
 function unallocatedStudents(){
   var e = document.getElementById("schoolname");
       var school_id = e.options[e.selectedIndex].value;
-      
-      $.ajax({ 
+
+      $.ajax({
         type: 'GET',
         url: "batchedstudents?id="+school_id,
         success: function(data){

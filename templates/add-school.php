@@ -1,4 +1,6 @@
 <html>
+<!-- <script src="semantic/dist/semantic.js"></script>
+<script src="semantic/dist/semantic.js"></script> -->
 <head>
 <title> Add School </title>
 <script>
@@ -58,8 +60,8 @@
                   prompt : 'Please enter your e-mail'
                 },
                 {
-                  type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
+                  type   : 'regExp[/^([a-z0-9\\+_\\-]+)(\\.[a-z0-9\\+_\\-]+)*@([a-z0-9\\-]+\\.)+[a-z]{2,6}$/]',
+                  prompt :  'Please enter valid mail'
                 }
               ]
             },

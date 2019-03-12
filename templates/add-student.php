@@ -45,8 +45,8 @@ $(document)
                   prompt : 'Please enter your mail id'
                 },
                 {
-                  type   : 'email',
-                  prompt : 'Enter valid mail'
+                  type   : 'regExp[/^([a-z0-9\\+_\\-]+)(\\.[a-z0-9\\+_\\-]+)*@([a-z0-9\\-]+\\.)+[a-z]{2,6}$/]',
+                  prompt : 'Please Enter valid mail'
                 }
               ]
             },

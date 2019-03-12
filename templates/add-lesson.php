@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add New Lesson </title>
@@ -10,7 +16,7 @@
       $('.ui.form')
         .form({
           fields: {
-           
+
            category: {
                identifier : 'category',
                rules: [
@@ -28,7 +34,7 @@
                        prompt : 'please select the duration'
                    }
                ]
-           },          
+           },
           }
         })
       ;
@@ -116,6 +122,10 @@
      <div class="field">
         <div class="ten wide" id="snote" name="page[]"></div>
      </div>
+
+     <?php
+$_SESSION['les_res'] = true;
+?>
      <div class="field">
         <div class="seven wide field">
              <input id="submitBtn" type="submit" class="ui primary button" name="Add a new Lesson" value="Add lesson" />
@@ -131,7 +141,7 @@
         .dropdown()
     ;
   $(document).ready(function(){
-  $.ajax({ 
+  $.ajax({
     type: 'GET',
     url: "category",
     success: function(data){
@@ -149,7 +159,7 @@
       console.log(error);
     }});
 
-    $.ajax({ 
+    $.ajax({
     type: 'GET',
     url: "course",
     success: function(data){
@@ -193,15 +203,15 @@ function myFunction() {
         createSummerNote.setAttribute("class","summernote");
         createSummerNote.setAttribute("name","Page"+(i+1));
         createSummerNote.setAttribute("id","Page"+(i+1));
-        
+
         node.appendChild(labelHeader);
         node.appendChild(createSummerNote);
         node.appendChild(lineBreak);
         $('.summernote').summernote({
         placeholder: 'Write your page content',
-        height: 300   
+        height: 300
         });
-    } 
-}   
+    }
+}
 </script>
-</html> 
+</html>

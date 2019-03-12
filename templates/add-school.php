@@ -38,7 +38,7 @@
                 },
                 {
                   type  : 'regExp[/^[a-zA-Z ]{2,255}$/]',
-                  prompt: 'Contact Person should not contain digit'
+                  prompt: 'Contact Person should not contain any digit'
                 }
               ]
             },

@@ -78,6 +78,10 @@ $(document)
                 {
                   type   : 'empty',
                   prompt : 'Please enter your parents name'
+                },
+                {
+                  type  : 'regExp[/^[a-zA-Z ]{2,255}$/]',
+                  prompt: 'Parent name should not contain any digit'
                 }
               ]
             },

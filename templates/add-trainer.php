@@ -24,8 +24,16 @@
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
+                  type   : 'exactLength[10]',
                   prompt : 'Your contact no should be exactly 10 numbers'
+                },
+                {
+                  type   : 'number',
+                  prompt : 'Your contact no should not contain any character and any other sign'
+                },
+                {
+                  type   : 'not[0000000000]',
+                  prompt : 'Please enter valid Contact number'
                 }
               ]
             },
@@ -60,7 +68,7 @@
                 }
               ]
             },
-           
+
             taddress: {
               identifier  : 'taddress',
               rules: [
@@ -70,7 +78,7 @@
                 }
               ]
             },
-            
+
           }
         })
       ;
@@ -136,7 +144,7 @@
       </div>
     </div>
   </div>
- 
+
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -144,7 +152,7 @@
       </div>
       <div class="four wide field">
       <select id="schoolname" name="schoolname[]" class="ui fluid search dropdown" multiple="">
-      <option value="">Select school </option> 
+      <option value="">Select school </option>
       </select>
       </div>
     </div>
@@ -166,7 +174,7 @@
       <label>Activate</label>
     </div>
     <div class="field">
-    
+
      <div class="one wide field" >
      <input type="hidden" name="activate" value="no">
      <input type="checkbox" name="activate" id="myCheck"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
@@ -190,12 +198,12 @@
         .dropdown()
     ;
   $(document).ready(function(){
-  $.ajax({ 
+  $.ajax({
     type: 'GET',
     url: "school",
     success: function(data){
       var schools = JSON.parse(data);
-      
+
       for (var i =0; i< schools.length; i++){
         var obj = schools[i];
         var element = document.getElementById("schoolname");
@@ -209,17 +217,17 @@
     error:function(error){
       console.log(error);
     }});
-  }); 
+  });
 </script>
 <script type="text/javascript">
-    $(function () {        
+    $(function () {
         if (window.location.href.indexOf("id") > -1) {
             var params = window.location.search.split('?')[1].split('&');
             var trainerId = decodeURIComponent(params[0].split('=')[1]);
             document.getElementById("eid").value = trainerId;
             document.getElementById("submitBtn").value = "Save Changes";
             document.getElementById("schoolheader").innerText = "Edit Trainer Details";
-            $.ajax({ 
+            $.ajax({
                 type: 'GET',
                 url: "trainer?id="+trainerId,
                 success: function(data){
@@ -237,7 +245,7 @@
                       var schoolID = val[i];
                       $('#schoolname').dropdown('set selected',schoolID);
 
-                    } 
+                    }
                     document.getElementById("address").value = obj.address;
                     if(obj.activate == "Yes"){
                       document.getElementById("myCheck").checked = true;

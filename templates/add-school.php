@@ -24,8 +24,16 @@
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
+                  type   : 'exactLength[10]',
                   prompt : 'Your contact no should be exactly 10 digits'
+                },
+                {
+                  type   : 'number',
+                  prompt : 'Your contact no should not contain any character and any other sign'
+                },
+                {
+                  type   : 'not[0000000000]',
+                  prompt : 'Please enter valid Contact number'
                 }
               ]
             },
@@ -180,7 +188,7 @@
       </div>
     </div>
   </div>
- 
+
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -202,7 +210,7 @@
       </div>
     </div>
   </div>
-  
+
 
   <div class="field">
     <div class="two fields">
@@ -216,13 +224,13 @@
   </div>
   </div>
 
-  
+
     <div class="two fields">
       <div class="three wide field">
       <label>Activate</label>
     </div>
     <div class="field">
-    
+
      <div class="one wide field" >
      <input type="hidden" name="activate" value="no">
      <input type="checkbox" name="activate" id="myCheck"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />

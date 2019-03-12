@@ -203,7 +203,13 @@
                 $('#submitBtn').prop('disabled', true);
             }
         });
-
+        
+        $(function() {     
+  var select = $('select');
+  select.html(select.find('option').sort(function(x, y) {
+    return $(x).text() > $(y).text() ? 1 : -1;
+  }));
+});
       var schools = JSON.parse(data);  
       for (var i =0; i< schools.length; i++){
         var obj = schools[i];

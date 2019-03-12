@@ -1,11 +1,11 @@
-1. CREATE TABLE `category` (
+CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `type` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
-2. CREATE TABLE `course` (
+CREATE TABLE `course` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `type` varchar(150) NOT NULL,
@@ -15,7 +15,7 @@
   PRIMARY KEY (`id`)
 );
 
-3. CREATE TABLE `lesson` (
+CREATE TABLE `lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lesson_name` varchar(150) NOT NULL,
   `category_id` varchar(150) NOT NULL,
@@ -25,7 +25,7 @@
   PRIMARY KEY (`id`)
 );
 
-4. CREATE TABLE `lessonpages` (
+CREATE TABLE `lessonpages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lesson_id` varchar(150) NOT NULL,
   `page_no` varchar(150) NOT NULL,
@@ -34,7 +34,7 @@
   PRIMARY KEY (`id`)
 );
 
-5. CREATE TABLE `login` (
+CREATE TABLE `login` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
@@ -50,7 +50,7 @@
   UNIQUE KEY `id_UNIQUE` (`id`)
 );
 
-6. CREATE TABLE `school` (
+CREATE TABLE `school` (
   `sno` int(10) NOT NULL AUTO_INCREMENT,
   `school_name` varchar(150) NOT NULL,
   `contact_no` bigint(10) NOT NULL,
@@ -65,7 +65,7 @@
   UNIQUE KEY `mail_id_UNIQUE` (`mail_id`)
 );
 
-7. CREATE TABLE `student` (
+CREATE TABLE `student` (
   `student_id` int(11) NOT NULL AUTO_INCREMENT,
   `student_name` varchar(150) NOT NULL,
   `contact_number` bigint(10) NOT NULL,
@@ -79,7 +79,7 @@
   PRIMARY KEY (`student_id`)
 );
 
-8. CREATE TABLE `trainer` (
+CREATE TABLE `trainer` (
   `trainer_id` int(11) NOT NULL AUTO_INCREMENT,
   `trainer_name` varchar(150) NOT NULL,
   `contact_no` varchar(150) NOT NULL,
@@ -91,7 +91,7 @@
   PRIMARY KEY (`trainer_id`)
 );
 
-9. CREATE TABLE `batch` (
+CREATE TABLE `batch` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `school` varchar(45) NOT NULL,
@@ -104,7 +104,7 @@
   UNIQUE KEY `student_UNIQUE` (`student`)
 );
 
-10.CREATE TABLE `studentbatch` (
+CREATE TABLE `studentbatch` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` varchar(45) NOT NULL,
   `batch_id` varchar(45) NOT NULL,

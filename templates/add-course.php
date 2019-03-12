@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add New Course </title>
@@ -167,7 +173,9 @@
   </div>
 
   </div>
-<form class="ui form" action="course" method="post" >
+  <?php
+$_SESSION['cou_res'] = true;
+?>
 <div class="seven wide field">
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new course" value="Save" ></input>
 </div>

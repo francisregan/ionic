@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <!-- <script src="semantic/dist/semantic.js"></script>
 <script src="semantic/dist/semantic.js"></script> -->
@@ -243,7 +249,9 @@
  </div>
 </div>
 
-<form class="ui form" action="school" method="post" >
+<?php
+$_SESSION['sch_res'] = true;
+?>
   <div class="seven wide field">
   <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"></i>
 </div>

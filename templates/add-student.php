@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add Student </title>
@@ -224,18 +230,17 @@ $(document)
     </div>
  </div>
 </div>
-<form class="ui form" action="student" method="post" >
 <div class="seven wide field">
-<input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Add this student record" ></input>
+<?php
+$_SESSION['stu_res'] = true;
+?>
+
+<input type="submit" id="submitBtn" class="ui primary button" name="submit" value="submit" />
 </div>
 </div>
 </div>
 </form>
-<form>
-
 </body>
-
-<form class="ui form" action="student" method="post" >
 <script>
 
     $('.ui.dropdown')

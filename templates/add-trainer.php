@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <html>
 <head>
 <title> Add Trainer </title>
@@ -183,8 +189,10 @@
  </div>
 </div>
 
-<form class="ui form" action="trainer" method="post" >
 <div class="seven wide field">
+<?php
+$_SESSION['tra_res'] = true;
+?>
 <input id="submitBtn" type="submit" class="ui primary button" name="Add a new trainer" value="Add this trainer record" ></input>
 </div>
 </div>

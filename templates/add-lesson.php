@@ -231,8 +231,4 @@ function myFunction() {
     }
 }
 </script>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> upstream/master

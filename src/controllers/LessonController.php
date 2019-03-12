@@ -11,13 +11,21 @@ class LessonController
    }
 
    public function listlesson($request, $response, $args) {
+    $data = $request->getParsedBody();
+    $courseid = $request->getParam('id');
+    if($courseid!= NULL){
+      $result = $this->container->db->query("SELECT l.id, l.lesson_name, c.name FROM ioniccloud.lesson l, ioniccloud.course c  where l.course_id=$courseid and l.course_id = c.id;");
+    }else{
     $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.category_id,category.name,lesson.total_pages
     FROM lesson
     INNER JOIN category
     ON lesson.category_id=category.id;");
-   
+   }
     $results = [];
     while($row = mysqli_fetch_array($result)) {
+      if($_SESSION['type'] == 1){
+        $_SESSION['lesson_id'] = $row['id'];
+      }
       array_push($results, $row);
     }
     return json_encode($results);
@@ -81,6 +89,26 @@ class LessonController
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-lesson'));
  
   return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-lesson'));
+  }
+  public function viewLesson($request, $response, $args) {
+    return $this->container->renderer->render($response, 'index.php', array('redirect'=>'view-lesson'));
+  }
+  
+  public function viewContent($request, $response, $args) {
+    return $this->container->renderer->render($response, 'content-index.php', array('redirect'=>'view-content'));
+  }
+  public function viewContents($request, $response, $args) {
+    $data = $request->getParsedBody();
+    $lessonid = $request->getParam('id');
+    $result = $this->container->db->query("SELECT lp.*, l.lesson_name FROM ioniccloud.lessonpages lp, ioniccloud.lesson l where lesson_id = $lessonid and l.id = lp.lesson_id;");
+    $results = [];
+    $content = [];
+    while($row = mysqli_fetch_array($result)) {
+      $file = file_get_contents($row['content'], true);
+      $row['content'] = $file;
+      array_push($results,$row);
+    }
+    return json_encode($results);
   }
 }
 ?>

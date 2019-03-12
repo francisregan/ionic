@@ -10,14 +10,25 @@ class CourseController
      $this->container = $container;
    }
    public function listcourse($request, $response, $args) {
-    $result = $this->container->db->query("SELECT * FROM ioniccloud.course;");
-    $results = [];
-    while($row = mysqli_fetch_array($result)) {
-      array_push($results,$row);
+    if( $_SESSION['type'] == 1){
+      $studentid = $_SESSION['student_id'];
+      $result = $this->container->db->query("SELECT c.id, c.name, COUNT(l.course_id) AS Total_Lesson 
+        FROM ioniccloud.studentbatch sb, ioniccloud.batch b, ioniccloud.course c, ioniccloud.lesson l 
+        where sb.student_id = '$studentid' and sb.batch_id = b.id and b.course_id = c.id and l.course_id = c.id;");
+
+      $results = [];
+      while($row = mysqli_fetch_array($result)) {
+        array_push($results,$row);
+      }
+    }else{
+      $result = $this->container->db->query("SELECT * FROM ioniccloud.course;");
+      $results = [];
+      while($row = mysqli_fetch_array($result)) {
+        array_push($results,$row);
+      }
     }
     return json_encode($results);
   }
-
   
   public function addcourse($request, $response, $args) 
   {

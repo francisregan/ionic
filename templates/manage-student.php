@@ -15,7 +15,6 @@ $.ajax({
     
     for (var i =0; i< schools.length; i++){
       var obj = schools[i];
-      console.log(obj);
         table = document.getElementById("mytable");
         row = table.insertRow(1);
         row.setAttribute("class","rowdata");

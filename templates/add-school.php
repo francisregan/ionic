@@ -36,6 +36,10 @@
                   type   : 'empty',
                   prompt : 'Please enter the contact person'
                 },
+                {
+                  type  : 'regExp[/^[a-zA-Z ]{2,255}$/]',
+                  prompt: 'Contact Person should not contain digit'
+                }
               ]
             },
             smailid: {

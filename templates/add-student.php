@@ -163,7 +163,7 @@ $(document)
       </div>
       <div class="four wide field">
       <select id="schoolname" name="schoolname" >
-      <option value="0">Select school </option>
+      <option value="0">select school</option>
       </select>
       </div>
     </div>
@@ -230,14 +230,12 @@ $(document)
     </div>
  </div>
 </div>
-<div class="seven wide field">
-<input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Add this student record"  disabled="disabled"  ></input>
-
 <?php
 $_SESSION['stu_res'] = true;
 ?>
 
-<input type="submit" id="submitBtn" class="ui primary button" name="submit" value="submit" />
+<div class="seven wide field">
+<input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Add this student record"  disabled="disabled"  ></input>
 </div>
 </div>
 </div>

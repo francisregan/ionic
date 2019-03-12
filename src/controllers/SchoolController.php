@@ -15,8 +15,7 @@ class SchoolController
 
     public function listSchool($request, $response, $args)
     {
-     
-      echo("<script>window.alert('Record Updated Successfully');</script>");
+
         $data = $request->getParsedBody();
         $id = $request->getParam('id');
         if ($id != null) {

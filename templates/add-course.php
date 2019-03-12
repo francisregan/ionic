@@ -56,10 +56,16 @@ if (!isset($_SESSION)) {
                   type   : 'empty',
                   prompt : 'Please enter the session'
                 },
+                {
+                  type   : 'number',
+                  prompt : 'Sessions should not contain any character and any other sign only numeric value accept'
+                },
+                {
+                  type   : 'not[0]',
+                  prompt : 'Please enter atleat one Session number'
+                }
               ]
             },
-
-
           }
         })
       ;

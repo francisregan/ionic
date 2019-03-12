@@ -30,8 +30,16 @@ if (!isset($_SESSION)) {
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
+                  type   : 'exactLength[10]',
                   prompt : 'Your contact no should be exactly 10 numbers'
+                },
+                {
+                  type   : 'number',
+                  prompt : 'Your contact no should not contain any character and any other sign'
+                },
+                {
+                  type   : 'not[0000000000]',
+                  prompt : 'Please enter valid Contact number'
                 }
               ]
             },
@@ -43,8 +51,8 @@ if (!isset($_SESSION)) {
                   prompt : 'Please enter your mail id'
                 },
                 {
-                  type   : 'email',
-                  prompt : 'Enter valid mail'
+                  type   : 'regExp[/^([a-z0-9\\+_\\-]+)(\\.[a-z0-9\\+_\\-]+)*@([a-z0-9\\-]+\\.)+[a-z]{2,6}$/]',
+                  prompt : 'Please Enter valid mail'
                 }
               ]
             },
@@ -235,10 +243,11 @@ $_SESSION['tra_res'] = true;
                     var obj = schools[0];
                     document.getElementById("name").value = obj.trainer_name;
                     document.getElementById("contactno").value = obj.contact_no;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("mailid").value = obj.mail_id;
+                    document.getElementById("mailid").readOnly = true;
                     document.getElementById("spec").value = obj.specialization;
                     var val = obj.school;
-                    console.log(val.length);
 
                     var select = document.getElementById( 'schoolname' );
                     for ( var i = 0; i < val.length; i++ ){

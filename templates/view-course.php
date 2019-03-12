@@ -19,14 +19,17 @@ $.ajax({
         var cellname = row.insertCell(1);
         var celllesson = row.insertCell(2);
         var cellprogress = row.insertCell(3);
-        var cellstart = row.insertCell(4);
-        var cellid = row.insertCell(5);
+        var cellviewlesson = row.insertCell(4);
+        var cellstart = row.insertCell(5);
+        var cellid = row.insertCell(6);
+        
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellname.innerHTML = obj.name;
         celllesson.innerHTML = obj.Total_Lesson;
         cellprogress.innerHTML = document.getElementById("progress").innerHTML;
-        cellstart.innerHTML = document.getElementById("start").innerHTML;
+        cellviewlesson.innerHTML = document.getElementById("viewlesson").innerHTML;
+        cellstart.innerHTML = document.getElementById("startcourse").innerHTML;
         cellid.innerHTML = obj.id;
         cellid.setAttribute("class","courseid");
         cellid.setAttribute("style","display: none;");
@@ -40,7 +43,7 @@ $.ajax({
   itemsToPaginate : ".rowdata"
 });
 
-$(".viewcourse").click(function() {
+$(".viewlesson").click(function() {
       var $row = $(this).closest("tr"); 
       var $id = $row.find(".courseid").text();
       var url = "viewlesson?id=" + $id;
@@ -60,6 +63,7 @@ $(".viewcourse").click(function() {
       <th>Course Name</th>
       <th>No of Lesson</th>
       <th>Progress</th>
+      <th>View Lesson</th>
       <th>Start Course</th>
     </tr>
   </thead>
@@ -79,9 +83,14 @@ $(".viewcourse").click(function() {
                 </div>
             </div>
         </script>
-        <script id="start" type="text/template">
+        <script id="viewlesson" type="text/template">
           <div class="ui form">
-            <button class="ui primary basic button viewcourse" value="start">Start Course</button>
+            <button class="ui primary basic button viewlesson" value="viewlesson">View Lesson</button>
+          </div> 
+        </script>
+        <script id="startcourse" type="text/template">
+          <div class="ui form">
+            <button class="ui primary basic button startcourse" value="startcourse">Start Course</button>
           </div> 
         </script>
   </tbody>

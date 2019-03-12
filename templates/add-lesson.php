@@ -10,7 +10,24 @@
       $('.ui.form')
         .form({
           fields: {
-           
+            course: {
+               identifier : 'course',
+               rules: [
+                   {
+                       type  : 'empty',
+                       prompt : 'please select the course'
+                   }
+               ]
+           },
+           lessonname: {
+              identifier  : 'lessonname',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter lesson name'
+                },
+              ]
+            },
            category: {
                identifier : 'category',
                rules: [
@@ -20,15 +37,15 @@
                    }
                ]
            },
-           duration: {
+         pages: {
                identifier : 'noofpages',
                rules: [
                    {
                        type  : 'empty',
-                       prompt : 'please select the duration'
+                       prompt : 'please select No of pages'
                    }
                ]
-           },          
+           },
           }
         })
       ;
@@ -50,7 +67,7 @@
                 <label>Name of the Lesson</label>
             </div>
             <div class="four wide field">
-                <input type="text" name="arr" id="arr">
+                <input type="text" name="name" id="arr">
             </div>
         </div>
       </div>
@@ -131,7 +148,7 @@
         .dropdown()
     ;
   $(document).ready(function(){
-  $.ajax({ 
+  $.ajax({
     type: 'GET',
     url: "category",
     success: function(data){
@@ -149,7 +166,7 @@
       console.log(error);
     }});
 
-    $.ajax({ 
+    $.ajax({
     type: 'GET',
     url: "course",
     success: function(data){
@@ -193,15 +210,15 @@ function myFunction() {
         createSummerNote.setAttribute("class","summernote");
         createSummerNote.setAttribute("name","Page"+(i+1));
         createSummerNote.setAttribute("id","Page"+(i+1));
-        
+
         node.appendChild(labelHeader);
         node.appendChild(createSummerNote);
         node.appendChild(lineBreak);
         $('.summernote').summernote({
         placeholder: 'Write your page content',
-        height: 300   
+        height: 300
         });
-    } 
-}   
+    }
+}
 </script>
-</html> 
+</html>

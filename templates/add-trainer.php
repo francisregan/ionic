@@ -177,7 +177,7 @@
 
 <form class="ui form" action="trainer" method="post" >
 <div class="seven wide field">
-<input id="submitBtn" type="submit" class="ui primary button" name="Add a new trainer" value="Add this trainer record" ></input>
+<input id="submitBtn" type="submit" class="ui primary button" name="Add a new trainer" value="Add this trainer record" disabled="disabled"  ></input>
 </div>
 </div>
 </div>
@@ -194,8 +194,17 @@
     type: 'GET',
     url: "school",
     success: function(data){
-      var schools = JSON.parse(data);
-      
+     
+      $('#name,#contactno,#myCheck,#mailid,#address,#schoolname,#spec').on('input change', function () {
+            if ($(this).val() != '') {
+                $('#submitBtn').prop('disabled', false);
+            }
+            else {
+                $('#submitBtn').prop('disabled', true);
+            }
+        });
+
+      var schools = JSON.parse(data);  
       for (var i =0; i< schools.length; i++){
         var obj = schools[i];
         var element = document.getElementById("schoolname");

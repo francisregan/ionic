@@ -235,7 +235,9 @@
                     var obj = schools[0];
                     document.getElementById("name").value = obj.trainer_name;
                     document.getElementById("contactno").value = obj.contact_no;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("mailid").value = obj.mail_id;
+                    document.getElementById("mailid").readOnly = true;
                     document.getElementById("spec").value = obj.specialization;
                     var val = obj.school;
                     console.log(val.length);

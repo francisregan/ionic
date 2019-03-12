@@ -114,8 +114,10 @@
                     var obj = schools[0];
                     document.getElementById("name").value = obj.school_name;
                     document.getElementById("contactno").value = obj.contact_no;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("contactperson").value = obj.contact_person;
                     document.getElementById("mailid").value = obj.mail_id;
+                    document.getElementById("mailid").readOnly = true;
                     document.getElementById("address").value = obj.address;
                     document.getElementById("state").value = obj.state;
                     document.getElementById("city").value = obj.city;

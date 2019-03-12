@@ -281,7 +281,9 @@ $(document)
                     var obj = schools[0];
                     document.getElementById("name").value = obj.student_name;
                     document.getElementById("contactno").value = obj.contact_number;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("mailid").value = obj.email;
+                    document.getElementById("mailid").readOnly = true;
                     var val = obj.school;
                     var sel = document.getElementById('schoolname');
                     var opts = sel.options;

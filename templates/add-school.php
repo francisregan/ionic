@@ -5,6 +5,8 @@ if (!isset($_SESSION)) {
 ?>
 
 <html>
+<!-- <script src="semantic/dist/semantic.js"></script>
+<script src="semantic/dist/semantic.js"></script> -->
 <head>
 <title> Add School </title>
 <script>
@@ -30,8 +32,16 @@ if (!isset($_SESSION)) {
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
+                  type   : 'exactLength[10]',
                   prompt : 'Your contact no should be exactly 10 digits'
+                },
+                {
+                  type   : 'number',
+                  prompt : 'Your contact no should not contain any character and any other sign'
+                },
+                {
+                  type   : 'not[0000000000]',
+                  prompt : 'Please enter valid Contact number'
                 }
               ]
             },
@@ -56,8 +66,8 @@ if (!isset($_SESSION)) {
                   prompt : 'Please enter your e-mail'
                 },
                 {
-                  type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
+                  type   : 'regExp[/^([a-z0-9\\+_\\-]+)(\\.[a-z0-9\\+_\\-]+)*@([a-z0-9\\-]+\\.)+[a-z]{2,6}$/]',
+                  prompt :  'Please enter valid mail'
                 }
               ]
             },
@@ -110,8 +120,10 @@ if (!isset($_SESSION)) {
                     var obj = schools[0];
                     document.getElementById("name").value = obj.school_name;
                     document.getElementById("contactno").value = obj.contact_no;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("contactperson").value = obj.contact_person;
                     document.getElementById("mailid").value = obj.mail_id;
+                    document.getElementById("mailid").readOnly = true;
                     document.getElementById("address").value = obj.address;
                     document.getElementById("state").value = obj.state;
                     document.getElementById("city").value = obj.city;

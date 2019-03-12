@@ -30,8 +30,16 @@ $(document)
                   prompt : 'Please enter your contact no'
                 },
                 {
-                  type   : 'length[10]',
+                  type   : 'exactLength[10]',
                   prompt : 'Your contact no should be exactly 10 numbers'
+                },
+                {
+                  type   : 'number',
+                  prompt : 'Your contact no should not contain any character and any other sign'
+                },
+                {
+                  type   : 'not[0000000000]',
+                  prompt : 'Please enter valid Contact number'
                 }
               ]
             },
@@ -43,8 +51,8 @@ $(document)
                   prompt : 'Please enter your mail id'
                 },
                 {
-                  type   : 'email',
-                  prompt : 'Enter valid mail'
+                  type   : 'regExp[/^([a-z0-9\\+_\\-]+)(\\.[a-z0-9\\+_\\-]+)*@([a-z0-9\\-]+\\.)+[a-z]{2,6}$/]',
+                  prompt : 'Please Enter valid mail'
                 }
               ]
             },
@@ -278,7 +286,9 @@ $_SESSION['stu_res'] = true;
                     var obj = schools[0];
                     document.getElementById("name").value = obj.student_name;
                     document.getElementById("contactno").value = obj.contact_number;
+                    document.getElementById("contactno").readOnly = true;
                     document.getElementById("mailid").value = obj.email;
+                    document.getElementById("mailid").readOnly = true;
                     var val = obj.school;
                     var sel = document.getElementById('schoolname');
                     var opts = sel.options;

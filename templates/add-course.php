@@ -172,6 +172,18 @@ if (!isset($_SESSION)) {
     </div>
   </div>
 
+  <div class="two fields">
+      <div class="three wide field">
+        <label>Activate</label>
+      </div>
+    <div class="field">
+      <div class="one wide field" >
+        <input type="hidden" name="activate" value="no">
+        <input type="checkbox" name="activate" id="myCheck" value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+      </div>
+    </div>
+ </div>
+
   </div>
   <?php
 $_SESSION['cou_res'] = true;

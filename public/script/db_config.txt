@@ -12,6 +12,7 @@ CREATE TABLE `course` (
   `duration` varchar(150) NOT NULL,
   `printing` varchar(150) NOT NULL,
   `session` int(3) NOT NULL,
+  `activate` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 );
 CREATE TABLE `lesson` (

@@ -50,9 +50,10 @@ class CourseController
         $duration = filter_var($data['duration'], FILTER_SANITIZE_STRING);
         $value = $data['frequency'];
         $sessions = filter_var($data['sessions'], FILTER_SANITIZE_STRING);
+        $act = $data['activate'];
         $sqli = $this->container->db;
-        $result = $sqli->query("insert into ioniccloud.course (name, type, duration, printing, session )
-    VALUES ('$name','$type','$duration','$value','$sessions')");
+        $result = $sqli->query("insert into ioniccloud.course (name, type, duration, printing, session, activate)
+    VALUES ('$name','$type','$duration','$value','$sessions', '$act')");
         if (mysqli_affected_rows($sqli) == 1) {
             return $this->container->renderer->render($response, 'index.php', array('redirect' => 'manage-course'));
         }

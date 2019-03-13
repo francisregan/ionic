@@ -163,7 +163,7 @@ $(document)
       </div>
       <div class="four wide field">
       <select id="schoolname" name="schoolname" >
-      <option value="0">Select school </option>
+      <option value="0">select school</option>
       </select>
       </div>
     </div>
@@ -230,17 +230,20 @@ $(document)
     </div>
  </div>
 </div>
-<div class="seven wide field">
 <?php
 $_SESSION['stu_res'] = true;
 ?>
 
-<input type="submit" id="submitBtn" class="ui primary button" name="submit" value="submit" />
+<div class="seven wide field">
+<input id="submitBtn" type="submit" class="ui primary button" name="Add a new student" value="Add this student record"  disabled="disabled"  ></input>
 </div>
 </div>
 </div>
 </form>
 </body>
+
+<form class="ui form" action="student" method="post" >
+
 <script>
 
     $('.ui.dropdown')
@@ -251,8 +254,23 @@ $_SESSION['stu_res'] = true;
     type: 'GET',
     url: "school",
     success: function(data){
-      var schools = JSON.parse(data);
+      $(function() {     
+  var select = $('select');
+  select.html(select.find('option').sort(function(x, y) {
+    return $(x).text() > $(y).text() ? 1 : -1;
+  }));
+});
 
+$('#name,#contactno,#myCheck,#mailid,#age,#batch,#class,#pname').on('input change', function () {
+            if ($(this).val() != '') {
+                $('#submitBtn').prop('disabled', false);
+            }
+            else {
+                $('#submitBtn').prop('disabled', true);
+            }
+        });
+
+      var schools = JSON.parse(data);
       for (var i =0; i< schools.length; i++){
         var obj = schools[i];
         var element = document.getElementById("schoolname");
@@ -312,5 +330,6 @@ $_SESSION['stu_res'] = true;
                 }});
         }
     });
+    
 </script>
 </html>

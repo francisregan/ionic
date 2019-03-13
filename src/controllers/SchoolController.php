@@ -15,6 +15,7 @@ class SchoolController
 
     public function listSchool($request, $response, $args)
     {
+
         $data = $request->getParsedBody();
         $id = $request->getParam('id');
         if ($id != null) {

@@ -40,7 +40,9 @@
         option.value = obj.id;
         option.id = obj.id;
         option.text = obj.name;
-        element.add(option);
+        if(obj.activate=='Yes'){
+          element.add(option);
+        }
       }
     },
     error:function(error){

@@ -15,7 +15,7 @@
             var page = $(this).attr('href');
             $('#content').load("../templates/"+page);
             var x = $("#content").position(); 
-            window.scrollTo( x.top);
+            window.scrollTo(x.left, x.top);
         });
     });
 

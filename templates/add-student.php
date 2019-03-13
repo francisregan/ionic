@@ -260,7 +260,9 @@ $_SESSION['stu_res'] = true;
         option.value = obj.sno;
         option.id = obj.sno;
         option.text = obj.school_name;
-        element.add(option);
+        if(obj.activate == 'Yes'){
+          element.add(option);
+        }
       }
     },
     error:function(error){

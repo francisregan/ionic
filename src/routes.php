@@ -68,6 +68,10 @@ $app->group('/lesson', function(){
     $this->get('', 'LessonController:listlesson');
    }); 
 
+ $app->group('/editlesson',function(){
+    $this->get('', 'LessonController:editlesson');
+});
+
 $app->group('/batch', function(){
     $this->post('', 'BatchController:addbatch');
     $this->get('', 'BatchController:listbatch');

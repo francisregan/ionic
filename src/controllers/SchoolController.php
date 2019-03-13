@@ -52,7 +52,10 @@ class SchoolController
         $sqli = $this->container->db;
         if ($schoolid != null) {
             $result = $sqli->query("UPDATE ioniccloud.school SET school_name='$name', contact_person='$contactperson', contact_no='$contact', mail_id='$mailid', address='$address', state='$state', activate='$act', city='$city' WHERE sno='$schoolid';");
-        } else {
+            echo ("<script>window.alert('Record Updated Successfully');</script>");
+        } 
+        
+        else {
             $result = $sqli->query("INSERT INTO ioniccloud.school (school_name, contact_no, contact_person, mail_id, address, state, city,activate)
       VALUES ('$name','$contact','$contactperson','$mailid','$address','$state','$city','$act')");
         }

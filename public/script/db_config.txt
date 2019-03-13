@@ -15,7 +15,6 @@ CREATE TABLE `course` (
   `activate` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 );
-
 CREATE TABLE `lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lesson_name` varchar(150) NOT NULL,
@@ -23,8 +22,9 @@ CREATE TABLE `lesson` (
   `total_pages` varchar(150) NOT NULL,
   `page_ids` varchar(150) NOT NULL,
   `course_id` varchar(150) NOT NULL,
+  `activate` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-);
+)
 
 CREATE TABLE `lessonpages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

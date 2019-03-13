@@ -58,6 +58,7 @@ class StudentController
                 $result = $sqli->query("UPDATE ioniccloud.student SET student_name='$name', contact_number='$contactno',
             email='$mail', school='$school', age='$age', batch='$batch', class='$class', parent_name='$parentname',
             activate='$act' WHERE student_id='$studentid';");
+            echo ("<script>window.alert('Record Updated Successfully');</script>");
             } else {
                 $result = $sqli->query("INSERT INTO ioniccloud.student (student_name, contact_number, email, school,
             age, batch, class, parent_name,activate) VALUES ('$name','$contactno','$mail','$school','$age','$batch',

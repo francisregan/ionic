@@ -14,8 +14,8 @@
             e.preventDefault();
             var page = $(this).attr('href');
             $('#content').load("../templates/"+page);
-            var x = $("#content").position(); 
-            window.scrollTo( x.top);
+            var x = $("#content").position(); //gets the position of the div element...
+            window.scrollTo(x.left, x.top); //window.scrollTo() scrolls the page upto certain position....
         });
     });
 

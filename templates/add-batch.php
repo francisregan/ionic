@@ -123,7 +123,7 @@ var $i = jQuery.noConflict();
               <label>Start Date</label>
             </div>
             <div class="four wide field">
-              <input type="text" id="sdate" name="sdate" />
+              <input  readonly type="text" id="sdate" name="sdate" /> 
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ var $i = jQuery.noConflict();
               <label>End Date</label>
             </div>
             <div class="four wide field">
-              <input type="text" id="edate" name="edate" />
+              <input  readonly type="text" id="edate" name="edate" />
             </div>
           </div>
         </div>

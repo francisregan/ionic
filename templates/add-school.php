@@ -253,10 +253,22 @@ if (!isset($_SESSION)) {
 $_SESSION['sch_res'] = true;
 ?>
   <div class="seven wide field">
-  <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"></i>
+  <input id="submitBtn" type="submit" class="ui primary button" name="Add a new school" value="Add this school record"  disabled="disabled" ></i>
 </div>
 </div>
 </div>
 </form>
 </body>
+<script>
+$(document).ready(function(){
+  $('#name,#contactno,#myCheck,#mailid,#contactperson,#address,#city,#state').on('input change', function () {
+            if ($(this).val() != '') {
+                $('#submitBtn').prop('disabled', false);
+            }
+            else {
+                $('#submitBtn').prop('disabled', true);
+            }
+        });
+      }); 
+</script>
 </html>

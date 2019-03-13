@@ -193,7 +193,7 @@ if (!isset($_SESSION)) {
 <?php
 $_SESSION['tra_res'] = true;
 ?>
-<input id="submitBtn" type="submit" class="ui primary button" name="Add a new trainer" value="Add this trainer record" ></input>
+<input id="submitBtn" type="submit" class="ui primary button" name="Add a new trainer" value="Add this trainer record" disabled="disabled"  ></input>
 </div>
 </div>
 </div>
@@ -210,8 +210,23 @@ $_SESSION['tra_res'] = true;
     type: 'GET',
     url: "school",
     success: function(data){
-      var schools = JSON.parse(data);
-
+     
+      $('#name,#contactno,#myCheck,#mailid,#address,#schoolname,#spec').on('input change', function () {
+            if ($(this).val() != '') {
+                $('#submitBtn').prop('disabled', false);
+            }
+            else {
+                $('#submitBtn').prop('disabled', true);
+            }
+        });
+        
+        $(function() {     
+  var select = $('select');
+  select.html(select.find('option').sort(function(x, y) {
+    return $(x).text() > $(y).text() ? 1 : -1;
+  }));
+});
+      var schools = JSON.parse(data);  
       for (var i =0; i< schools.length; i++){
         var obj = schools[i];
         var element = document.getElementById("schoolname");

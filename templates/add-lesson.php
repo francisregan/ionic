@@ -16,7 +16,24 @@ if (!isset($_SESSION)) {
       $('.ui.form')
         .form({
           fields: {
-
+            course: {
+               identifier : 'course',
+               rules: [
+                   {
+                       type  : 'empty',
+                       prompt : 'please select the course'
+                   }
+               ]
+           },
+           lessonname: {
+              identifier  : 'lessonname',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter lesson name'
+                },
+              ]
+            },
            category: {
                identifier : 'category',
                rules: [
@@ -26,12 +43,12 @@ if (!isset($_SESSION)) {
                    }
                ]
            },
-           duration: {
+         pages: {
                identifier : 'noofpages',
                rules: [
                    {
                        type  : 'empty',
-                       prompt : 'please select the duration'
+                       prompt : 'please select No of pages'
                    }
                ]
            },
@@ -56,7 +73,7 @@ if (!isset($_SESSION)) {
                 <label>Name of the Lesson</label>
             </div>
             <div class="four wide field">
-                <input type="text" name="arr" id="arr">
+                <input type="text" name="name" id="arr">
             </div>
         </div>
       </div>

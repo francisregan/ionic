@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers;
-
 use Psr\Container\ContainerInterface;
-
 session_start();
 class BatchController
 {
@@ -21,10 +19,8 @@ class BatchController
         $schoolsid = $request->getParam('sid');
         $courseid = $request->getParam('cid');
         if ($batchid != null && $schoolsid != null && $courseid != null) {
-
             $result = $this->container->db->query("SELECT student FROM ioniccloud.batch where id = '$batchid' and school = '$schoolsid' and course_id = '$courseid';");
             $studentResult = $this->container->db->query("SELECT * FROM ioniccloud.student;");
-
             $results = [];
             $studentResults = [];
             $studentnames = [];
@@ -45,19 +41,16 @@ class BatchController
                 array_push($results, $row);
             }
             return json_encode($results);
-
         } else if ($editId != null) {
             $result = $this->container->db->query("SELECT batch.name, school.school_name, batch.school, batch.sdate, batch.edate, batch.activate
       FROM batch
       INNER JOIN school
       ON batch.school=school.sno where id = '$editId';");
-
             $results = [];
             while ($row = mysqli_fetch_array($result)) {
                 array_push($results, $row);
             }
             return json_encode($results);
-
         } else if ($manageid != null) {
             $result = $this->container->db->query("SELECT school.sno, batch.id,batch.name,school.school_name,batch.student,batch.course_id
       FROM batch
@@ -68,11 +61,9 @@ class BatchController
             $results = [];
             $trainerresults = [];
             $lessonresults = [];
-
             while ($lessonrow = mysqli_fetch_array($lessonresult)) {
                 array_push($lessonresults, $lessonrow);
             }
-
             while ($row = mysqli_fetch_array($result)) {
                 while ($trainerrow = mysqli_fetch_array($trainerresult)) {
                     $schoolids = json_decode($trainerrow['school'], true);
@@ -109,7 +100,6 @@ class BatchController
     ON batch.school=school.sno;");
             $studentresult = $this->container->db->query("SELECT * FROM ioniccloud.student;");
             $courseresult = $this->container->db->query("SELECT id, name FROM ioniccloud.course;");
-
             $results = [];
             $studentresults = [];
             $courseresults = [];
@@ -119,11 +109,9 @@ class BatchController
             while ($courserow = mysqli_fetch_array($courseresult)) {
                 array_push($courseresults, $courserow);
             }
-
             while ($row = mysqli_fetch_array($result)) {
                 $studentids = json_decode($row['student'], true);
                 $studentresult = [];
-
                 foreach ($studentids as $studentid) {
                     foreach ($studentresults as $student) {
                         if ($student['student_id'] === $studentid) {
@@ -146,21 +134,17 @@ class BatchController
         }
         return json_encode($results);
     }
-
     public function addbatch($request, $response, $args)
     {
         $batch_random = $_SESSION['bat_res'];
         if (!$batch_random) {
             return $this->container->renderer->render($response, 'index.php', array('redirect' => 'manage-batch'));
         }
-
         $_SESSION['bat_res'] = false;
-
         $data = $request->getParsedBody();
         $batchid = filter_var($data['bid'], FILTER_SANITIZE_STRING);
         $name = filter_var($data['bname'], FILTER_SANITIZE_STRING);
         $school = filter_var($data['schoolname'], FILTER_SANITIZE_STRING);
-
         $assignedStudents = $data['assignedStudents'];
         $studentsEncoded = json_encode($assignedStudents);
         $startdate = filter_var($data['sdate'], FILTER_SANITIZE_STRING);
@@ -175,7 +159,6 @@ class BatchController
             $result = $sqli->query("insert into ioniccloud.batch (name, school, student, sdate, edate, activate)
       VALUES ('$name','$school','$studentsEncoded','$date','$edate','$act')");
         }
-
         if (mysqli_affected_rows($sqli) == 1) {
             $last_id = mysqli_insert_id($sqli);
             $result = $sqli->query("delete from ioniccloud.studentbatch where batch_id =$batchid");
@@ -223,14 +206,12 @@ class BatchController
         $selectcourse = filter_var($data['selectcourse'], FILTER_SANITIZE_STRING);
         $sqli = $this->container->db;
         $result = $sqli->query("UPDATE batch SET course_id= '$selectcourse' WHERE id = '$batchid';");
-
         if (mysqli_affected_rows($sqli) == 1) {
             return $this->container->renderer->render($response, 'index.php', array('redirect' => 'manage-batch'));
         }
         echo ("<script>window.alert('Record Not Added');</script>");
         return $this->container->renderer->render($response, 'index.php', array('redirect' => 'manage-batch'));
     }
-
     public function lessonPlan($request, $response, $args)
     {
         return $this->container->renderer->render($response, 'index.php', array('redirect' => 'lesson-plan'));

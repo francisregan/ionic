@@ -63,7 +63,7 @@ class BatchController
       FROM batch
       INNER JOIN school
       ON batch.school=school.sno where id = '$manageid';");
-            $trainerresult = $this->container->db->query("SELECT school,trainer_name FROM ioniccloud.trainer;");
+            $trainerresult = $this->container->db->query("SELECT school,trainer_name FROM ioniccloud.trainer where activate = 'Yes';");
             $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson;");
             $results = [];
             $trainerresults = [];

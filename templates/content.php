@@ -14,6 +14,8 @@
             e.preventDefault();
             var page = $(this).attr('href');
             $('#content').load("../templates/"+page);
+            var x = $("#content").position(); 
+            window.scrollTo( x.top);
         });
     });
 
@@ -61,8 +63,8 @@ if( $_SESSION['type'] == 1){
     &nbsp;&nbsp; School Management
   </div> 
   <div class="menu" id="menu">
-  <a href="manage-school.php" class="item">Manage Schools</a>
-  <a href="add-school.php" class="item">Add a school </a>
+  <a href="manage-school.php#" class="item">Manage Schools</a>
+  <a href="add-school.php#" class="item">Add a school </a>
   </div>
   </div>
 
@@ -72,8 +74,8 @@ if( $_SESSION['type'] == 1){
     &nbsp;&nbsp;Trainer Management
   </div> 
     <div class="menu" id="menu">
-      <a href="manage-trainer.php" class="item">Manage Trainers </a>
-      <a href="add-trainer.php" class="item">Add a Trainer </a>
+      <a href="manage-trainer.php#" class="item">Manage Trainers </a>
+      <a href="add-trainer.php#" class="item">Add a Trainer </a>
       <a class="item">Allocate trainer to schools </a>
       <a class="item">Manage content for trainer </a> 
     </div>
@@ -132,7 +134,7 @@ if( $_SESSION['type'] == 1){
 }
 ?>
 </div>
-<div class="content" id="content" style="width:100em; font-size: 1rem; text-align:center;"> </div>
+<div class="content" id="content" style="top:100%; width:100em; font-size: 1rem; text-align:center;"> </div>
 </div>
 </body>
 </html>

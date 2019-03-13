@@ -16,17 +16,26 @@ $.ajax({
         table = document.getElementById("mytable");
         row = table.insertRow(1);
         row.setAttribute("class","rowdata");
-        var cellid = row.insertCell(0);
+        var cellcheckbox = row.insertCell(0);
         var celllessonname = row.insertCell(1);
         var cellcategory = row.insertCell(2);
         var cellTotalNoPages = row.insertCell(3);
         var celledit = row.insertCell(4);
-        cellid.setAttribute("class","lid");
+        cellid=row.insertCell(5);
         cellid.setAttribute("style","display: none;");
+        cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
+        if(obj.activate == "Yes"){
+           document.getElementById("myCheck").checked = true;
+        }else{
+          document.getElementById("myCheck").checked = false;
+        }
+        document.getElementById("myCheck").disabled = true
         celllessonname.innerHTML = obj.lesson_name;
         cellcategory.innerHTML = obj.name;
         cellTotalNoPages.innerHTML = obj.total_pages;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
+        cellid.innerHTML=obj.id;  
+        cellid.setAttribute("class","lid");
     }
   },
   error:function(error){
@@ -44,7 +53,8 @@ $.ajax({
       var url = "editlesson?id=" + $id;
       window.location.href = url;
       });
-});
+
+  });
 
 </script>
 
@@ -57,6 +67,7 @@ $.ajax({
 <table id="mytable" class="ui celled table">
   <thead>
     <tr>
+       <th></th>
       <th>Lesson Name</th>
       <th>Category</th>
       <th>Total No Pages</th>
@@ -64,6 +75,7 @@ $.ajax({
     </tr>
   </thead>
   <tbody>
+ 
    
   <script id="check" type="text/template">
       <div class="collapsing">

@@ -1,3 +1,18 @@
+<?php 
+$time = $_SERVER['REQUEST_TIME'];
+
+$timeout_duration = 3600;
+
+if (isset($_SESSION['LAST_ACTIVITY']) && 
+   ($time - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
+?>
+<script>
+window.location.href = "logout";
+</script>
+<?php
+}
+$_SESSION['LAST_ACTIVITY'] = $time;
+?>
 <html>
 <head>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">

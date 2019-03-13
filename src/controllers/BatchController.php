@@ -13,6 +13,7 @@ class BatchController
     {
         $data = $request->getParsedBody();
         $manageid = $request->getParam('id');
+        $selectCourseid = $request->getParam('scid');
         $editId = $request->getParam('editid');
         $lessonId = $request->getParam('lid');
         $batchid = $request->getParam('bid');
@@ -57,7 +58,7 @@ class BatchController
       INNER JOIN school
       ON batch.school=school.sno where id = '$manageid';");
             $trainerresult = $this->container->db->query("SELECT school,trainer_name FROM ioniccloud.trainer where activate = 'Yes';");
-            $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson;");
+            $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson where activate = 'Yes';");
             $results = [];
             $trainerresults = [];
             $lessonresults = [];
@@ -91,6 +92,15 @@ class BatchController
                 $row['trainername'] = $trainerresults;
                 $row['lessonname'] = $lessonnames;
                 $row['lessonid'] = $lessonIds;
+                array_push($results, $row);
+            }
+        }if($selectCourseid != null){
+            $result = $this->container->db->query("SELECT batch.id,batch.name,school.school_name
+            FROM batch
+            INNER JOIN school
+            ON batch.school=school.sno where id = '$selectCourseid';");
+            $results = [];
+            while ($row = mysqli_fetch_array($result)) {
                 array_push($results, $row);
             }
         } else {

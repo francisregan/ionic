@@ -16,7 +16,7 @@
                         document.getElementById("batchid").value = batchId;
                         document.getElementById("batch").innerHTML = obj.name;
                         document.getElementById("school").innerHTML= obj.school_name;
-                       
+
                     },
                     error:function(error){
                     console.log(error);
@@ -27,12 +27,12 @@
        $('.ui.dropdown')
         .dropdown() ;
   $(document).ready(function(){
-  $.ajax({ 
+  $.ajax({
     type: 'GET',
     url: "course",
     success: function(data){
       var courses = JSON.parse(data);
-      
+
       for (var i =0; i<courses.length; i++){
         var obj =courses[i];
         var element = document.getElementById("selectcourse");
@@ -48,7 +48,7 @@
     error:function(error){
       console.log(error);
     }});
-  }); 
+  });
 
     </script>
     </head>
@@ -71,12 +71,12 @@
       <td class="three wide column">School</td>
       <td class="three wide column" id="school"></td>
     </tr>
-     
+
     <tr>
       <td class="three wide column">Selectcourse</td>
       <td class="three wide column">
       <select id="selectcourse" name="selectcourse" >
-      <option value="0">Select course </option> 
+      <option value="0">Select course </option>
       </td>
     </tr>
   </tbody>

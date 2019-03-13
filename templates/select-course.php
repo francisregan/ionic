@@ -6,10 +6,9 @@
             if (window.location.href.indexOf("id") > -1) {
                 var params = window.location.search.split('?')[1].split('&');
                 var batchId = decodeURIComponent(params[0].split('=')[1]);
-                console.log(batchId);
                 $.ajax({
                     type: 'GET',
-                    url: "batch?id="+batchId,
+                    url: "batch?scid="+batchId,
                     success: function(data){
                     var schools = JSON.parse(data);
                         var obj = schools[0];

@@ -47,6 +47,7 @@ $(".viewlesson").click(function() {
       var $row = $(this).closest("tr"); 
       var $id = $row.find(".courseid").text();
       var url = "viewlesson?id=" + $id;
+      
       window.location.href = url;
       });
 });

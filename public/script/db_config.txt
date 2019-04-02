@@ -15,16 +15,15 @@ CREATE TABLE `course` (
   `activate` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
 CREATE TABLE `lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lesson_name` varchar(150) NOT NULL,
-  `category_id` varchar(150) NOT NULL,
   `total_pages` varchar(150) NOT NULL,
   `page_ids` varchar(150) NOT NULL,
-  `course_id` varchar(150) NOT NULL,
-  `activate` varchar(45) DEFAULT NULL,
+  `activate` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
 
 CREATE TABLE `lessonpages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -112,4 +111,13 @@ CREATE TABLE `studentbatch` (
   `school_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `student_id_UNIQUE` (`student_id`)
+);
+
+CREATE TABLE `allocatelesson` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `course_id` varchar(150) NOT NULL,
+  `category_id` varchar(150) NOT NULL,
+  `lesson_ids` varchar(150) NOT NULL,
+  `activate` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
 );

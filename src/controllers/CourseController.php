@@ -60,4 +60,66 @@ class CourseController
 
         return $this->container->renderer->render($response, 'index.php', array('redirect' => 'add-course'));
     }
+    public function allocateLesson($request, $response, $args)
+    {
+        $data = $request->getParsedBody();
+        $allocateid = $data['aid'];
+        $course = $data['course'];
+        $category = filter_var($data['category'], FILTER_SANITIZE_STRING);
+        $lessons = $data['lesson'];
+        $act=$data['activate'];
+        $lessonsEncoded = json_encode($lessons);
+
+        $sqli = $this->container->db;
+        if ($allocateid != null) {
+            $result = $sqli->query("UPDATE ioniccloud.allocatelesson SET course_id='$course', category_id='$category', lesson_ids='$lessonsEncoded', activate='$act' WHERE id='$allocateid';");
+            echo ("<script>window.alert('Record Updated Successfully');</script>");
+        } else {
+            $result = $sqli->query("INSERT INTO ioniccloud.allocatelesson (course_id, category_id, lesson_ids, activate)
+  VALUES ('$course','$category','$lessonsEncoded','$act')");
+        }
+        if (mysqli_affected_rows($sqli) == 1) {
+            return $this->container->renderer->render($response, 'index.php', array('redirect' => 'manage-allocatelesson'));
+        }
+        return $this->container->renderer->render($response, 'index.php', array('redirect' => 'allocate-lesson'));
+    }
+
+    public function listAllocate($request, $response, $args)
+    {
+        $data = $request->getParsedBody();
+        $id = $request->getParam('id');
+        $this->container->logger->info($id);
+        if ($id != null) {
+            $result = $this->container->db->query("SELECT c.name As course_name, ct.name As category_name, al.id, al.lesson_ids, al.activate FROM ioniccloud.allocatelesson al, ioniccloud.course c, ioniccloud.category ct where al.course_id=c.id and al.category_id=ct.id and al.id='$id';");
+        }else{
+            $result = $this->container->db->query("SELECT c.name As course_name, ct.name As category_name, al.id, al.lesson_ids, al.activate FROM ioniccloud.allocatelesson al, ioniccloud.course c, ioniccloud.category ct where al.course_id=c.id and al.category_id=ct.id;");
+        }
+            $results = [];
+            $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson;");
+            $results = [];
+            $lessonresults = [];
+            while ($lessonrow = mysqli_fetch_array($lessonresult)) {
+                array_push($lessonresults, $lessonrow);
+            }
+            while ($row = mysqli_fetch_array($result)) {
+                $lessonids = json_decode($row['lesson_ids'], true);
+                $lessonresult = [];
+                foreach ($lessonids as $lessonid) {
+                    foreach ($lessonresults as $lesson) {
+                        if ($lesson['id'] === $lessonid) {
+                            array_push($lessonresult, $lesson['lesson_name']);
+                            break;
+                        }
+                    }
+                }
+                $row['lesson'] = $lessonresult;
+                array_push($results, $row);
+            }
+            return json_encode($results);
+    }  
+    public function editAllocate($request, $response, $args)
+    {
+        return $this->container->renderer->render($response, 'index.php', array('redirect' => 'allocate-lesson'));
+    }
+
 }

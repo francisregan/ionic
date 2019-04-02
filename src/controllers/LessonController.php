@@ -20,10 +20,8 @@ class LessonController
       $result = $this->container->db->query("SELECT l.id, l.lesson_name, c.name FROM ioniccloud.lesson l, ioniccloud.course c  where l.course_id=$courseid and l.course_id = c.id;");
     }else if($id != NULL)
      {
-      $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.category_id,category.name,lesson.total_pages,lesson.activate,lesson.course_id 
-      FROM lesson
-      INNER JOIN category
-      ON lesson.category_id=category.id where  lesson.id = '$id';");
+      $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.total_pages,lesson.activate
+      FROM lesson where  lesson.id = '$id';");
       $lessonpagesresult = $this->container->db->query("SELECT * FROM ioniccloud.lessonpages where lesson_id = '$id';");
         $lessonpagesresults = [];
         while($lessonpagerow = mysqli_fetch_array($lessonpagesresult)) 
@@ -34,10 +32,7 @@ class LessonController
         }
         
     }else{
-    $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.category_id,category.name,lesson.total_pages,lesson.activate
-    FROM lesson
-    INNER JOIN category
-    ON lesson.category_id=category.id;");
+    $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.total_pages,lesson.activate FROM lesson;");
     }
     $results = [];
     while($row = mysqli_fetch_array($result)) {
@@ -60,9 +55,7 @@ class LessonController
 
     $data = $request->getParsedBody();
     $lessonid = $data['lid'];
-    $course = filter_var($data['course'], FILTER_SANITIZE_STRING);
     $name = filter_var($data['lessonname'], FILTER_SANITIZE_STRING);
-    $category = filter_var($data['category'], FILTER_SANITIZE_STRING);
     $totalPage = filter_var($data['noofpages'], FILTER_SANITIZE_STRING);
     $pages = $data["arr"];
     $act=$data['activate'];  
@@ -116,10 +109,10 @@ class LessonController
   } 
    
   if ($lessonid != null) {
-    $result = $sqli->query("UPDATE ioniccloud.lesson SET lesson_name='$name', category_id='$category', total_pages='$totalPage',page_ids='$pageidsEncode', course_id='$course', activate='$act' WHERE id='$lessonid';");
+    $result = $sqli->query("UPDATE ioniccloud.lesson SET lesson_name='$name', total_pages='$totalPage',page_ids='$pageidsEncode', activate='$act' WHERE id='$lessonid';");
   }else{
-    $result = $sqli->query("INSERT INTO ioniccloud.lesson (lesson_name, category_id, total_pages, page_ids,course_id,activate) 
-    VALUES ('$name','$category','$totalPage','$pageidsEncode','$course','$act')");
+    $result = $sqli->query("INSERT INTO ioniccloud.lesson (lesson_name, total_pages, page_ids ,activate) 
+    VALUES ('$name','$totalPage','$pageidsEncode','$act')");
   }
     return $this->container->renderer->render($response, 'index.php', array('redirect'=>'manage-lesson'));
  

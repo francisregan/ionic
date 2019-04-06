@@ -53,10 +53,8 @@ class BatchController
             }
             return json_encode($results);
         } else if ($manageid != null) {
-            $result = $this->container->db->query("SELECT school.sno, batch.id,batch.name,school.school_name,batch.student,batch.course_id
-      FROM batch
-      INNER JOIN school
-      ON batch.school=school.sno where id = '$manageid';");
+            $result = $this->container->db->query("SELECT s.sno, b.id,b.name,s.school_name,b.student, b.course_id
+      FROM batch b, school s where id = '$manageid' and b.school=s.sno;");
             $trainerresult = $this->container->db->query("SELECT school,trainer_name FROM ioniccloud.trainer where activate = 'Yes';");
             $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson where activate = 'Yes';");
             $results = [];
@@ -75,23 +73,32 @@ class BatchController
                         }
                     }
                 }
-                $lessonnames = [];
-                $lessonIds = [];
-                foreach ($lessonresults as $lessonname) {
-                    if ($row['course_id'] === $lessonname['course_id']) {
-                        array_push($lessonnames, $lessonname['lesson_name']);
-                        array_push($lessonIds, $lessonname['id']);
-                    }
-                }
                 $courseId = $row['course_id'];
                 $courseresult = $this->container->db->query("SELECT name FROM ioniccloud.course where id='$courseId';");
                 $courseresults = [];
                 while ($courserow = mysqli_fetch_array($courseresult)) {
                     $row['coursename'] = $courserow['name'];
                 }
+                
+                $allocateresult = $this->container->db->query("SELECT * FROM ioniccloud.allocatelesson where course_id = '$courseId';");
+                $allocateresults = [];
+                $lessonresult = [];
+                $lessonIdsresult = [];
+                while ($allocaterow = mysqli_fetch_array($allocateresult)) {
+                    $lessonids = json_decode($allocaterow['lesson_ids'], true);                  
+                    foreach ($lessonids as $lessonid) {
+                        foreach ($lessonresults as $lesson) {
+                            if ($lesson['id'] === $lessonid) {
+                                array_push($lessonresult, $lesson['lesson_name']);
+                                array_push($lessonIdsresult, $lesson['id']);
+                                break;
+                            }
+                        }
+                    }
+                }
                 $row['trainername'] = $trainerresults;
-                $row['lessonname'] = $lessonnames;
-                $row['lessonid'] = $lessonIds;
+                $row['lessonname'] = $lessonresult;
+                $row['lessonid'] = $lessonIdsresult;
                 array_push($results, $row);
             }
         }else if($selectCourseid != null){
@@ -138,7 +145,7 @@ class BatchController
                     }
                 }
                 $row['student'] = $final;
-                $row['course_id'] = $courseresult;
+                $row['course'] = $courseresult;
                 array_push($results, $row);
             }
         }

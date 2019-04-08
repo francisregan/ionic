@@ -17,7 +17,32 @@ class LessonController
     $id = $request->getParam('id');
     $courseid = $request->getParam('lid');
     if($courseid!= NULL){
-      $result = $this->container->db->query("SELECT l.id, l.lesson_name, c.name FROM ioniccloud.lesson l, ioniccloud.course c  where l.course_id=$courseid and l.course_id = c.id;");
+      $result = $this->container->db->query("SELECT c.name As coursename, ct.name As categoryname, al.lesson_ids FROM ioniccloud.allocatelesson al, ioniccloud.category ct, ioniccloud.course c where al.course_id= '$courseid' and al.course_id = c.id
+      and al.category_id = ct.id;");
+      $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson;");
+      $results = [];
+      $lessonresults = [];
+      while ($lessonrow = mysqli_fetch_array($lessonresult)) {
+          array_push($lessonresults, $lessonrow);
+      }
+      while($row = mysqli_fetch_array($result)) {
+        $lessonids = json_decode($row['lesson_ids'], true);
+        $lessonresult = [];
+        $lessonIdsresult = [];
+        foreach ($lessonids as $lessonid) {
+            foreach ($lessonresults as $lesson) {
+                if ($lesson['id'] === $lessonid) {
+                    array_push($lessonresult, $lesson['lesson_name']);
+                    array_push($lessonIdsresult, $lesson['id']);
+                    break;
+                }
+            }
+        }
+        $row['lesson'] = $lessonresult;
+        $row['lesson_ids'] = $lessonIdsresult;
+        array_push($results, $row);
+      }
+      return json_encode($results);
     }else if($id != NULL)
      {
       $result = $this->container->db->query("SELECT lesson.id,lesson.lesson_name,lesson.total_pages,lesson.activate
@@ -38,7 +63,6 @@ class LessonController
     while($row = mysqli_fetch_array($result)) {
       if($id != NULL){
         $row['content'] = $lessonpagesresults;
-      
       }
       array_push($results, $row);
     }

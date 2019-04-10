@@ -28,7 +28,7 @@ $.ajax({
         cellbatchid.setAttribute("style","display: none;");
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        if(obj.activate == "Yes"){
+        if(obj.activate == "Y"){
            document.getElementById("myCheck").checked = true;
         }else{
           document.getElementById("myCheck").checked = false;

@@ -13,7 +13,6 @@ $.ajax({
         var lesson = JSON.parse(data);
         for (var i =0; i< lesson.length; i++){
         var obj = lesson[i];
-        console.log(obj);
         table = document.getElementById("mytable");
         row = table.insertRow(1);
         row.setAttribute("class","rowdata");
@@ -24,7 +23,7 @@ $.ajax({
         cellid=row.insertCell(4);
         cellid.setAttribute("style","display: none;");
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        if(obj.activate == "Yes"){
+        if(obj.activate == "Y"){
            document.getElementById("myCheck").checked = true;
         }else{
           document.getElementById("myCheck").checked = false;
@@ -48,7 +47,6 @@ $.ajax({
       $(".primary").click(function() {
       var $row = $(this).closest("tr");    // Find the row
       var $id = $row.find(".lid").text();  // Find the text
-      console.log($id);
       var url = "editlesson?id=" + $id;
       window.location.href = url;
       });

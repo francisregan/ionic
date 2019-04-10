@@ -182,8 +182,8 @@ if (!isset($_SESSION)) {
     <div class="field">
 
      <div class="one wide field" >
-     <input type="hidden" name="activate" value="no">
-     <input type="checkbox" name="activate" id="myCheck"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+     <input type="hidden" name="activate" value="N">
+     <input type="checkbox" name="activate" id="myCheck"  value="Y"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
     </div>
     </div>
  </div>
@@ -234,7 +234,7 @@ $_SESSION['tra_res'] = true;
         option.value = obj.sno;
         option.id = obj.sno;
         option.text = obj.school_name;
-        if(obj.activate == 'Yes'){
+        if(obj.activate == 'Y'){
           element.add(option);
         }
      }
@@ -273,7 +273,7 @@ $_SESSION['tra_res'] = true;
 
                     }
                     document.getElementById("address").value = obj.address;
-                    if(obj.activate == "Yes"){
+                    if(obj.activate == "Y"){
                       document.getElementById("myCheck").checked = true;
                     }
                 },

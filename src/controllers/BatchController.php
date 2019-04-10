@@ -55,8 +55,8 @@ class BatchController
         } else if ($manageid != null) {
             $result = $this->container->db->query("SELECT s.sno, b.id,b.name,s.school_name,b.student, b.course_id
       FROM batch b, school s where id = '$manageid' and b.school=s.sno;");
-            $trainerresult = $this->container->db->query("SELECT school,trainer_name FROM ioniccloud.trainer where activate = 'Yes';");
-            $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson where activate = 'Yes';");
+            $trainerresult = $this->container->db->query("SELECT school,trainer_name FROM ioniccloud.trainer where activate = 'Y';");
+            $lessonresult = $this->container->db->query("SELECT * FROM ioniccloud.lesson where activate = 'Y';");
             $results = [];
             $trainerresults = [];
             $lessonresults = [];

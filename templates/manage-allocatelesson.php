@@ -15,7 +15,6 @@ $.ajax({
     
     for (var i =0; i< allocates.length; i++){
       var obj = allocates[i];
-      console.log(obj);
       table = document.getElementById("mytable");
       row = table.insertRow(1);
       row.setAttribute("class","rowdata");
@@ -28,7 +27,7 @@ $.ajax({
         cellid.setAttribute("style","display: none;");
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        if(obj.activate == "Yes"){
+        if(obj.activate == "Y"){
            document.getElementById("myCheck").checked = true;
         }else{
           document.getElementById("myCheck").checked = false;

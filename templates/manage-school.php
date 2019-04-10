@@ -26,7 +26,7 @@ $.ajax({
         cellid.setAttribute("style","display: none;");
         
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        if(obj.activate == "Yes"){
+        if(obj.activate == "Y"){
            document.getElementById("myCheck").checked = true;
         }else{
           document.getElementById("myCheck").checked = false;
@@ -55,8 +55,7 @@ $.ajax({
     $(".primary").click(function() {
       var $row = $(this).closest("tr");    // Find the row
       var $id = $row.find(".sid").text();  // Find the text
-      console.log($id);
-    var url = "editschool?id=" + $id;
+      var url = "editschool?id=" + $id;
     window.location.href = url;
   });
 });

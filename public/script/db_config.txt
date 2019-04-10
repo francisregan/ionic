@@ -37,16 +37,9 @@ CREATE TABLE `lessonpages` (
 CREATE TABLE `login` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
-  `gender` varchar(45) NOT NULL,
-  `course` varchar(45) NOT NULL,
-  `school_name` varchar(45) NOT NULL,
-  `branch` varchar(45) NOT NULL,
-  `type` varchar(45) NOT NULL,
-  PRIMARY KEY (`email`),
+  `activate` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 );
 
@@ -60,7 +53,6 @@ CREATE TABLE `school` (
   `state` varchar(150) NOT NULL,
   `city` varchar(150) NOT NULL,
   `activate` varchar(150) NOT NULL,
-  `remarks` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`sno`),
   UNIQUE KEY `mail_id_UNIQUE` (`mail_id`)
 );

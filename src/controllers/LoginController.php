@@ -74,7 +74,11 @@ class LoginController
           }
           break;
   }
+  if($loginresult == 1){
+    echo("<script>window.alert('Your account is not active');</script>");
+  }else{
     echo("<script>window.alert('USERNAME OR PASSWORD IS INCORRECT');</script>");
+  }
     return $this->container->renderer->render($response, 'login.php', $args);
   }
  public function checkLogin($args){
@@ -84,6 +88,9 @@ class LoginController
    $result = $args[3];
     if ($result->num_rows > 0) {
       while($row = mysqli_fetch_array($result)) {
+        if($row['activate'] == "N"){
+          return 1;
+        }
         $_SESSION['user'] = $row[$columnname];
         $_SESSION['type']= $type;
         if($type == 1){

@@ -39,7 +39,7 @@
         option.value = obj.id;
         option.id = obj.id;
         option.text = obj.name;
-        if(obj.activate=='Yes'){
+        if(obj.activate=='Y'){
           element.add(option);
         }
       }

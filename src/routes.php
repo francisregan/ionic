@@ -109,4 +109,13 @@ $app->group('/viewcontent',function(){
 $app->group('/viewcontents',function(){
     $this->get('', 'LessonController:viewContents');
 });
+
+$app->group('/allocatelesson',function(){
+    $this->post('', 'CourseController:allocateLesson');
+    $this->get('', 'CourseController:listAllocate');
+});
+
+$app->group('/editallocate',function(){
+    $this->get('', 'CourseController:editAllocate');
+});
 ?>

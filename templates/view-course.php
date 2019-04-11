@@ -26,7 +26,7 @@ $.ajax({
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
         cellname.innerHTML = obj.name;
-        celllesson.innerHTML = obj.Total_Lesson;
+        celllesson.innerHTML = obj.lesson_ids;
         cellprogress.innerHTML = document.getElementById("progress").innerHTML;
         cellviewlesson.innerHTML = document.getElementById("viewlesson").innerHTML;
         cellstart.innerHTML = document.getElementById("startcourse").innerHTML;

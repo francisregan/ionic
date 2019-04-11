@@ -12,7 +12,6 @@
                     success: function(data){
                     var schools = JSON.parse(data);
                         var obj = schools[0];
-                        console.log(obj);
                         document.getElementById("batch").innerHTML = obj.name;
                         document.getElementById("school").innerHTML= obj.school_name;
                         

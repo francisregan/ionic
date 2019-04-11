@@ -1,6 +1,6 @@
 <html>
 <head>
-<title> Manage Trainer </title>
+<title> Manage Allocate Lesson </title>
 <link href="css/style.css" rel="stylesheet">
 <script>
 $(document).ready(function(){
@@ -9,23 +9,21 @@ $(document).ready(function(){
 $.ajax({ 
   type: 'GET',
   async: false,
-  url: "trainer",
+  url: "allocatelesson",
   success: function(data){
-    var schools = JSON.parse(data);
+    var allocates = JSON.parse(data);
     
-    for (var i =0; i< schools.length; i++){
-      var obj = schools[i];
+    for (var i =0; i< allocates.length; i++){
+      var obj = allocates[i];
       table = document.getElementById("mytable");
       row = table.insertRow(1);
       row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
-        var celltrainer = row.insertCell(1);
-        var cellcontactno = row.insertCell(2);
-        var cellmail = row.insertCell(3);
-        var cellspecialization = row.insertCell(4);
-        var cellschool = row.insertCell(5);
-        var celledit = row.insertCell(6);
-        var cellid = row.insertCell(7);
+        var cellcourse = row.insertCell(1);
+        var cellcategory = row.insertCell(2);
+        var celllesson = row.insertCell(3);
+        var celledit = row.insertCell(4);
+        var cellid = row.insertCell(5);
         cellid.setAttribute("style","display: none;");
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
@@ -35,14 +33,12 @@ $.ajax({
           document.getElementById("myCheck").checked = false;
         }
         document.getElementById("myCheck").disabled = true
-        celltrainer.innerHTML = obj.trainer_name;
-        cellcontactno.innerHTML = obj.contact_no;
-        cellmail.innerHTML = obj.mail_id;
-        cellspecialization.innerHTML = obj.specialization;
-        cellschool.innerHTML = obj.school;
+        cellcourse.innerHTML = obj.course_name;
+        cellcategory.innerHTML = obj.category_name;
+        celllesson.innerHTML = obj.lesson;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
-        cellid.innerHTML = obj.trainer_id;
-        cellid.setAttribute("class","tid");
+        cellid.innerHTML = obj.id;
+        cellid.setAttribute("class","aid");
     }
   },
   error:function(error){
@@ -54,36 +50,32 @@ $.ajax({
       });
 
       $(".primary").click(function() {
-      var $row = $(this).closest("tr");    // Find the row
-      var $id = $row.find(".tid").text();  // Find the text
-      var url = "edittrainer?id=" + $id;
+      var $row = $(this).closest("tr");
+      var $id = $row.find(".aid").text();
+      var url = "editallocate?id=" + $id;
       window.location.href = url;
       });
+
 });
-
 </script>
-
 
 </head>
 
 <body>
-<h3 class="ui header" style="text-align: left;">Manage Trainer</h3>
+<h3 class="ui header" style="text-align: left;">Manage Allocate Lesson</h3>
 
 <br />
 <table id="mytable" class="ui celled table">
   <thead>
     <tr>
       <th></th>
-      <th>Trainer Name</th>
-      <th>Contact No</th>
-      <th>Mail Id</th>
-      <th>Specialization</th>
-      <th>School</th>
+      <th>Course Name</th>
+      <th>Category Name</th>
+      <th>Lesson Name</th>
       <th>Edit Details</th>
     </tr>
   </thead>
   <tbody>
-  
   <script id="check" type="text/template">
       <div class="collapsing">
         <div class="ui fitted slider checkbox">
@@ -91,7 +83,6 @@ $.ajax({
         </div>
       </div>
   </script>
-
   <script id="edit" type="text/template">
 		<div class="ui form" id="edit">
       <button class="ui primary basic button">Edits</button>

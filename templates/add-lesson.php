@@ -15,15 +15,6 @@ if (!isset($_SESSION)) {
       $('.ui.form')
         .form({
           fields: {
-            course: {
-               identifier : 'course',
-               rules: [
-                   {
-                       type  : 'empty',
-                       prompt : 'please select the course'
-                   }
-               ]
-           },
            lessonname: {
               identifier  : 'lessonname',
               rules: [
@@ -33,16 +24,6 @@ if (!isset($_SESSION)) {
                 },
               ]
             },
-           
-           category: {
-               identifier : 'category',
-               rules: [
-                   {
-                       type  : 'empty',
-                       prompt : 'please select the category'
-                   }
-               ]
-           },
            pages: {
                identifier : 'noofpages',
                rules: [
@@ -87,19 +68,6 @@ if (!isset($_SESSION)) {
           </div>
         </div>
 
-      <div class="field">
-        <div class="two fields">
-            <div class="three wide field">
-                <label>Course</label>
-            </div>
-            <div class="four wide field">
-                <select id="course" name="course">
-                     <option value=""> Select Course</option>
-                </select>
-            </div>
-        </div>
-      </div>
-
     <div class="field">
         <div class="two fields">
             <div class="three wide field">
@@ -107,18 +75,6 @@ if (!isset($_SESSION)) {
             </div>
             <div class="four wide field">
                 <input type="text" name="lessonname" placeholder="Enter the lesson name" id="lessonname">
-            </div>
-        </div>
-      </div>
-      <div class="field">
-        <div class="two fields">
-            <div class="three wide field">
-                <label>Category</label>
-            </div>
-            <div class="four wide field">
-                <select id="category" name="category">
-                <option value=""> Select Category</option>
-                </select>
             </div>
         </div>
       </div>
@@ -156,8 +112,8 @@ if (!isset($_SESSION)) {
     <div class="field">
     
      <div class="one wide field" >
-     <input type="hidden" name="activate" value="no">
-     <input type="checkbox" name="activate" id="myCheck"  value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+     <input type="hidden" name="activate" value="N">
+     <input type="checkbox" name="activate" id="myCheck"  value="Y"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
     </div>
     </div>
  </div>
@@ -183,41 +139,6 @@ $_SESSION['les_res'] = true;
         .dropdown()
     ;
   $(document).ready(function(){
-  $.ajax({
-    type: 'GET',
-    url: "category",
-    success: function(data){
-      var category = JSON.parse(data);
-      category.forEach(function(obj){
-        var element = document.getElementById("category");
-        var option = document.createElement("option");
-        option.value = obj.id;
-        option.id = obj.id;
-        option.text = obj.name;
-        element.add(option);
-});
-    },
-    error:function(error){
-      console.log(error);
-    }});
-
-    $.ajax({ 
-    type: 'GET',
-    url: "course",
-    success: function(data){
-      var course = JSON.parse(data);
-      course.forEach(function(obj){
-        var element = document.getElementById("course");
-        var option = document.createElement("option");
-        option.value = obj.id;
-        option.id = obj.id;
-        option.text = obj.name;
-        element.add(option);
-});
-    },
-    error:function(error){
-      console.log(error);
-    }});
 
     $(".primary").click(function() {
         var totalPage = $('#mySelect').val();
@@ -272,33 +193,10 @@ function myFunction() {
                   var lessons = JSON.parse(data);
                     var obj = lessons[0];     
                     document.getElementById("lessonname").value = obj.lesson_name;
-                     
-                    if(obj.activate == "Yes"){
+
+                    if(obj.activate == "Y"){
                       document.getElementById("myCheck").checked = true; 
                   } 
-                  var val = obj.category_id;
-                  var sel = document.getElementById('category');
-                    var opts = sel.options;
-                    
-                      for (var j = 0; j <= opts.length; j++) { 
-                          var opt = opts[j];
-          
-                          if (opt.value == val) {
-                            sel.selectedIndex = j;
-                            break;
-                        }
-                      }
-                      var val = obj.course_id;
-                  var sel = document.getElementById('course');
-                    var opts = sel.options;
-                    
-                      for (var j = 0; j <= opts.length; j++) { 
-                          var opt = opts[j];
-                          if (opt.value == val) {
-                            sel.selectedIndex = j;
-                            break;
-                        }
-                      }
                       var val = obj.total_pages;
                   var sel = document.getElementById('mySelect');
                     var opts = sel.options;

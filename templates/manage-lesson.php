@@ -18,20 +18,18 @@ $.ajax({
         row.setAttribute("class","rowdata");
         var cellcheckbox = row.insertCell(0);
         var celllessonname = row.insertCell(1);
-        var cellcategory = row.insertCell(2);
-        var cellTotalNoPages = row.insertCell(3);
-        var celledit = row.insertCell(4);
-        cellid=row.insertCell(5);
+        var cellTotalNoPages = row.insertCell(2);
+        var celledit = row.insertCell(3);
+        cellid=row.insertCell(4);
         cellid.setAttribute("style","display: none;");
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        if(obj.activate == "Yes"){
+        if(obj.activate == "Y"){
            document.getElementById("myCheck").checked = true;
         }else{
           document.getElementById("myCheck").checked = false;
         }
         document.getElementById("myCheck").disabled = true
         celllessonname.innerHTML = obj.lesson_name;
-        cellcategory.innerHTML = obj.name;
         cellTotalNoPages.innerHTML = obj.total_pages;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
         cellid.innerHTML=obj.id;  
@@ -49,7 +47,6 @@ $.ajax({
       $(".primary").click(function() {
       var $row = $(this).closest("tr");    // Find the row
       var $id = $row.find(".lid").text();  // Find the text
-      console.log($id);
       var url = "editlesson?id=" + $id;
       window.location.href = url;
       });
@@ -69,7 +66,6 @@ $.ajax({
     <tr>
        <th></th>
       <th>Lesson Name</th>
-      <th>Category</th>
       <th>Total No Pages</th>
       <th>Edit Content</th>
     </tr>

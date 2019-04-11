@@ -12,11 +12,39 @@ $(document).ready(function(){
         async: false,
         url: "lesson?lid="+courseid,
         success: function(data){
-            var lesson = JSON.parse(data);
-            var table = document.getElementById("mytable");
-            for (var i =0; i< lesson.length; i++){
-            var obj = lesson[i];
-            console.log(obj);
+            var lessons = JSON.parse(data);
+            var node = document.getElementById("wrap");
+            for (var i =0; i< lessons.length; i++){
+            var obj = lessons[i];
+            var createAccordion = document.createElement("div");
+            createAccordion.setAttribute("class","ui styled fluid accordion");
+            
+            var accordionTitle = document.createElement("div");
+            accordionTitle.setAttribute("class","title");
+            accordionTitle.setAttribute("style","text-align: left;");
+            accordionTitle.setAttribute("id","title"+(i+1));
+
+            var accordionContent = document.createElement("div");
+            accordionContent.setAttribute("class","content");
+
+            var accordionHidden = document.createElement("div");
+            accordionHidden.setAttribute("class","transition hidden");
+
+            var accordionTable = document.createElement("table");
+            accordionTable.setAttribute("class","ui celled table");
+            accordionTable.setAttribute("id","mytable"+(i+1));
+
+            var lineBreak = document.createElement("br");
+
+            accordionHidden.appendChild(accordionTable);
+            accordionContent.appendChild(accordionHidden);
+            createAccordion.appendChild(accordionTitle);
+            createAccordion.appendChild(accordionContent);
+            node.appendChild(createAccordion);
+            node.appendChild(lineBreak);
+
+            var table = document.getElementById("mytable"+(i+1));
+            for (var j =0; j< obj.lesson.length; j++){
                 var row = table.insertRow(-1);
                 row.setAttribute("class","rowdata");
                 var lessonNo = row.insertCell(0);
@@ -25,15 +53,16 @@ $(document).ready(function(){
                 var cellprogress = row.insertCell(3);
                 var cellid = row.insertCell(4);
             
-                lessonNo.innerHTML = (i+1);
-                cellname.innerHTML = obj.lesson_name;
+                lessonNo.innerHTML = (j+1);
+                cellname.innerHTML = obj.lesson[j];
                 cellprogress.innerHTML = document.getElementById("progress").innerHTML;
                 cellstart.innerHTML = document.getElementById("start").innerHTML;
-                cellid.innerHTML = obj.id;
+                cellid.innerHTML = obj.lesson_ids[j];
                 cellid.setAttribute("class","lessonid");
                 cellid.setAttribute("style","display: none;");
-
-                document.getElementById("coursetitle").innerHTML = obj.name;
+            }
+                document.getElementById("title"+(i+1)).innerHTML = obj.categoryname;
+                document.getElementById("courseheader").innerHTML = obj.coursename;
             }
         },
         error:function(error){
@@ -53,22 +82,9 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<h3 class="ui header" style="text-align: left;">Manage Lesson</h3>
+<h3 class="ui header" style="text-align: left;" id="courseheader"></h3>
 <br />
-<div class="ui styled fluid accordion">
-  <div class="title" id="coursetitle" style="text-align: left;">
-  </div>
-  <div class="content">
-    <div class="transition hidden">
-    <table id="mytable" class="ui celled table">
-      <thead>
-        <tr style= "display: none">
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
+<div id = "wrap"></div>
         <script id="check" type="text/template">
           <div class="collapsing">
             <div class="ui fitted slider checkbox">
@@ -86,21 +102,5 @@ $(document).ready(function(){
             <button class="ui primary basic button viewlesson" value="start">Start Lesson</button>
           </div> 
         </script>
-      </tbody>
-        <tfoot class="full-width">
-        </tfoot>
-    </table>
-    </div>
-  </div>
-</div>
-<br>
-<div class="ui styled fluid accordion">
-  <div class="title" style="text-align: left;">
-    Submission Exercise/Assignments
-  </div>
-  <div class="content">
-    <p class="transition hidden">Exercise/Assignments.</p>
-  </div>
-</div>
 </body>
 </html>

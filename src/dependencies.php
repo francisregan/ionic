@@ -76,3 +76,8 @@ $container['BatchController']=function($c)
 {
     return new App\Controllers\BatchController($c);
 };
+
+$container['BulkController']=function($c)
+{
+    return new App\Controllers\BulkController($c);
+};

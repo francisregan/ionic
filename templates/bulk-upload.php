@@ -39,7 +39,7 @@ rows.forEach(function(rowArray){
 });
 var encodedUri = encodeURI(csvContent);
 var link = document.createElement("a");
-link.innerHTML = "Download Formate";
+link.innerHTML = "Download Format";
 link.setAttribute("href", encodedUri);
 link.setAttribute("download", "my_data.csv");
 
@@ -67,7 +67,7 @@ node.appendChild(link);
       <div class="field">
             <div class="three fields">
               <div class="three wide field">
-                <label>Download File formate</label>
+                <label>Download File format</label>
               </div>
               <div class="seven wide field" id = "downloadLink">
               </div>

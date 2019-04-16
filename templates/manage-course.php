@@ -4,7 +4,7 @@
 <link href="css/style.css" rel="stylesheet">
 <script>
 $(document).ready(function(){
-$.ajax({ 
+$.ajax({
   type: 'GET',
   async: false,
   url: "course",
@@ -21,26 +21,42 @@ $.ajax({
         var cellduration = row.insertCell(3);
         var cellprinting = row.insertCell(4);
         var cellsession = row.insertCell(5);
-    
+        var celledit = row.insertCell(6);
+        var cellid = row.insertCell(7);
+        cellid.setAttribute("style","display: none;");
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
+        if(obj.activate == "Y"){
+           document.getElementById("myCheck").checked = true;
+        }else{
+          document.getElementById("myCheck").checked = false;
+        }
+        document.getElementById("myCheck").disabled = true
         cellname.innerHTML = obj.name;
         celltype.innerHTML = obj.type;
         cellduration.innerHTML = obj.duration;
         cellprinting.innerHTML = obj.printing;
         cellsession.innerHTML = obj.session;
-        
+        celledit.innerHTML = document.getElementById("edit").innerHTML;
+        cellid.innerHTML = obj.id;
+        cellid.setAttribute("class","cid");
     }
   },
   error:function(error){
     console.log(error);
   }});
-  
+
   $(".pagination").customPaginate({
 
   itemsToPaginate : ".rowdata"
 
 });
+  $(".primary").click(function() {
+        var $row = $(this).closest("tr");
+        var $id = $row.find(".cid").text();
+        var url = "editcourse?id=" + $id;
+        window.location.href = url;
+        });
 });
 </script>
 </head>
@@ -57,6 +73,7 @@ $.ajax({
       <th>Duration</th>
       <th>Printing</th>
       <th>Session</th>
+      <th>Edit Details</th>
     </tr>
   </thead>
   <tbody>
@@ -64,22 +81,26 @@ $.ajax({
   <script id="check" type="text/template">
       <div class="collapsing">
         <div class="ui fitted slider checkbox">
-          <input type="checkbox"><label></label>
+          <input type="checkbox" id="myCheck"><label></label>
         </div>
       </div>
   </script>
-
+  <script id="edit" type="text/template">
+		<div class="ui form" id="edit">
+      <button class="ui primary basic button">Edits</button>
+		</div>
+ </script>
   </tbody>
   <tfoot class="full-width">
     <tr>
       <th></th>
       <th colspan="8">
       <div class="ui right floated pagination menu">
-        
+
       </div>
-       
+
       </th>
-    </tr> 
+    </tr>
   </tfoot>
 </table>
 

@@ -14,6 +14,8 @@ class CourseController
     }
     public function listcourse($request, $response, $args)
     {
+        $data = $request->getParsedBody();
+        $courseId = $request->getParam('id');
         if ($_SESSION['type'] == 1) {
             $studentid = $_SESSION['student_id'];
             $result = $this->container->db->query("SELECT distinct c.id, c.name
@@ -36,7 +38,13 @@ class CourseController
                 $row['lesson_ids'] = $count;
                 array_push($results, $row);
             }
-        } else {
+        } else if($courseId != NULL){
+            $result = $this->container->db->query("SELECT * FROM ioniccloud.course Where id='$courseId';");
+            $results = [];
+            while ($row = mysqli_fetch_array($result)) {
+                array_push($results, $row);
+            }
+        }else {
             $result = $this->container->db->query("SELECT * FROM ioniccloud.course;");
             $results = [];
             while ($row = mysqli_fetch_array($result)) {
@@ -57,6 +65,7 @@ class CourseController
         $_SESSION['cou_res'] = false;
 
         $data = $request->getParsedBody();
+        $courseid = $data['cid'];
         $name = filter_var($data['cname'], FILTER_SANITIZE_STRING);
         $type = filter_var($data['ctype'], FILTER_SANITIZE_STRING);
         $duration = filter_var($data['duration'], FILTER_SANITIZE_STRING);
@@ -64,8 +73,12 @@ class CourseController
         $sessions = filter_var($data['sessions'], FILTER_SANITIZE_STRING);
         $act = $data['activate'];
         $sqli = $this->container->db;
+        if($courseid != NULL){
+            $result = $sqli->query("UPDATE ioniccloud.course SET name='$name', type='$type',duration='$duration', printing='$value', session='$sessions', activate='$act' WHERE id='$courseid';");
+        }else{
         $result = $sqli->query("insert into ioniccloud.course (name, type, duration, printing, session, activate)
     VALUES ('$name','$type','$duration','$value','$sessions', '$act')");
+        }
         if (mysqli_affected_rows($sqli) == 1) {
             return $this->container->renderer->render($response, 'index.php', array('redirect' => 'manage-course'));
         }
@@ -134,4 +147,7 @@ class CourseController
         return $this->container->renderer->render($response, 'index.php', array('redirect' => 'allocate-lesson'));
     }
 
+    public function editCourse($request, $response, $args) {
+        return $this->container->renderer->render($response, 'index.php', array('redirect'=>'add-course'));
+    } 
 }

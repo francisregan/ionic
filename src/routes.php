@@ -63,6 +63,10 @@ $app->group('/course', function(){
  $this->get('', 'CourseController:listcourse');
 }); 
 
+$app->group('/editcourse', function(){
+    $this->get('', 'CourseController:editCourse');
+}); 
+
 $app->group('/lesson', function(){
     $this->post('', 'LessonController:addlesson');
     $this->get('', 'LessonController:listlesson');
@@ -117,5 +121,9 @@ $app->group('/allocatelesson',function(){
 
 $app->group('/editallocate',function(){
     $this->get('', 'CourseController:editAllocate');
+});
+
+$app->group('/bulkupload',function(){
+    $this->post('', 'BulkController:bulkUpload');
 });
 ?>

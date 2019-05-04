@@ -125,7 +125,7 @@ if( $_SESSION['type'] == 1){
 
   <div class="item txtsizegrid">
   <div class="ui left icon input">
-    <i class="fas fa-users"></i>
+    <i class="fas fa-diploma"></i><!-- <i class="fas fa-graduation-cap"></i> -->
     &nbsp;&nbsp;Batch Management
   </div> 
     <div class="menu" id="menu">

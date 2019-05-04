@@ -94,7 +94,7 @@ class BatchController
                 $row['lessonid'] = $lessonIds;
                 array_push($results, $row);
             }
-        }if($selectCourseid != null){
+        }else if($selectCourseid != null){
             $result = $this->container->db->query("SELECT batch.id,batch.name,school.school_name
             FROM batch
             INNER JOIN school

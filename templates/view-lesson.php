@@ -10,12 +10,13 @@ $(document).ready(function(){
         $.ajax({ 
         type: 'GET',
         async: false,
-        url: "lesson?id="+courseid,
+        url: "lesson?lid="+courseid,
         success: function(data){
             var lesson = JSON.parse(data);
             var table = document.getElementById("mytable");
             for (var i =0; i< lesson.length; i++){
             var obj = lesson[i];
+            console.log(obj);
                 var row = table.insertRow(-1);
                 row.setAttribute("class","rowdata");
                 var lessonNo = row.insertCell(0);

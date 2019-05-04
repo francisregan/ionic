@@ -8,7 +8,7 @@
         $user=$_SESSION['user'];
         if(!isset($user)){
     ?>
-
+    
     <div class="item">
         <a class="ui primary button" href="login">
             <i class="sign in icon"></i> Login

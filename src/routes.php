@@ -113,6 +113,16 @@ $app->group('/viewcontent',function(){
 $app->group('/viewcontents',function(){
     $this->get('', 'LessonController:viewContents');
 });
+ 
+$app->group('/certification', function(){
+    $this->get('', 'VerificationController:load');
+    $this->post('', 'VerificationController:verify'); 
+    
+});
+
+
+ 
+
 
 $app->group('/allocatelesson',function(){
     $this->post('', 'CourseController:allocateLesson');

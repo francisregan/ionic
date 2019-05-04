@@ -79,6 +79,3 @@ $.ajax({
 </div>
 </body>
 </html>
-
-</body>
-</html>

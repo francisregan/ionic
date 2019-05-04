@@ -36,9 +36,7 @@
         if(!isset($user)){
     ?>
     <div class="left menu">
-        <a class="item">About Us</a>
-        <a class="item">Link 1</a>
-        <a class="item">Link 2</a>
+    <a class="item" href="certification"> Verify Certification</a>
     </div>
     <?php } ?>
     <div class="right menu">

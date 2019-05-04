@@ -40,7 +40,11 @@ $container['LoginController'] = function ($c)
 $container['HomeController'] = function ($c)
 {
     return new App\Controllers\HomeController($c); 
-    
+};
+
+$container['VerificationController']=function($c)
+{
+    return new App\Controllers\VerificationController($c);
 };
 
 $container['TrainerController']=function($c)

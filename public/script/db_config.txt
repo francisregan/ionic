@@ -105,6 +105,21 @@ CREATE TABLE `studentbatch` (
   UNIQUE KEY `student_id_UNIQUE` (`student_id`)
 );
 
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `unique_reference` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `student_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `course_title` text COLLATE utf8_unicode_ci NOT NULL,
+  `from` text COLLATE utf8_unicode_ci NOT NULL,
+  `to` text COLLATE utf8_unicode_ci NOT NULL,
+  `conducted_at` text COLLATE utf8_unicode_ci NOT NULL,
+  `currently_represent` text COLLATE utf8_unicode_ci NOT NULL,
+  `type` int(11) NOT NULL,
+  PRIMARY KEY (`unique_reference`),
+  UNIQUE KEY `unique_reference_UNIQUE` (`unique_reference`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=652 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `allocatelesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `course_id` varchar(150) NOT NULL,

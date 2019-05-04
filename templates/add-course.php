@@ -77,18 +77,28 @@ if (!isset($_SESSION)) {
 
 <form class="ui form" action="course" method="post" >
 <br />
-<h3 class="ui dividing header" style="text-align: left;">Add new course</h3>
+<h3 class="ui dividing header" style="text-align: left;" id="courseheader">Add new course</h3>
 <br />
 <div class="ui error message"></div>
 <div style="align:center">
 <div>
+<div class="field" style="display: none;">
+            <div class="three fields">
+              <div class="three wide field">
+                <label>Course Id</label>
+              </div>
+              <div class="four wide field">
+                <input type="text" name="cid" id="cid">
+              </div>
+            </div>
+        </div>
   <div class="field">
      <div class="two fields">
       <div class="three wide field">
       <label>Course Name</label>
       </div>
       <div class="four wide field">
-        <input type="text" name="cname" placeholder="Name of course name">
+        <input type="text" name="cname" id="cname" placeholder="Name of course name">
       </div>
     </div>
   </div>
@@ -100,7 +110,7 @@ if (!isset($_SESSION)) {
       </div>
       <div class="four wide field">
 
-<select name="ctype">
+<select name="ctype" id="ctype">
 <option value=""> Select course Type</option>
   <option value="School">School</option>
   <option value="College">College</option>
@@ -116,7 +126,7 @@ if (!isset($_SESSION)) {
       <label>Duration</label>
       </div>
       <div class="four wide field">
-<select name="duration">
+<select name="duration" id="duration">
   <option value="">Select Duration</option>
   <option value="1 Day">1 Day</option>
   <option value="2 Days">2 Days</option>
@@ -145,13 +155,13 @@ if (!isset($_SESSION)) {
 
     <div class="field">
       <div class="ui radio checkbox">
-        <input type="radio" name="frequency" value="yes" checked="checked">
+        <input type="radio" name="frequency" value="yes" checked="checked" id="yes">
         <label>YES</label>
       </div>
     </div>
     <div class="field">
       <div class="ui radio checkbox">
-        <input type="radio" name="frequency" value="no">
+        <input type="radio" name="frequency" value="no" id="no">
         <label>NO</label>
       </div>
     </div>
@@ -167,7 +177,7 @@ if (!isset($_SESSION)) {
       <label>Number of Sessions</label>
       </div>
       <div class="four wide field">
-        <input type="text" name="sessions" placeholder="Enter the no of session">
+        <input type="text" name="sessions" placeholder="Enter the no of session" id="session">
       </div>
     </div>
   </div>
@@ -178,8 +188,8 @@ if (!isset($_SESSION)) {
       </div>
     <div class="field">
       <div class="one wide field" >
-        <input type="hidden" name="activate" value="no">
-        <input type="checkbox" name="activate" id="myCheck" value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+        <input type="hidden" name="activate" value="N">
+        <input type="checkbox" name="activate" id="myCheck" value="Y"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
       </div>
     </div>
  </div>
@@ -195,5 +205,38 @@ $_SESSION['cou_res'] = true;
 </div>
 </form>
 </body>
-
 </html>
+
+<script>
+$(document).ready(function(){
+    if (window.location.href.indexOf("id") > -1) {
+            var params = window.location.search.split('?')[1].split('&');
+            var courseId = decodeURIComponent(params[0].split('=')[1]);
+            document.getElementById("cid").value = courseId;
+            document.getElementById("submitBtn").value = "Save Changes";
+            document.getElementById("courseheader").innerText = "Edit Course Details";
+            $.ajax({
+                type: 'GET',
+                url: "course?id="+courseId,
+                success: function(data){
+                  var lessons = JSON.parse(data);
+                    var obj = lessons[0];
+
+                    document.getElementById("cname").value = obj.name;
+                    $('#ctype').dropdown('set selected',obj.type);
+                    $('#duration').dropdown('set selected',obj.duration);
+                    if(obj.printing == "no"){
+                      document.getElementById("yes").checked = false;
+                      document.getElementById("no").checked = true;
+                    }
+                    document.getElementById("session").value = obj.session;
+                    if(obj.activate == "Y"){
+                      document.getElementById("myCheck").checked = true;
+                    }
+                },
+                error:function(error){
+                  console.log(error);
+                }});
+        }
+  });
+</script>

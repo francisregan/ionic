@@ -15,16 +15,15 @@ CREATE TABLE `course` (
   `activate` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
 CREATE TABLE `lesson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lesson_name` varchar(150) NOT NULL,
-  `category_id` varchar(150) NOT NULL,
   `total_pages` varchar(150) NOT NULL,
   `page_ids` varchar(150) NOT NULL,
-  `course_id` varchar(150) NOT NULL,
-  `activate` varchar(45) DEFAULT NULL,
+  `activate` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
 
 CREATE TABLE `lessonpages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -38,16 +37,9 @@ CREATE TABLE `lessonpages` (
 CREATE TABLE `login` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
-  `gender` varchar(45) NOT NULL,
-  `course` varchar(45) NOT NULL,
-  `school_name` varchar(45) NOT NULL,
-  `branch` varchar(45) NOT NULL,
-  `type` varchar(45) NOT NULL,
-  PRIMARY KEY (`email`),
+  `activate` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 );
 
@@ -61,7 +53,6 @@ CREATE TABLE `school` (
   `state` varchar(150) NOT NULL,
   `city` varchar(150) NOT NULL,
   `activate` varchar(150) NOT NULL,
-  `remarks` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`sno`),
   UNIQUE KEY `mail_id_UNIQUE` (`mail_id`)
 );
@@ -129,3 +120,11 @@ CREATE TABLE `students` (
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=652 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `allocatelesson` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `course_id` varchar(150) NOT NULL,
+  `category_id` varchar(150) NOT NULL,
+  `lesson_ids` varchar(150) NOT NULL,
+  `activate` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+);

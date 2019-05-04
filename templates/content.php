@@ -104,7 +104,7 @@ if( $_SESSION['type'] == 1){
     <div class="menu" id="menu">
       <a href="manage-student.php" class="item" >Manage Students</a>
       <a href="add-student.php" class="item">Add a student</a>
-      <a class="item">Bulk upload student data</a>
+      <a href="bulk-upload.php" class="item">Bulk upload student data</a>
     </div>
   </div>
 
@@ -119,6 +119,8 @@ if( $_SESSION['type'] == 1){
       <a href="manage-course.php" class="item">Manage Course</a>
       <a href="add-lesson.php" class="item">Add new lesson</a>
       <a href="manage-lesson.php" class="item">Manage Lesson</a>
+      <a href="allocate-lesson.php" class="item">Allocate Lesson</a>
+      <a href="manage-allocatelesson.php" class="item">Manage Allocate Lesson</a>
       <a href="Manage Contents" class="item">Manage Contents</a>
     </div>
   </div>

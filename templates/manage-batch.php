@@ -28,7 +28,7 @@ $.ajax({
         cellbatchid.setAttribute("style","display: none;");
     
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
-        if(obj.activate == "Yes"){
+        if(obj.activate == "Y"){
            document.getElementById("myCheck").checked = true;
         }else{
           document.getElementById("myCheck").checked = false;
@@ -39,7 +39,7 @@ $.ajax({
         cellstartdate.innerHTML = obj.sdate;
         cellenddate.innerHTML = obj.edate;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
-        cellcoursename.innerHTML = obj.course_id;
+        cellcoursename.innerHTML = obj.course;
         selectcourse.innerHTML = document.getElementById("selectcourse").innerHTML;
         manageLessonPlan.innerHTML = document.getElementById("managelessonplan").innerHTML;
         cellbatchid.innerHTML = obj.id;
@@ -60,8 +60,8 @@ $.ajax({
       window.location.href = url;
   });
   $(".lessonplan").click(function() {
-      var $row = $(this).closest("tr");    // Find the row
-      var $id = $row.find(".batchid").text();  // Find the text
+      var $row = $(this).closest("tr");    
+      var $id = $row.find(".batchid").text();  
       var url = "lessonplan?id=" + $id;
       window.location.href = url;
   });

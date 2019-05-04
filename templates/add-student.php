@@ -74,18 +74,6 @@ $(document)
                 }
               ]
             },
-
-
-            sclass: {
-              identifier  : 'sclass',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your class'
-                }
-              ]
-            },
-
             sparentname: {
               identifier  : 'sparentname',
               rules: [
@@ -224,8 +212,8 @@ $(document)
     <div class="field">
 
      <div class="one wide field" >
-     <input type="hidden" name="activate" value="no">
-     <input type="checkbox" name="activate" id="myCheck" value="Yes"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
+     <input type="hidden" name="activate" value="N">
+     <input type="checkbox" name="activate" id="myCheck" value="Y"style="margin-left: 10px; margin-top: 10px; text-align:center;" />
     </div>
     </div>
  </div>
@@ -278,7 +266,7 @@ $('#name,#contactno,#myCheck,#mailid,#age,#batch,#class,#pname').on('input chang
         option.value = obj.sno;
         option.id = obj.sno;
         option.text = obj.school_name;
-        if(obj.activate == 'Yes'){
+        if(obj.activate == 'Y'){
           element.add(option);
         }
       }
@@ -323,7 +311,7 @@ $('#name,#contactno,#myCheck,#mailid,#age,#batch,#class,#pname').on('input chang
                     document.getElementById("batch").value = obj.batch;
                     document.getElementById("class").value = obj.class;
                     document.getElementById("pname").value = obj.parent_name;
-                    if(obj.activate == "Yes"){
+                    if(obj.activate == "Y"){
                       document.getElementById("myCheck").checked = true;
                     }
                 },

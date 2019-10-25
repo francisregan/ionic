@@ -37,11 +37,18 @@ CREATE TABLE `lessonpages` (
 CREATE TABLE `login` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `activate` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
+  `address` varchar(45) NOT NULL,
+  `gender` varchar(45) NOT NULL,
+  `course` varchar(45) NOT NULL,
+  `school_name` varchar(45) NOT NULL,
+  `branch` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  PRIMARY KEY (`email`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-);
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `school` (
   `sno` int(10) NOT NULL AUTO_INCREMENT,

@@ -23,14 +23,15 @@ class LoginController
     $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
     $type = filter_var($data['charactertype'], FILTER_SANITIZE_STRING);
     $firstword = substr($userid,0,3);
-    $middleword = ltrim(substr($userid,3,4),'\0');
-    $id = ltrim(substr($userid,7,4),'\0');
+    $middleword = ltrim(substr($userid,3,4),'');
+    $id = ltrim(substr($userid,7,4),'');
     $args = [];
     $args[0] = $password;
     $args[1] = $type;
     switch ($type) {
       case 0:
         if($firstword=='ION'){
+          //$sql = $this->container->db->query("SELECT id FROM ioniccloud.login WHERE  password = '$password';");
           $result = $this->container->db->query("SELECT * FROM ioniccloud.login where id='$id' and RIGHT(phone, 4) = '$middleword';");
           $args[2] = "name";
           $args[3] = $result;

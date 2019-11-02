@@ -62,7 +62,7 @@ class TrainerController
         $mail = filter_var($data['tmailid'], FILTER_SANITIZE_STRING);
         $specialization = $data['tspec'];
         $schools = $data['schoolname'];
-
+        $country=$data['country'][0];
         $act = $data['activate'];
         foreach ($schools as $school) {
             $this->container->logger->info("here");
@@ -72,11 +72,11 @@ class TrainerController
         $address = $data['taddress'];
         $sqli = $this->container->db;
         if ($trainerid != null) {
-            $result = $sqli->query("UPDATE ioniccloud.trainer SET trainer_name='$name', contact_no='$contact', mail_id='$mail',specialization='$specialization', school='$schoolsEncoded', address='$address', activate='$act' WHERE trainer_id='$trainerid';");
+            $result = $sqli->query("UPDATE ioniccloud.trainer SET trainer_name='$name', contact_no='$contact', mail_id='$mail',specialization='$specialization', school='$schoolsEncoded', address='$address', activate='$act', country='$country' WHERE trainer_id='$trainerid';");
             echo ("<script>window.alert('Record Updated Successfully');</script>");
         } else {
-            $result = $sqli->query("INSERT INTO ioniccloud.trainer (trainer_name, contact_no, mail_id, specialization, school, address,activate)
-  VALUES ('$name','$contact','$mail','$specialization', '$schoolsEncoded','$address','$act')");
+            $result = $sqli->query("INSERT INTO ioniccloud.trainer (trainer_name, contact_no, mail_id, specialization, school, address,activate,country)
+  VALUES ('$name','$contact','$mail','$specialization', '$schoolsEncoded','$address','$act','$country')");
         }
         if (mysqli_affected_rows($sqli) == 1) {
             return $this->container->renderer->render($response, 'index.php', array('redirect' => 'manage-trainer'));

@@ -88,6 +88,7 @@ CREATE TABLE `trainer` (
   `school` varchar(150) NOT NULL,
   `address` varchar(150) NOT NULL,
   `activate` varchar(150) NOT NULL,
+  `country` varchar(150) NOT NULL,
   PRIMARY KEY (`trainer_id`)
 );
 

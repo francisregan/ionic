@@ -21,8 +21,10 @@ $.ajax({
         var cellcontactno = row.insertCell(3);
         var cellmail = row.insertCell(4);
         var celladdress = row.insertCell(5);
-        var celledit = row.insertCell(6);
-        var cellid = row.insertCell(7);
+        var cellcountry = row.insertCell(6);
+        var celledit = row.insertCell(7);
+        var cellid = row.insertCell(8);
+         
         cellid.setAttribute("style","display: none;");
         
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
@@ -39,6 +41,7 @@ $.ajax({
         celladdress.innerHTML = obj.address;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
         cellid.innerHTML = obj.sno;
+        cellcountry.innerHTML = obj.country;
         cellid.setAttribute("class","sid");
     }
   },
@@ -74,6 +77,7 @@ $.ajax({
       <th>Contact No</th>
       <th>Mail Id</th>
       <th>Address</th>
+      <th>Country</th>
       <th>Edit Details</th>
       <th></th>
     </tr>

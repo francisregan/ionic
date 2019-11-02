@@ -60,6 +60,7 @@ CREATE TABLE `school` (
   `state` varchar(150) NOT NULL,
   `city` varchar(150) NOT NULL,
   `activate` varchar(150) NOT NULL,
+  `country` varchar(150) NOT NULL,
   PRIMARY KEY (`sno`),
   UNIQUE KEY `mail_id_UNIQUE` (`mail_id`)
 );

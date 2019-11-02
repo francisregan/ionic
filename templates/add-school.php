@@ -98,6 +98,15 @@ if (!isset($_SESSION)) {
                 }
               ]
             },
+            country: {
+              identifier  : 'country',
+              rules: [
+                {
+                  type    : 'empty',
+                  prompt  : 'Please select country'
+                }
+              ]
+            },
           }
         })
       ;
@@ -127,6 +136,7 @@ if (!isset($_SESSION)) {
                     document.getElementById("address").value = obj.address;
                     document.getElementById("state").value = obj.state;
                     document.getElementById("city").value = obj.city;
+                    document.getElementById("country").value=obj.country;
                     if(obj.activate == "Y"){
                       document.getElementById("myCheck").checked = true;
                     }
@@ -234,6 +244,18 @@ if (!isset($_SESSION)) {
   </div>
   </div>
 
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Country</label>
+      </div>
+      <div class="four wide field">
+      <?php 
+    include __DIR__ . '/../templates/countries.php';
+    ?>   
+    </div>
+    </div>
+  </div>  
 
     <div class="two fields">
       <div class="three wide field">
@@ -261,7 +283,7 @@ $_SESSION['sch_res'] = true;
 </body>
 <script>
 $(document).ready(function(){
-  $('#name,#contactno,#myCheck,#mailid,#contactperson,#address,#city,#state').on('input change', function () {
+  $('#name,#contactno,#myCheck,#mailid,#contactperson,#address,#city,#state,#country').on('input change', function () {
             if ($(this).val() != '') {
                 $('#submitBtn').prop('disabled', false);
             }

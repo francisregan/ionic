@@ -75,6 +75,16 @@ if (!isset($_SESSION)) {
               ]
             },
 
+            country: {
+              identifier  : 'country',
+              rules: [
+                {
+                  type    : 'empty',
+                  prompt  : 'Please select country name'
+                }
+              ]
+            },
+
             taddress: {
               identifier  : 'taddress',
               rules: [
@@ -164,6 +174,20 @@ if (!isset($_SESSION)) {
     </div>
   </div>
 
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Country</label>
+      </div>
+      <div class="four wide field">
+      <?php 
+        include __DIR__ . '/../templates/countries.php';
+      ?>   
+    </div>
+    </div>
+  </div>
+
   <div class="field">
     <div class="two fields">
       <div class="three wide field">
@@ -211,7 +235,7 @@ $_SESSION['tra_res'] = true;
     url: "school",
     success: function(data){
      
-      $('#name,#contactno,#myCheck,#mailid,#address,#schoolname,#spec').on('input change', function () {
+      $('#name,#contactno,#myCheck,#mailid,#address,#schoolname,#spec,#country').on('input change', function () {
             if ($(this).val() != '') {
                 $('#submitBtn').prop('disabled', false);
             }
@@ -220,12 +244,12 @@ $_SESSION['tra_res'] = true;
             }
         });
         
-        $(function() {     
-  var select = $('select');
-  select.html(select.find('option').sort(function(x, y) {
-    return $(x).text() > $(y).text() ? 1 : -1;
-  }));
-});
+        /* $(function() {     
+          var select = $('select');
+          select.html(select.find('option').sort(function(x, y) {
+            return $(x).text() > $(y).text() ? 1 : -1;
+          }));
+        }); */
       var schools = JSON.parse(data);  
       for (var i =0; i< schools.length; i++){
         var obj = schools[i];

@@ -24,7 +24,7 @@ $.ajax({
         var cellmail = row.insertCell(3);
         var cellspecialization = row.insertCell(4);
         var cellschool = row.insertCell(5);
-        var cellcountry =row.insertCell(6)
+        var cellcountry =row.insertCell(6);
         var celledit = row.insertCell(7);
         var cellid = row.insertCell(8);
         cellid.setAttribute("style","display: none;");

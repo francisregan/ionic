@@ -288,6 +288,7 @@ $_SESSION['tra_res'] = true;
                     document.getElementById("mailid").value = obj.mail_id;
                     document.getElementById("mailid").readOnly = true;
                     document.getElementById("spec").value = obj.specialization;
+                    document.getElementById("country").value = obj.country;
                     var val = obj.school;
 
                     var select = document.getElementById( 'schoolname' );

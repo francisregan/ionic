@@ -24,8 +24,9 @@ $.ajax({
         var cellschool = row.insertCell(3);
         var cellbatch = row.insertCell(4);
         var cellclass = row.insertCell(5);
-        var celledit = row.insertCell(6);
-        var cellid = row.insertCell(7);
+        var cellcountry =row.insertCell(6);
+        var celledit = row.insertCell(7);
+        var cellid = row.insertCell(8);
         cellid.setAttribute("style","display: none;");
 
         cellcheckbox.innerHTML = document.getElementById("check").innerHTML;
@@ -42,6 +43,7 @@ $.ajax({
         cellclass.innerHTML = obj.class;
         celledit.innerHTML = document.getElementById("edit").innerHTML;
         cellid.innerHTML = obj.student_id;
+        cellcountry.innerHTML = obj.country;
         cellid.setAttribute("class","sid");
     }
   },
@@ -80,6 +82,7 @@ $.ajax({
       <th>School</th>
       <th>Batch</th>
       <th>Class</th>
+      <th>Country</th>
       <th>Edit Details</th>
     </tr>
   </thead>

@@ -76,6 +76,7 @@ CREATE TABLE `student` (
   `class` varchar(150) NOT NULL,
   `parent_name` varchar(150) NOT NULL,
   `activate` varchar(150) NOT NULL,
+  `country` varchar(150) NOT NULL,
   PRIMARY KEY (`student_id`)
 );
 

@@ -87,6 +87,15 @@ $(document)
                 }
               ]
             },
+            country: {
+              identifier  : 'country',
+              rules: [
+                {
+                  type    : 'empty',
+                  prompt  : 'Please select country'
+                }
+              ]
+            },
 
           }
         })
@@ -205,6 +214,20 @@ $(document)
   </div>
   </div>
 
+
+  <div class="field">
+    <div class="two fields">
+      <div class="three wide field">
+      <label>Country</label>
+      </div>
+      <div class="four wide field">
+      <?php 
+    include __DIR__ . '/../templates/countries.php';
+    ?>   
+    </div>
+    </div>
+  </div>
+
   <div class="two fields">
       <div class="three wide field">
       <label>Activate</label>
@@ -242,14 +265,14 @@ $_SESSION['stu_res'] = true;
     type: 'GET',
     url: "school",
     success: function(data){
-      $(function() {     
+      /* $(function() {     
   var select = $('select');
   select.html(select.find('option').sort(function(x, y) {
     return $(x).text() > $(y).text() ? 1 : -1;
   }));
-});
+}); */
 
-$('#name,#contactno,#myCheck,#mailid,#age,#batch,#class,#pname').on('input change', function () {
+$('#name,#contactno,#myCheck,#mailid,#age,#batch,#class,#pname,#schoolname,#country').on('input change', function () {
             if ($(this).val() != '') {
                 $('#submitBtn').prop('disabled', false);
             }
@@ -311,6 +334,7 @@ $('#name,#contactno,#myCheck,#mailid,#age,#batch,#class,#pname').on('input chang
                     document.getElementById("batch").value = obj.batch;
                     document.getElementById("class").value = obj.class;
                     document.getElementById("pname").value = obj.parent_name;
+                    document.getElementById("country").value = obj.country;
                     if(obj.activate == "Y"){
                       document.getElementById("myCheck").checked = true;
                     }

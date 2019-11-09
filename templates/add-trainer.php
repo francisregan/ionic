@@ -102,7 +102,7 @@ if (!isset($_SESSION)) {
   </script>
 
 </head>
-<body>
+<body onload="checkSchoolsList()">
 <form class="ui form" action="trainer" method="post" >
 <br />
 <h3 class="ui dividing header" id="schoolheader" style="text-align: left;">Add Trainer</h3>
@@ -289,14 +289,7 @@ $_SESSION['tra_res'] = true;
                     document.getElementById("mailid").readOnly = true;
                     document.getElementById("spec").value = obj.specialization;
                     document.getElementById("country").value = obj.country;
-                    var val = obj.school;
-
-                    var select = document.getElementById( 'schoolname' );
-                    for ( var i = 0; i < val.length; i++ ){
-                      var schoolID = val[i];
-                      $('#schoolname').dropdown('set selected',schoolID);
-
-                    }
+                    $('#schoolname').dropdown('set selected',obj.school);
                     document.getElementById("address").value = obj.address;
                     if(obj.activate == "Y"){
                       document.getElementById("myCheck").checked = true;

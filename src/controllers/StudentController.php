@@ -20,12 +20,12 @@ class StudentController
         if ($id != null) {
             $result = $this->container->db->query("SELECT student.student_id,student.student_name,student.contact_number,
             student.email,student.school,school.school_name,student.age,
-            student.batch,student.class,student.parent_name,student.activate FROM student
+            student.batch,student.class,student.parent_name,student.country,student.activate FROM student
             INNER JOIN school ON student.school=school.sno where student_id = '$id';");
         } else {
             $result = $this->container->db->query("SELECT student.student_id,student.student_name,student.contact_number,
             student.email,student.school,school.school_name,student.age,
-            student.batch,student.class,student.parent_name,student.activate FROM student
+            student.batch,student.class,student.parent_name,student.country,student.activate FROM student
             INNER JOIN school ON student.school=school.sno;");
         }
         $results = [];
@@ -52,17 +52,18 @@ class StudentController
             $batch = $data['sbatch'];
             $class = $data['sclass'];
             $parentname = $data['sparentname'];
+            $country=$data['country'][0];
             $act = $data['activate'];
             $sqli = $this->container->db;
             if ($studentid != null) {
                 $result = $sqli->query("UPDATE ioniccloud.student SET student_name='$name', contact_number='$contactno',
             email='$mail', school='$school', age='$age', batch='$batch', class='$class', parent_name='$parentname',
-            activate='$act' WHERE student_id='$studentid';");
+            activate='$act' ,country='$country' WHERE student_id='$studentid';");
             echo ("<script>window.alert('Record Updated Successfully');</script>");
             } else {
                 $result = $sqli->query("INSERT INTO ioniccloud.student (student_name, contact_number, email, school,
-            age, batch, class, parent_name,activate) VALUES ('$name','$contactno','$mail','$school','$age','$batch',
-            '$class','$parentname','$act')");
+            age, batch, class, parent_name, activate, country) VALUES ('$name','$contactno','$mail','$school','$age','$batch',
+            '$class','$parentname','$act','$country')");
             }
             if (mysqli_affected_rows($sqli) == 1) {
                 return $this->container->renderer->render($response, 'index.php', array('redirect' => 'manage-student'));
